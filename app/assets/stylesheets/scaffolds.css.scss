@@ -1,0 +1,138 @@
+// ==========================
+// General
+// ==========================
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	font-size: 12px;
+	background: #EFEFEF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0px 0px 15px 0px;
+}
+
+a {
+	text-decoration: none;
+	border-bottom: 1px dotted #333333;
+}
+
+p {
+	line-height: 24px;
+}
+
+.wrap {
+	overflow: hidden;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.window {
+	background: #FFFFFF;
+	padding: 15px 20px;
+	border: 1px solid #CCCCCC;
+	box-shadow: 0px 2px 7px #DCDCDC;
+}
+
+// ==========================
+// Header
+// ==========================
+
+header {
+	padding: 15px 0px;
+	overflow: hidden;
+	a {
+		border-bottom: none;
+	}
+}
+
+// ==========================
+// Buttons
+// ==========================
+
+// Default Button
+.btn {
+	display: inline-block;
+	color: #333333;
+	font-weight: bold;
+	padding: 5px 7px;
+	border-radius: 2px;
+	line-height: 16px;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 2px #EFEFEF;
+	text-shadow: 0px 1px 1px #FFFFFF;
+	background: #E6E6E6;
+	border: 1px solid #BABABA;
+	transition: border 0.5s;
+	-o-transition: border 0.5s;
+	-webkit-transition: border 0.5s;
+	-moz-transition: border 0.5s;
+}
+
+.btn:hover {
+	box-shadow: 0px 0px 2px #52A8E8;
+	border: 1px solid #52A8E8;
+}
+
+.btn:active {
+	box-shadow: 0px 0px 5px #CCCCCC inset;
+}
+
+// Medium Button
+.btn.med {
+	padding: 7px 10px;
+}
+
+// Large Button
+.btn.lrg {
+	padding: 10px 13px;
+	font-size: 14px;
+}
+
+// Blue Button
+.btn.blue {
+	background: #4179D9;
+	color: #FFFFFF;
+	text-shadow: 0px 1px 1px #1251BD;
+	border: 1px solid #0E439F;
+}
+
+.btn.blue:hover {
+	box-shadow: 0px 0px 2px #52A8E8;
+	border: 1px solid #0E439F;
+}
+
+.btn.blue:active {
+	box-shadow: 0px 0px 5px #315EAB inset;
+}
+
+// Red Button
+
+// Green Button
+
+// ==========================
+// Form
+// ==========================
+
+.field {
+	margin: 7px 0px;
+	label {
+		display: block;
+		font-weight: bold;
+	}
+	input[type='text'], input[type='password'] {
+		padding: 7px 10px;
+		box-sizing: border-box;
+		width: 100%;
+		font-size: 14px;
+		margin: 7px 0px;
+	}
+}
