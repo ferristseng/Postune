@@ -10,9 +10,9 @@ Postune::Application.routes.draw do
     resources :users, :path => "/user", :except => [ :new ] do
       # Station resources
       # File : stations_controller
-      resources :stations, :only => [ :create, :update, :new ]
-      match ':slug', :to => 'stations#show'
-      match ':slug/edit', :to => "stations#edit"
+      resources :stations, :only => [ :update ]
+      match ':slug', :to => 'stations#show', :as => "show_station"
+      match ':slug/edit', :to => "stations#edit", :as => "edit_station"
     end
 
     match 'register', :to => 'users#new'

@@ -1,4 +1,5 @@
 class User::SessionsController < ApplicationController
+
   def new
 		@title = "Login"
 		if signed_in?
@@ -25,4 +26,5 @@ class User::SessionsController < ApplicationController
 			redirect_to root_path
 		end
 	end
+	
 end

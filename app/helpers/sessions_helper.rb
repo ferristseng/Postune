@@ -23,7 +23,7 @@ module SessionsHelper
 	end
 	
 	def admin?
-		current_user.group.permission_level == 9
+		current_user.group.permission == 9
 	end
 
 	def default_access
@@ -32,6 +32,10 @@ module SessionsHelper
 	
 	def admin_access
 		redirect_to root_path unless admin?
+	end
+
+	def can_edit_station?(station)
+		admin? || station.user == current_user
 	end
 
 	private

@@ -3,8 +3,12 @@ class User::UsersController < ApplicationController
 	before_filter :default_access, :only => [ :edit, :show ]
 
   def new
-  	@title = 'Register'
-  	@user = User.new
+  	if signed_in?
+  		redirect_to root_path
+  	else
+	  	@title = 'Register'
+	  	@user = User.new
+	  end
   end
 
   def create

@@ -16,4 +16,7 @@
 
 class Song < ActiveRecord::Base
   attr_accessible :album, :artist, :artwork, :path, :station_id, :title, :user_id
+
+  belongs_to :user
+  
 end

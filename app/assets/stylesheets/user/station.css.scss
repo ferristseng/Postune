@@ -1,3 +1,125 @@
-// Place all the styles related to the User::Station controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// default width 
+// 940px
+
+// station header
+#station-header {
+	box-shadow: 0px 1px 7px rgba(0,0,0,0.1);
+}
+#station-title {
+	width: 100%;
+	background: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	box-sizing: border-box;
+	span {
+		padding: 10px 15px;
+		display: block;
+	}
+}
+
+// image slider
+#album-slider {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	text-align: right;
+	background: #CCCCCC;
+}
+
+.album-thumb {
+	background: #232323;
+	overflow: hidden;
+	float: left;
+	width: 25%;
+	img {
+		width: 100%;
+		height: 100%;
+		opacity: 0.35;
+	}
+}
+
+.playing {
+	img {
+		opacity: 1;
+	}
+}
+
+// song and station details
+#song-details {
+	padding-right: 50%;
+	.arrow {
+		width: 24px;
+		height: 18px;
+		background: url('/assets/arrow.png');
+		position: absolute;
+		margin: -16px 0px 0px 105.5px;
+		z-index: 9999;
+	}
+	.window {
+		margin: 18px 7.5px 0px 0px;
+		position: relative;
+	}
+	#song-title {
+		font-weight: bold;
+		font-size: 12px;
+	}
+}
+
+#station-details {
+	width: 50%;
+	float: right;
+	.window {
+		margin: 18px 0px 0px 7.5px;
+		.btn {
+			margin: 10px 0px;
+		}
+	}
+}
+
+// responsive part
+
+// 768 to 980
+// 724px
+@media (min-width: 768px) and (max-width: 979px) {
+	#song-details {
+		.arrow {
+			margin-left: 78.5px;
+		}
+	}
+}
+
+// 481 to 768
+// fluid
+@media (max-width: 767px) {
+	#station-title {
+		font-size: 12px;
+		span {
+			padding: 7px 9px;
+		}
+	}
+	#song-details {
+		.arrow {
+			left: 12.5%;
+			margin-left: 0px;
+		}
+	}
+	#station-details {
+		.window {
+			margin-top: 0px;
+			.left, .right {
+				float: none;
+				.btn {
+					display: block;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+
+}

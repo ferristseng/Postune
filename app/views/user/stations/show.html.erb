@@ -1,2 +1,58 @@
-<h1>User::Station#show</h1>
-<p>Find me in app/views/user/station/show.html.erb</p>
+<div class="container">
+	<div class="row-fluid">
+		<div class="span12" id="station-header">
+			<div id="station-title">
+				<span><%= @station.name %></span>
+			</div>
+			<div id="album-slider">
+				<div class="album-thumb playing"></div>
+				<div class="album-thumb">
+					<img src="http://cdn.7static.com/static/img/sleeveart/00/014/308/0001430897_350.jpg" />
+				</div>
+				<div class="album-thumb">
+					<img src="http://cdn.7static.com/static/img/sleeveart/00/012/421/0001242153_350.jpg" />
+				</div>
+				<div class="album-thumb">
+					<img src="http://cdn.7static.com/static/img/sleeveart/00/011/931/0001193196_350.jpg" />
+				</div>
+				<div class="image-slider-mask"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div id="station-details">
+				<div class="window">
+					<strong><%= @station.name %></strong>
+					<div><%= @station.description %></div>
+					<div><%= link_to @station.user.name, user_user_path(@station.user) %></div>
+					<% if signed_in? && can_edit_station?(@station) %>
+						<div class="wrap">
+							<div class="left">
+								<%= link_to "Edit Station", user_user_edit_station_path(@station.user, @station), :class => "btn small" %>
+							</div>
+							<div class="right">
+								<%= link_to "Add Song", "#", :class => "btn small" %>
+								<%= link_to "Choose Song", "#", :class => "btn small" %>
+							</div> 
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div id="song-details">
+				<div class="arrow"></div>
+				<div class="window">
+					<div id="song-title">Nothing Playing</div>
+					<div id="song-artist">Unknown</div>
+					<div id="song-album">Unknown</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="http://ferris.jit.su:80/socket.io/socket.io.js"></script>
+<script>
+	var json;
+	var socket = io.connect('http://ferris.jit.su:80/');
+</script>

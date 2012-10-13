@@ -11,4 +11,6 @@
 
 class Group < ActiveRecord::Base
   attr_accessible :name, :permission
+
+  has_many :users
 end

@@ -7,9 +7,6 @@ class User::StationsController < ApplicationController
   def show
   end
 
-  def new
-  end
-
   def create
   end
 
@@ -29,6 +26,6 @@ class User::StationsController < ApplicationController
     end
 
     def find_station
-      @station = @user.stations.find_by_slug(params[:slug])
+      @station = @user.station
     end
 end
