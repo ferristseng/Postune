@@ -1,3 +1,5 @@
+<%= render 'user/stations/partials/song_form' %>
+<%= render 'shared/modal', :id => "songs-list", :title => "Songs List" %>
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12" id="station-header">
@@ -5,16 +7,11 @@
 				<span><%= @station.name %></span>
 			</div>
 			<div id="album-slider">
-				<div class="album-thumb playing"></div>
-				<div class="album-thumb">
-					<img src="http://cdn.7static.com/static/img/sleeveart/00/014/308/0001430897_350.jpg" />
+				<div class="album-thumb playing">
 				</div>
-				<div class="album-thumb">
-					<img src="http://cdn.7static.com/static/img/sleeveart/00/012/421/0001242153_350.jpg" />
-				</div>
-				<div class="album-thumb">
-					<img src="http://cdn.7static.com/static/img/sleeveart/00/011/931/0001193196_350.jpg" />
-				</div>
+				<% (0..2).each do |i| %>
+					<div class="album-thumb"></div>
+				<% end %>
 				<div class="image-slider-mask"></div>
 			</div>
 		</div>
@@ -27,15 +24,13 @@
 					<div><%= @station.description %></div>
 					<div><%= link_to @station.user.name, user_user_path(@station.user) %></div>
 					<% if signed_in? && can_edit_station?(@station) %>
-						<div class="wrap">
-							<div class="left">
-								<%= link_to "Edit Station", user_user_edit_station_path(@station.user, @station), :class => "btn small" %>
-							</div>
-							<div class="right">
-								<%= link_to "Add Song", "#", :class => "btn small" %>
-								<%= link_to "Choose Song", "#", :class => "btn small" %>
-							</div> 
-						</div>
+					<div class="left">
+						<%= link_to "Edit Station", user_user_edit_station_path(@station.user, @station), :class => "btn small" %>
+					</div>
+					<div class="right">
+						<%= link_to "Add Song", "#add-song-form", :class => "btn small", "data-toggle" => "modal" %>
+						<%= link_to "Choose Song", "#songs-list", :class => "btn small", "data-toggle" => "modal", "data-target" => user_user_songs_list_path(current_user, @station) %>
+					</div> 
 					<% end %>
 				</div>
 			</div>
@@ -50,7 +45,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- Start JS -->
 <script src="http://ferris.jit.su:80/socket.io/socket.io.js"></script>
 <script>
 	var json;

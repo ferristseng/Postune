@@ -27,6 +27,7 @@
 	overflow: hidden;
 	text-align: right;
 	background: #CCCCCC;
+	display: table;
 }
 
 .album-thumb {
@@ -34,9 +35,11 @@
 	overflow: hidden;
 	float: left;
 	width: 25%;
+	text-align: center;
+	line-height: 235px;
 	img {
-		width: 100%;
-		height: 100%;
+		max-width: 100%;
+		max-height: 100%;
 		opacity: 0.35;
 	}
 }
@@ -56,7 +59,7 @@
 		background: url('/assets/arrow.png');
 		position: absolute;
 		margin: -16px 0px 0px 105.5px;
-		z-index: 9999;
+		z-index: 1000;
 	}
 	.window {
 		margin: 18px 7.5px 0px 0px;
@@ -74,7 +77,41 @@
 	.window {
 		margin: 18px 0px 0px 7.5px;
 		.btn {
-			margin: 10px 0px;
+			margin: 10px 0px 0px 0px;
+		}
+	}
+}
+#add-song-form {
+	.field {
+		margin: 0px;
+		padding: 0px;
+	}
+	#search-results {
+		.search-result {
+			font-size: 13px;
+			height: 32px;
+			padding: 0px 0px 8px 0px;
+			overflow: hidden;
+			height: auto;
+		}
+		.fix {
+			margin: 15px 0px 0px 0px;
+		}
+		.artwork {
+			margin: 1px 0px 0px 0px;
+			width: 32px;
+			height: 32px;
+			background: #232323;
+			line-height: 32px;
+		}
+		.song-field {
+			margin: 2px 0px 0px 3px;
+		}
+		.submit {
+			margin: 3px 0px 0px 4px;
+		}
+		input[type="text"] {
+			width: 160px;
 		}
 	}
 }
@@ -84,6 +121,9 @@
 // 768 to 980
 // 724px
 @media (min-width: 768px) and (max-width: 979px) {
+	.album-thumb {
+		line-height: 181px;
+	}
 	#song-details {
 		.arrow {
 			margin-left: 78.5px;
@@ -94,6 +134,42 @@
 // 481 to 768
 // fluid
 @media (max-width: 767px) {
+	#add-song-form {
+		#search-results {
+			.left {
+				float: none;
+			}
+			.artwork {
+				margin: auto;
+			}
+			.song-field {
+				margin: 5px 0px 0px 0px;
+				input[type='text'] {
+					width: 100%;
+					box-sizing: border-box;
+				}
+			}
+			.submit {
+				margin: 5px 0px 0px 0px;
+				.btn {
+					width: 100%;
+					display: block;
+				}
+			}
+			.search-result {
+				background: #EFEFEF;
+				margin: 0px 0px 8px 0px;
+				padding: 5px 7px;
+			}
+		}
+	}
+	.album-thumb {
+		line-height: 0px;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
 	#station-title {
 		font-size: 12px;
 		span {

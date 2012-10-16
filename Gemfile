@@ -8,11 +8,10 @@ gem 'pg'
 # Redis
 gem 'redis'
 
-# 7digital
-gem '7digital'
-
 # Will paginate
 gem 'will_paginate'
+
+gem 'soundcloud'
 
 # Gems used only for Development
 group :development do
@@ -28,3 +27,5 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'soundmanager-rails'
+

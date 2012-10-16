@@ -5,9 +5,12 @@ class User::StationsController < ApplicationController
   before_filter :find_station, :except => [ :new ]
 
   def show
+    @title = @station.name
+    @song = Song.new
   end
 
   def create
+
   end
 
   def edit
@@ -26,6 +29,6 @@ class User::StationsController < ApplicationController
     end
 
     def find_station
-      @station = @user.station
+      @station = Station.find_by_slug!(params[:slug])
     end
 end

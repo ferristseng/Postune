@@ -1,0 +1,21 @@
+<div class="fix"></div>
+<% @songs.each do |s| %>
+	<div class="search-result">
+		<%= form_for @song, :url => user_songs_path, :remote => true do |f| %>
+			<div class="left artwork"><%= !s['image']['large'].nil? ? image_tag(s['image']['large'], :alt => s['title'], :width => 32) : '' %></div>
+			<div class="left song-field"><%= f.text_field :artist, :value => s['artist'] %></div>
+			<div class="left song-field"><%= f.text_field :title, :value => s['title'] %></div>
+			<div class="left song-field"><%= f.text_field :album, :value => s['album'] %></div>
+			<div class="left submit"><%= f.submit "Add", :class => "btn med" %></div>
+			<%= f.hidden_field :artwork, :value => !s['image']['large'].nil? ? s['image']['large'] : nil %>
+			<%= f.hidden_field :path, :value => s['url'] %>
+		<% end %>
+	</div>
+<% end %>
+<div class="pagination">
+	<% while @page < @max_page do %>
+		<div class="page <%= (@page == @current) ? 'current' : '' %>">
+			<%= link_to @page+=1, search_user_songs_path(:query => @query, :start => @page), :remote => true %>
+		</div>
+	<% end %>
+</div>	

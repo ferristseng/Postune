@@ -11,8 +11,14 @@ Postune::Application.routes.draw do
       # Station resources
       # File : stations_controller
       resources :stations, :only => [ :update ]
-      match ':slug', :to => 'stations#show', :as => "show_station"
-      match ':slug/edit', :to => "stations#edit", :as => "edit_station"
+      match ':slug', :to => 'stations#show', :as => "show_station", :id => /\w+/
+      match ':slug/edit', :to => "stations#edit", :as => "edit_station", :id => /\w+/
+      # Song list
+      match ':slug/songs', :to => 'songs#index', :as => "songs_list"
+    end
+
+    resources :songs, :only => [ :create, :update, :destroy ] do
+      match '/search', :to => 'songs#search', :on => :collection
     end
 
     match 'register', :to => 'users#new'
