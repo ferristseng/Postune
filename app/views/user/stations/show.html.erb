@@ -1,5 +1,5 @@
 <%= render 'user/stations/partials/song_form' %>
-<%= render 'shared/modal', :id => "songs-list", :title => "Songs List" %>
+<%= render 'shared/modal', :id => "station-history", :title => "History" %>
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12" id="station-header">
@@ -9,8 +9,8 @@
 			<div id="album-slider">
 				<div class="album-thumb playing">
 				</div>
-				<% (0..2).each do |i| %>
-					<div class="album-thumb"></div>
+				<% @songs.each do |s| %>
+					<div class="album-thumb"><%= image_tag s.artwork, :alt => s.album %></div>
 				<% end %>
 				<div class="image-slider-mask"></div>
 			</div>
@@ -28,8 +28,8 @@
 						<%= link_to "Edit Station", user_user_edit_station_path(@station.user, @station), :class => "btn small" %>
 					</div>
 					<div class="right">
-						<%= link_to "Add Song", "#add-song-form", :class => "btn small", "data-toggle" => "modal" %>
-						<%= link_to "Choose Song", "#songs-list", :class => "btn small", "data-toggle" => "modal", "data-target" => user_user_songs_list_path(current_user, @station) %>
+						<%= link_to "Choose Song", "#choose-song-form", :class => "btn small", "data-toggle" => "modal" %>
+						<%= link_to "History", "#station-history", :class => "btn small", "data-toggle" => "modal", "data-target" => user_user_songs_list_path(current_user, @station) %>
 					</div> 
 					<% end %>
 				</div>
@@ -45,9 +45,8 @@
 		</div>
 	</div>
 </div>
-<!-- Start JS -->
-<script src="http://ferris.jit.su:80/socket.io/socket.io.js"></script>
-<script>
-	var json;
-	var socket = io.connect('http://ferris.jit.su:80/');
-</script>
+<% content_for :head do %>
+	<script src='http://<%= "#{Settings['node']['host']}:#{Settings['node']['port']}" %>/socket.io/socket.io.js'></script>
+	<script>var station_id = <%= @station.id %></script>
+	<%= javascript_include_tag 'station' %> 
+<% end %>

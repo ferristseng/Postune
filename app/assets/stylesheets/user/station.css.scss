@@ -86,33 +86,48 @@
 		margin: 0px;
 		padding: 0px;
 	}
-	#search-results {
-		.search-result {
-			font-size: 13px;
-			height: 32px;
-			padding: 0px 0px 8px 0px;
-			overflow: hidden;
-			height: auto;
-		}
-		.fix {
-			margin: 15px 0px 0px 0px;
-		}
-		.artwork {
-			margin: 1px 0px 0px 0px;
+}
+
+.modal-body {
+	.song {
+		font-size: 13px;
+		height: 32px;
+		padding: 0px 0px 8px 0px;
+		overflow: hidden;
+		height: auto;
+		width: 634px;
+		margin: auto;
+	}
+	.fix {
+		margin: 15px 0px 0px 0px;
+	}
+	.artwork {
+		margin: 3px 0px 0px 0px;
+		width: 32px;
+		height: 32px;
+		background: #232323;
+		line-height: 32px;
+		.play {
 			width: 32px;
 			height: 32px;
-			background: #232323;
-			line-height: 32px;
+			background: rgba(0,0,0,0.85);
+			position: relative;
+			z-index: 3050;
+			margin:  -32px 0px 0px 0px;
+			display: none;
 		}
-		.song-field {
-			margin: 2px 0px 0px 3px;
+		.icon-play {
+			
 		}
-		.submit {
-			margin: 3px 0px 0px 4px;
-		}
-		input[type="text"] {
-			width: 160px;
-		}
+	}
+	.song-field {
+		margin: 2px 0px 0px 3px;
+	}
+	.submit {
+		margin: 3px 0px 0px 4px;
+	}
+	.song input[type="text"] {
+		width: 156px;
 	}
 }
 
@@ -134,33 +149,34 @@
 // 481 to 768
 // fluid
 @media (max-width: 767px) {
-	#add-song-form {
-		#search-results {
-			.left {
-				float: none;
+	.modal-body {
+		.song {
+			width: auto;
+		}
+		.left {
+			float: none;
+		}
+		.artwork {
+			margin: auto;
+		}
+		.song-field {
+			margin: 5px 0px 0px 0px;
+			input[type='text'] {
+				width: 100%;
+				box-sizing: border-box;
 			}
-			.artwork {
-				margin: auto;
+		}
+		.submit {
+			margin: 5px 0px 0px 0px;
+			.btn {
+				width: 100%;
+				display: block;
 			}
-			.song-field {
-				margin: 5px 0px 0px 0px;
-				input[type='text'] {
-					width: 100%;
-					box-sizing: border-box;
-				}
-			}
-			.submit {
-				margin: 5px 0px 0px 0px;
-				.btn {
-					width: 100%;
-					display: block;
-				}
-			}
-			.search-result {
-				background: #EFEFEF;
-				margin: 0px 0px 8px 0px;
-				padding: 5px 7px;
-			}
+		}
+		.search-result {
+			background: #EFEFEF;
+			margin: 0px 0px 8px 0px;
+			padding: 5px 7px;
 		}
 	}
 	.album-thumb {

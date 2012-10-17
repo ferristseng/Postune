@@ -17,7 +17,7 @@ Postune::Application.routes.draw do
       match ':slug/songs', :to => 'songs#index', :as => "songs_list"
     end
 
-    resources :songs, :only => [ :create, :update, :destroy ] do
+    resources :songs, :only => [ :create, :update, :destroy, :show ] do
       match '/search', :to => 'songs#search', :on => :collection
     end
 
@@ -32,5 +32,10 @@ Postune::Application.routes.draw do
 
   # Static pages
   match '/css', :to => "static_pages#css"
+
+  # Error pages
+
+  match '/404', :to => "static_pages#error_404"
+  match '/500', :to => "static_pages#error_500"
 
 end

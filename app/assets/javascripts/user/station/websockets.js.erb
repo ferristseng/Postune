@@ -1,0 +1,8 @@
+var socket = io.connect('<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/" %>');
+
+socket.on("station " + station_id, function(data) {
+	Player.load(data.path);
+	$("#song-title").html((data.title != "") ? data.title : "Unknown");
+	$("#song-artist").html((data.artist != "") ? data.artist : "Unknown");
+	$("#song-album").html((data.album != "") ? data.album : "Unknown");
+});

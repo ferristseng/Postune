@@ -7,6 +7,7 @@ class User::StationsController < ApplicationController
   def show
     @title = @station.name
     @song = Song.new
+    @songs = @station.songs.order("created_at DESC").limit(3)
   end
 
   def create

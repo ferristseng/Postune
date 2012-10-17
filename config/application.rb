@@ -62,6 +62,9 @@ module Postune
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # Precompile js assets
+    config.assets.precompile += %w( station.js )
+
     # Custom exception routes
     config.exceptions_app = self.routes
 

@@ -258,3 +258,23 @@ input[type='text'], input[type='password'] {
 		padding: 3px 5px;
 	}
 }
+
+// ==========================
+// Page Errors
+// ==========================
+.page-error {
+	text-align: center;
+	font-size: 64px;
+	text-shadow: 0px 1px 1px #FFFFFF;
+	color: #232323;
+	line-height: 128px;
+	font-weight: bold;
+}
+.page-error-description {
+	text-align: center;
+	font-size: 14px;
+	text-shadow: 0px 1px 1px #FFFFFF;
+	color: #454545;
+	font-weight: bold;
+	padding: 0px 0px 64px 0px;
+}
