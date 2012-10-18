@@ -35,7 +35,7 @@ module SessionsHelper
 	end
 
 	def can_edit_station?(station)
-		admin? || station.user == current_user
+		station.user == current_user
 	end
 
 	private

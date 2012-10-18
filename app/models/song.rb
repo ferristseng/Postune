@@ -38,7 +38,7 @@ class Song < ActiveRecord::Base
 	    	client = Soundcloud.new(:client_id => Settings['api_keys']['soundcloud']['client_key'])
 	    	# get the stream URL
 	    	self.path = find_redirect_url client.get('/resolve', self.path).stream_url
-	    when /^https*:\/\/\S+.mp3$/
+	    when /^https*:\/\/\S+.mp3?*\S*$/
 	      self.path = self.path
 	    when /^https*:\/\/(?:www.)?tumblr.com\/audio_file\/\S+$/
 	      self.path = find_redirect_url self.path

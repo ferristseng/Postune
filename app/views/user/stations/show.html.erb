@@ -3,8 +3,12 @@
 <div class="container">
 	<div class="row-fluid">
 		<div class="span12" id="station-header">
-			<div id="station-title">
+			<div id="station-title" class="left">
 				<span><%= @station.name %></span>
+			</div>
+			<div class="right">
+				<span class="icon-user"></span>
+				<span id="online-users">0</span>
 			</div>
 			<div id="album-slider">
 				<div class="album-thumb playing">

@@ -1,8 +1,17 @@
 var socket = io.connect('<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/" %>');
 
-socket.on("station " + station_id, function(data) {
+socket.on("connect", function() {
+	socket.emit("new user", { station_id: station_id });
+});
+
+socket.on("new song", function(data) {
 	Player.load(data.path);
 	$("#song-title").html((data.title != "") ? data.title : "Unknown");
 	$("#song-artist").html((data.artist != "") ? data.artist : "Unknown");
 	$("#song-album").html((data.album != "") ? data.album : "Unknown");
+});
+
+socket.on("update user count", function(data) {
+	console.log(data);
+	$("#online-users").html(data);
 });

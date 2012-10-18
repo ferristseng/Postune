@@ -23,8 +23,8 @@ $(function() {
   // close modal
   function closeModal() {
     $('body').removeClass('modal-open');
-    $('.modal').removeClass('in');
-    $('.modal-backdrop').removeClass('in');
+    $('.modal').hide();
+    $(".modal-backdrop").removeClass("in");
     setTimeout(function() { $('.modal-backdrop').remove() }, 150);
   }
 
@@ -39,8 +39,7 @@ $(function() {
       .appendTo('body');
 
     $(modalId)
-      .show()
-      .toggleClass('in');
+      .show();
 
     $(".modal-backdrop").toggleClass("in");
 

@@ -4,19 +4,27 @@
 // station header
 #station-header {
 	box-shadow: 0px 1px 7px rgba(0,0,0,0.1);
-}
-#station-title {
+	overflow: hidden;
 	width: 100%;
-	background: #FFFFFF;
-	font-size: 14px;
-	font-weight: bold;
 	border-top: 1px solid #CCCCCC;
 	border-left: 1px solid #CCCCCC;
 	border-right: 1px solid #CCCCCC;
 	box-sizing: border-box;
-	span {
-		padding: 10px 15px;
+	background: #FFFFFF;
+	#station-title {
+		font-size: 14px;
+		font-weight: bold;
+		span {
+			padding: 10px 15px;
+			display: block;
+		}
+	}
+	#online-users {
 		display: block;
+	}
+	.icon-user, #online-users {
+		margin: 11px 15px 11px 0px;
+		float: left;
 	}
 }
 
@@ -121,13 +129,22 @@
 		}
 	}
 	.song-field {
+		width: 180px;
 		margin: 2px 0px 0px 3px;
 	}
 	.submit {
+		width: 48px;
 		margin: 3px 0px 0px 4px;
 	}
 	.song input[type="text"] {
-		width: 156px;
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+
+#station-history {
+	.artwork:hover {
+		cursor: pointer;
 	}
 }
 

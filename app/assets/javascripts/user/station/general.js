@@ -12,7 +12,7 @@ $(function() {
 		mouseleave: function() {
 			$(this).find(".play").hide();
 		}
-	}, "#songs-list .artwork");
+	}, "#station-history .artwork");
 
 	function resizeAlbumThumb() {
 		$(".album-thumb").height($(".album-thumb").width());

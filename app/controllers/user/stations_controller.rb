@@ -30,6 +30,6 @@ class User::StationsController < ApplicationController
     end
 
     def find_station
-      @station = Station.find_by_slug!(params[:slug])
+      @station = Station.find(:first, :conditions => ["slug = ? AND user_id = ?", params[:slug], @user.id])
     end
 end

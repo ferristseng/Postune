@@ -1,4 +1,4 @@
-<div class="modal fade" id="choose-song-form">
+<div class="modal hide" id="choose-song-form">
 	<div class="modal-header">
 		<h3>Choose Song</h3>
 	</div>
@@ -9,7 +9,7 @@
 				<%= hidden_field_tag :start, 1 %>
 			</div>
 		<% end %>
-		<div id="search-results"></div>
+		<div id="search-results" class="songs-list"></div>
 	</div>
 	<div class="modal-footer">
 		<div class="left">
