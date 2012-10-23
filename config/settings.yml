@@ -24,6 +24,6 @@ production:
     port: "10062"
     auth: "50647d7d0e670c3f887abc7a14f216bc"
   node:
-    host: "http://ferris.jit.su"
+    host: "ferris.jit.su"
     port: "80"
 
