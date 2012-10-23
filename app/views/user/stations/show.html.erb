@@ -1,7 +1,7 @@
 <%= render 'user/stations/partials/song_form' %>
 <div class="container">
 	<div class="row-fluid">
-		<div id="song-details">
+			<div id="song-details" class="span4">
 				<div class="window">
 					<div id="song-artwork"></div>
 					<div id="song-title">Nothing Playing</div>
@@ -12,6 +12,11 @@
 						<%= link_to "Choose Song", "#choose-song-form", :class => "btn small", "data-toggle" => "modal" %>
 					</div>
 					<% end %>
+				</div>
+			</div>
+			<div class="span8">
+				<div class="window">
+
 				</div>
 			</div>
 		</div>
