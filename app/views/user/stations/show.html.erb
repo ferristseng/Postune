@@ -1,49 +1,17 @@
 <%= render 'user/stations/partials/song_form' %>
-<%= render 'shared/modal', :id => "station-history", :title => "History" %>
 <div class="container">
 	<div class="row-fluid">
-		<div class="span12" id="station-header">
-			<div id="station-title" class="left">
-				<span><%= @station.name %></span>
-			</div>
-			<div class="right">
-				<span class="icon-user"></span>
-				<span id="online-users">0</span>
-			</div>
-			<div id="album-slider">
-				<div class="album-thumb playing">
-				</div>
-				<% @songs.each do |s| %>
-					<div class="album-thumb"><%= image_tag s.artwork, :alt => s.album %></div>
-				<% end %>
-				<div class="image-slider-mask"></div>
-			</div>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<div id="station-details">
+		<div id="song-details">
 				<div class="window">
-					<strong><%= @station.name %></strong>
-					<div><%= @station.description %></div>
-					<div><%= link_to @station.user.name, user_user_path(@station.user) %></div>
-					<% if signed_in? && can_edit_station?(@station) %>
-					<div class="left">
-						<%= link_to "Edit Station", user_user_edit_station_path(@station.user, @station), :class => "btn small" %>
-					</div>
-					<div class="right">
-						<%= link_to "Choose Song", "#choose-song-form", :class => "btn small", "data-toggle" => "modal" %>
-						<%= link_to "History", "#station-history", :class => "btn small", "data-toggle" => "modal", "data-target" => user_user_songs_list_path(current_user, @station) %>
-					</div> 
-					<% end %>
-				</div>
-			</div>
-			<div id="song-details">
-				<div class="arrow"></div>
-				<div class="window">
+					<div id="song-artwork"></div>
 					<div id="song-title">Nothing Playing</div>
 					<div id="song-artist">Unknown</div>
 					<div id="song-album">Unknown</div>
+					<% if signed_in? %>
+					<div class="right">
+						<%= link_to "Choose Song", "#choose-song-form", :class => "btn small", "data-toggle" => "modal" %>
+					</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -51,6 +19,6 @@
 </div>
 <% content_for :head do %>
 	<script src='http://<%= "#{Settings['node']['host']}:#{Settings['node']['port']}" %>/socket.io/socket.io.js'></script>
-	<script>var station_id = <%= @station.id %></script>
+	<script>var station_id = "<%= @station %>";</script>
 	<%= javascript_include_tag 'station' %> 
 <% end %>

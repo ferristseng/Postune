@@ -1,24 +1,20 @@
 Postune::Application.routes.draw do
 
   # Root
-  root :to => "static_pages#css"
+  root :to => "user::stations#new"
 
   # Main front-end routes
   namespace :user, :path => "/" do
     # User resources
     # File : users_controller.rb
-    resources :users, :path => "/user", :except => [ :new ] do
-      # Station resources
-      # File : stations_controller
-      resources :stations, :only => [ :update ]
-      match ':slug', :to => 'stations#show', :as => "show_station", :id => /\w+/
-      match ':slug/edit', :to => "stations#edit", :as => "edit_station", :id => /\w+/
-      # Song list
-      match ':slug/songs', :to => 'songs#index', :as => "songs_list"
-    end
+    resources :users, :path => "/u", :except => [ :new ]
 
-    resources :songs, :only => [ :create, :update, :destroy, :show ] do
-      match '/search', :to => 'songs#search', :on => :collection
+    # Station Resources
+    # File : stations_controller.rb
+    resources :stations, :path => "/s", :only => [ :show, :new, :create ], :constraints => { :id => /[a-zA-Z0-9-]+/ } do
+      resources :songs, :only => [ :create ] do
+        match '/search', :to => 'songs#search', :on => :collection
+      end
     end
 
     match 'register', :to => 'users#new'

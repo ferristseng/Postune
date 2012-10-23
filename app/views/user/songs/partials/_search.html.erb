@@ -1,7 +1,7 @@
 <div class="fix"></div>
 <% @songs.each do |s| %>
 	<div class="song">
-		<%= form_for @song, :url => user_songs_path, :remote => true do |f| %>
+		<%= form_for @song, :url => user_station_songs_path(@station), :remote => true do |f| %>
 			<div class="left artwork"><%= !s['image']['large'].nil? ? image_tag(s['image']['large'], :alt => s['title'], :width => 32) : '' %></div>
 			<div class="left song-field"><%= f.text_field :artist, :value => s['artist'] %></div>
 			<div class="left song-field"><%= f.text_field :title, :value => s['title'] %></div>
@@ -15,7 +15,7 @@
 <div class="pagination">
 	<% while @page < @max_page do %>
 		<div class="page <%= (@page == @current) ? 'current' : '' %>">
-			<%= link_to @page+=1, search_user_songs_path(:query => @query, :start => @page), :remote => true %>
+			<%= link_to @page+=1, search_user_station_songs_path(@station, :query => @query, :start => @page), :remote => true %>
 		</div>
 	<% end %>
 </div>	

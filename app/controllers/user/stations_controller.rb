@@ -1,35 +1,22 @@
 class User::StationsController < ApplicationController
 
-  before_filter :default_access, :except => [ :show ]
-  before_filter :find_user
-  before_filter :find_station, :except => [ :new ]
+  before_filter :default_access, :only => [ :new, :create ]
 
   def show
-    @title = @station.name
+    @title = "Station"
     @song = Song.new
-    @songs = @station.songs.order("created_at DESC").limit(3)
+    @station = params[:id]
   end
 
+  def new
+    @title = "Home"
+  end
+
+  # to do
+  # Add validation
   def create
-
+    id = params[:name].to_url
+    redirect_to user_station_path(id)
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
-  private
-
-    def find_user
-      @user = User.find_by_name(params[:user_id])
-    end
-
-    def find_station
-      @station = Station.find(:first, :conditions => ["slug = ? AND user_id = ?", params[:slug], @user.id])
-    end
 end

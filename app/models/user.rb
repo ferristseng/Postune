@@ -31,14 +31,10 @@ class User < ActiveRecord::Base
 																					:length => { :within => 6..50 },
 																					:if => :should_validate?
 
-	# Relationships
-	has_one :station, 											:dependent => :destroy
-
 	belongs_to :group
 	
 	# Filters
 	before_save :init
-	after_create :create_station
 
 	# Override to param
 	def to_param
@@ -55,12 +51,7 @@ class User < ActiveRecord::Base
 	def self.make_salt(string)
 		Digest::SHA2.hexdigest(string)
 	end
-					
-	# Create the user's station
-	def create_station
-		Station.create! :name => "Your station", :description => "", :user_id => self.id
-	end
-
+	
 	private 
 
 		# Initialize all the User values	

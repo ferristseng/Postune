@@ -27,5 +27,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'soundmanager-rails'
+gem 'curb'
+gem 'stringex'
 

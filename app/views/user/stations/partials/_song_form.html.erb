@@ -3,7 +3,7 @@
 		<h3>Choose Song</h3>
 	</div>
 	<div class="modal-body">
-		<%= form_tag search_user_songs_path, :method => 'get', :remote => true do %>
+		<%= form_tag search_user_station_songs_path(@station), :method => 'get', :remote => true do %>
 			<div class="field">
 				<%= text_field_tag :query %>
 				<%= hidden_field_tag :start, 1 %>
