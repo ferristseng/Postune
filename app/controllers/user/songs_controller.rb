@@ -2,6 +2,8 @@ require 'open-uri'
 
 class User::SongsController < ApplicationController
 
+  include RedisHelper
+
   # 
   # This will create a new song on the station and publish it to redis
   # ==
@@ -12,6 +14,7 @@ class User::SongsController < ApplicationController
     params[:song][:user_id] = current_user.id
     @song = Song.new(params[:song])
     if @song.save
+      redis_auth
       $redis.publish "new song" ,ActiveSupport::JSON.encode({ :token => "", :station => params[:station_id], :song => @song })
       render :js => "console.log('guter')"
     else
