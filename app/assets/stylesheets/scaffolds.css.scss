@@ -1,27 +1,9 @@
-// ==========================
-// General
-// ==========================
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
 
 body {
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Arial', sans-serif;
-	font-size: 12px;
-	background: #EFEFEF;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	margin: 0px 0px 15px 0px;
-}
-
-a {
-	text-decoration: none;
-	border-bottom: 1px dotted #333333;
-	color: #000000;
-}
-
-p {
-	line-height: 24px;
+	background: #26242f;
+	font-size: 14px;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 .wrap {
@@ -36,245 +18,103 @@ p {
 	float: right;
 }
 
-.hide {
-	visibility: none;
+.glyph {
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	background: url('/assets/glyphicons-halflings.png') 0px 0px;
+}
+
+.glyph.white {
+	background: url('/assets/glyphicons-halflings-white.png') 0px 0px;
+}
+
+.container {
+	padding: 0px 32px;
+}
+
+input[type='submit']:hover, button:hover {
+	cursor: pointer;
+}
+
+.btn {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F7F7F7), to(#EFEFEF));
+	background-image: -webkit-linear-gradient(top, #F7F7F7, #EFEFEF); 
+	background-image: -moz-linear-gradient(top, #F7F7F7, #EFEFEF);
+	background-image: -ms-linear-gradient(top, #F7F7F7, #EFEFEF);
+	background-image: -o-linear-gradient(top, #F7F7F7, #EFEFEF);
+	border: 1px solid #ACB3B7;
+	font-weight: bold;
+	box-shadow: 0px 0px 1px #FFFFFF;
+	-moz-box-shadow: 0px 0px 1px #FFFFFF;
+	-webkit-box-shadow: 0px 0px 1px #FFFFFF;
+	color: #4A4A4A;
+	text-shadow: 0px 0px 1px #FFFFFF;
+	-moz-text-shadow: 0px 0px 1px #FFFFFF;
+	-webkit-text-shadow: 0px 0px 1px #FFFFFF;
+}
+
+.message {
+
+}
+
+.message.warning {
+
+}
+
+.tab-frame {
 	display: none;
 }
 
-.window {
-	background: #FFFFFF;
-	padding: 15px 20px;
-	border: 1px solid #CCCCCC;
- 	box-shadow: 0px 2px 7px rgba(0,0,0,0.1);
- 	line-height: 24px;
- 	overflow: hidden;
+.tab-frame.open {
+	display: block;
 }
-
-.caret {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  vertical-align: top;
-  border-top: 4px solid #000000;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-}
-
-ul, ol {
-	margin: 0px;
-	padding: 0px;
-}
-
-.actions {
-	padding: 10px 0px 0px 0px;
-}
-
-// ==========================
-// Header
-// ==========================
 
 header {
-	padding-top: 18px;
-	padding-bottom: 18px;
-	overflow: visible;
-	height: 27px;
-	margin: 0px 0px;
+	line-height: 56px;
+	font-weight: bold;
+	height: 56px;
+	color: #FFFFFF;
 	a {
-		border-bottom: none;
+		color: #FFFFFF;
+	}
+	.left a {
+		font-size: 24px;
+	}
+	.right {
+		a {
+			font-size: 14px;
+			color: #FFFFFF;
+		}
 	}
 }
-
-// ==========================
-// Footer
-// ==========================
 
 footer {
-	padding-top: 18px;
-	padding-bottom: 18px;
-	color: #232323;
-	text-shadow: 0px 1px 1px #FFFFFF;
+	height: 48px;
+	line-height: 48px;
 	font-weight: bold;
-	margin: 18px 0px 0px 0px;
-	border-top: 2px groove #FFFFFF;
-}
-
-// ==========================
-// Buttons
-// ==========================
-
-// Default Button
-.btn {
-	display: inline-block;
-	color: #333333;
-	font-weight: bold;
-	padding: 5px 7px;
-	border-radius: 2px;
-	line-height: 16px;
-	box-sizing: border-box;
-	box-shadow: 0px 0px 2px #EFEFEF;
-	text-shadow: 0px 1px 1px #FFFFFF;
-	background: #E6E6E6;
-	border: 1px solid #BABABA;
-	transition: border 0.5s;
-	-o-transition: border 0.5s;
-	-webkit-transition: border 0.5s;
-	-moz-transition: border 0.5s;
-}
-
-.btn:hover {
-	box-shadow: 0px 0px 2px #52A8E8;
-	border: 1px solid #52A8E8;
-}
-
-.btn:active {
-	box-shadow: 0px 0px 5px #CCCCCC inset;
-}
-// Small Button
-.btn.small {
-	padding: 3px 5px;
-}
-
-// Medium Button
-.btn.med {
-	padding: 7px 10px;
-}
-
-// Large Button
-.btn.lrg {
-	padding: 10px 13px;
-	font-size: 14px;
-}
-
-// Blue Button
-.btn.blue {
-	background: #4179D9;
-	color: #FFFFFF;
-	text-shadow: 0px 1px 1px #1251BD;
-	border: 1px solid #0E439F;
-}
-
-.btn.blue:hover {
-	box-shadow: 0px 0px 2px #52A8E8;
-	border: 1px solid #0E439F;
-}
-
-.btn.blue:active {
-	box-shadow: 0px 0px 5px #315EAB inset;
-}
-
-// Red Button
-
-// Green Button
-
-// ==========================
-// Button Group
-// ==========================
-
-.btn-extend {
-	letter-spacing: 0px;
-	word-spacing: 0px;
-	font-size: 0px;
-	.btn {
-		font-size: 12px;
+	a {
+		color: #FFFFFF;
 	}
-	.btn:hover {
-		position: relative;
+	.left a {
+		margin: 0px 15px 0px 0px;
 	}
-	.dropdown-toggle:hover {
-		border-left: 1px solid #52A8E8;
-	}
-	.btn .caret {
-		margin: 6px 0px 0px 0px;
-	}
-	.open {
-		box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
-		border: 1px solid #52A8E8;
-	}
-}
-
-.btn-group {
-	overflow: visible;
-	height: auto;
 }
 
 .dropdown-menu {
-	position: absolute;
-	float: left;
-	width: 160px;
 	display: none;
-  font-size: 12px;
-  list-style-type: none;
- 	background: #FFFFFF;
- 	border: 1px solid #CCCCCC;
- 	box-shadow: 0px 2px 7px rgba(0,0,0,0.1);
- 	padding: 5px 0px;
- 	margin: 5px 0px 0px -75px;
- 	z-index: 9999;
-  li {
-  	padding: 5px 10px;
-  }
-  .divider {
-  	height: 1px;
-  	padding: 0px 10px;
-  	margin: 5px 0px;
-  	background: #CCCCCC;
-  }
 }
 
-// ==========================
-// Form
-// ==========================
-input[type='text'], input[type='password'] {
-	padding: 7px 10px;
-	font-size: 14px;
-}
-.field {
-	margin: 7px 0px;
-	label {
-		display: block;
-		font-weight: bold;
-	}
-	input[type='text'], input[type='password'] {
-		box-sizing: border-box;
-		width: 100%;
-		margin: 7px 0px;
-	}
+#inner, footer, header {
+	min-width: 980px;
 }
 
-// ==========================
-// Pagination
-// ==========================
-.pagination {
-	text-align: center;
-	margin: 7px 0px 0px 0px;
-	a {
-		border: none;
-	}
-	.current {
-		font-weight: bold;
-	}
-	.page {
-		display: inline-block;
-		padding: 3px 5px;
-	}
+#inner {
+	width: 100%;
+	min-height: 400px;
+	background: #69c93a;
 }
 
-// ==========================
-// Page Errors
-// ==========================
-.page-error {
-	text-align: center;
-	font-size: 64px;
-	text-shadow: 0px 1px 1px #FFFFFF;
-	color: #232323;
-	line-height: 128px;
-	font-weight: bold;
-}
-.page-error-description {
-	text-align: center;
-	font-size: 14px;
-	text-shadow: 0px 1px 1px #FFFFFF;
-	color: #454545;
-	font-weight: bold;
-	padding: 0px 0px 64px 0px;
+#inner .container {
+	padding: 32px;
 }

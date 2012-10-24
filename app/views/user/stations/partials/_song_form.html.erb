@@ -1,21 +1,12 @@
-<div class="modal hide" id="choose-song-form">
-	<div class="modal-header">
-		<h3>Choose Song</h3>
-	</div>
-	<div class="modal-body">
-		<%= form_tag search_user_station_songs_path(@station), :method => 'get', :remote => true do %>
-			<div class="field">
-				<%= text_field_tag :query %>
-				<%= hidden_field_tag :start, 1 %>
-			</div>
-		<% end %>
-		<div id="search-results" class="songs-list"></div>
-	</div>
-	<div class="modal-footer">
-		<div class="left">
+<div class="tab-frame" id="search-song-form">
+	<%= form_tag search_user_station_songs_path(@station), :method => 'get', :remote => true, :id => "search-form" do %>
+		<div class="form-actions">
+			<%= submit_tag "", :class => "glyph" %>
 		</div>
-		<div class="right">
-			<button class="btn" data-dismiss="modal">Close</button>
+		<div class="field">
+			<%= text_field_tag :query, "", :placeholder => "Search be artist or song name..." %>
+			<%= hidden_field_tag :start, 1 %>
 		</div>
-	</div>	
+	<% end %>
+	<div id="search-results"></div>
 </div>

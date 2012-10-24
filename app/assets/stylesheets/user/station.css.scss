@@ -1,130 +1,226 @@
-// default width 
-// 940px
+/*
+ * Station
+ * New
+ * new.html.erb
+ */
 
-// song and station details
+#new-station-form {
+	max-width: 960px;
+	margin: 0px auto;
+	position: relative;
+	border: 8px solid rgba(255,255,255,0.5);
+	-webkit-background-clip: padding-box;
+  background-clip: padding-box;
+	.wrap {
+		width: 100%;
+	}
+	.field {
+		padding: 0px 50px 0px 0px;
+		background: #26242f;
+		input[type='text'] {
+			color: #FFFFFF;
+			font-weight: bold;
+			width: 100%;
+			border: 0px;
+			padding: 0px 25px;
+			height: 50px;
+			font-size: 14px;
+			background: #26242f;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+	}
+	.form-actions {
+		float: right;
+		background: #26242f;
+		width: 16px;
+		height: 16px;
+		padding: 17px;
+		input[type='submit'] {
+			width: 16px;
+			height: 16px;
+			background: url('/assets/glyphicons-halflings-white.png') -24px 0px;
+			border: 0px;
+			margin: 0px;
+			padding: 0px;
+		}
+	}
+}
+
+/*
+ * Station
+ * Show
+ * show.html.erb
+ */
+
+ #station-main {
+ 	background: transparent;
+ 	padding: 0px 0px 0px 250px;
+ 	.inner {
+ 		overflow: hidden;
+ 		background: #FFFFFF;
+ 		margin: 0px 0px 0px 32px;
+ 		.tabs.vertical {
+ 			float: left;
+ 			width: 50px;
+ 			background: #EFEFEF;
+ 			border-right: groove #FFFFFF 2px;
+ 			li {
+ 				padding: 17px;
+ 				border-bottom: groove #FFFFFF 2px;
+ 				a {
+	 				width: 16px;
+	 				height: 16px;
+	 				margin: 0px;
+	 				display: block;
+	 			}
+ 			}
+ 			#tab-song-form a {
+ 				background-position: -47px 1px;
+ 			}
+ 			#tab-chat-window a {
+ 				background-position: -239px 199px;
+ 			}
+ 			.open {
+ 				background: #FFFFFF;
+ 			}
+ 		}
+ 		#station-frame {
+ 			padding: 0px 0px 0px 51px;
+ 			margin: 12px 12px;
+ 		}
+ 	}
+ }
+
 #song-details {
-	.window {
+	width: 226px;
+	padding: 12px 12px;
+	background: #FFFFFF;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	float: left;
+	font-size: 13px;
+	line-height: 24px;
+	z-index: 1;
+	#song-artwork {
+		width: 226px;
+		height: 226px;
+		overflow: hidden;
+		background: rgba(0,0,0,0.75);
+		margin: 0px 0px 15px 0px;
+		img {
+			width: 100%;
+			height: 100%;
+		}
 	}
 	#song-title {
+		font-size: 14px;
 		font-weight: bold;
+	}
+}
+
+#chat-wrapper {
+	#chat-text {
 		font-size: 12px;
+		overflow-y: scroll;
 	}
-	#song-artwork {
-		width: 48px;
-		height: 48px;
-		background: #232323;
-		float: left;
-		line-height: 48px;
-		margin: 9px 15px 0px 0px;
-		border: 1px solid #111111;
-	}
-	.btn {
-		margin: 15px 0px 0px 0px;
-	}
-}
-
-#add-song-form {
-	.field {
-		margin: 0px;
-		padding: 0px;
-	}
-}
-
-.modal-body {
-	.song {
-		font-size: 13px;
-		height: 32px;
-		padding: 0px 0px 8px 0px;
-		height: 36px;
-		width: 634px;
-		margin: auto;
-		clear: both;
-	}
-	.fix {
-		margin: 15px 0px 0px 0px;
-	}
-	.artwork {
-		margin: 3px 0px 0px 0px;
-		width: 32px;
-		height: 32px;
-		background: #232323;
-		line-height: 32px;
-		overflow: hidden;
-		.play {
-			width: 32px;
-			height: 32px;
-			background: rgba(0,0,0,0.85);
-			position: relative;
-			z-index: 3050;
-			margin:  -32px 0px 0px 0px;
-			display: none;
+	#chat-form {
+		margin: 12px 0px 0px 0px;
+		.message.warning {
+			text-align: center;
 		}
-		.icon-play {
-			
-		}
-	}
-	.song-field {
-		width: 180px;
-		margin: 2px 0px 0px 3px;
-	}
-	.submit {
-		width: 48px;
-		margin: 3px 0px 0px 4px;
-	}
-	.song input[type="text"] {
-		width: 100%;
-		box-sizing: border-box;
-	}
-}
-
-// responsive part
-
-// 768 to 980
-// 724px
-@media (min-width: 768px) and (max-width: 979px) {
-}
-
-// 481 to 768
-// fluid
-@media (max-width: 767px) {
-	.modal-body {
-		.song {
-			width: auto;
-			height: auto;
-		}
-		.left {
-			float: none;
-		}
-		.artwork {
-			margin: auto;
-		}
-		.song-field {
-			width: 100%;
-			margin: 5px 0px 0px 0px;
-			input[type='text'] {
+		.field {
+			padding: 0px 32px 0px 0px;
+			background: #26242f;
+	 		input[type='text'] {
+		 		color: #FFFFFF;
+				font-weight: bold;
 				width: 100%;
+				border: 0px;
+				padding: 0px 15px;
+				height: 32px;
+				font-size: 14px;
+				background: #26242f;
 				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+	 		}
+ 		}
+ 		.form-actions {
+	 		float: right;
+			background: #26242f;
+			width: 14px;
+			height: 14px;
+			padding: 9px;
+			input[type='submit'] {
+				width: 14px;
+				height: 14px;
+				background-position: -336px -97px;
+				border: 0px;
+				margin: 0px;
+				padding: 0px;
 			}
-		}
-		.submit {
-			width: 100%;
-			margin: 5px 0px 0px 0px;
-			.btn {
-				width: 100%;
-				display: block;
-			}
-		}
-		.search-result {
-			background: #EFEFEF;
-			margin: 0px 0px 8px 0px;
-			padding: 5px 7px;
-		}
-	}
-	.window {
-		margin: 0px 0px 15px 0px;
+	 	}
 	}
 }
 
-@media (max-width: 480px) {
+.chat-message {
+	margin: 7px 0px;
+}
 
+.chat-message.notification {
+	color: #DCDCDC;
+	text-align: center;
+}
+
+.chat-message.user {
+	.user {
+		font-weight: bold;
+	}
+}
+
+/*
+ * Search form
+ * stations/partials/_song_form.html.erb
+ */
+#search-song-form {
+	overflow-y: scroll;
+}
+#search-song-form #search-form {
+	margin: 0px 0px 6px 0px;
+	.form-actions {
+		float: right;
+		width: 14px;
+		height: 14px;
+		padding: 9px;
+		background: #DCDCDC;
+		input[type='submit'] {
+			width: 14px;
+			height: 14px;
+			background-position: -335px -97px;
+			border: 0px;
+			margin: 0px;
+			padding: 0px;
+		}
+	}
+	.field {
+		padding: 0px 32px 0px 0px;
+ 		input[type='text'] {
+	 		color: #4A4A4A;
+	 		background: #EFEFEF;
+			font-weight: bold;
+			width: 100%;
+			border: 0px;
+			padding: 0px 15px;
+			height: 32px;
+			font-size: 14px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+ 		}
+ 	}
+ 	#search-results {
+ 		overflow-y: scroll;
+ 	}
 }

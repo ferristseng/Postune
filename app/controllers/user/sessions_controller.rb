@@ -3,7 +3,7 @@ class User::SessionsController < ApplicationController
   def new
 		@title = "Login"
 		if signed_in?
-			redirect_to root_path
+			redirect_to home_path
 		else
 			@user = User.new
 		end
@@ -23,7 +23,7 @@ class User::SessionsController < ApplicationController
 			render "new"
 		else
 			sign_in user
-			redirect_to root_path
+			redirect_to home_path
 		end
 	end
 	

@@ -1,29 +1,34 @@
-<%= render 'user/stations/partials/song_form' %>
 <div class="container">
-	<div class="row-fluid">
-			<div id="song-details" class="span4">
-				<div class="window">
-					<div id="song-artwork"></div>
-					<div id="song-title">Nothing Playing</div>
-					<div id="song-artist">Unknown</div>
-					<div id="song-album">Unknown</div>
+	<div id="song-details">
+		<div id="song-artwork"></div>
+		<div id="song-title">Nothing Playing</div>
+		<div id="song-artist">Unknown</div>
+		<div id="song-album">Unknown</div>
+	</div>
+	<div id="station-main">
+		<div class="inner">
+			<div class="tabs vertical">
+				<ul>
 					<% if signed_in? %>
-					<div class="right">
-						<%= link_to "Choose Song", "#choose-song-form", :class => "btn small", "data-toggle" => "modal" %>
-					</div>
+					<li id="tab-song-form"><%= link_to "", "#search-song-form", "data-toggle" => "tab", :class => "glyph" %></li>
 					<% end %>
-				</div>
+					<li id="tab-chat-window" class="open"><%= link_to "", "#chat-window", "data-toggle" => "tab", :class => "glyph" %></li>
+				</ul>
 			</div>
-			<div class="span8">
-				<div class="window">
-
-				</div>
+			<div id="station-frame">
+				<%= render 'user/stations/partials/song_form' %>
+				<%= render 'user/stations/partials/chat_window' %>
 			</div>
 		</div>
 	</div>
+	
 </div>
+
 <% content_for :head do %>
 	<script src='http://<%= "#{Settings['node']['host']}:#{Settings['node']['port']}" %>/socket.io/socket.io.js'></script>
-	<script>var station_id = "<%= @station %>";</script>
+	<script>
+		var station_id = "<%= @station %>",
+				current_user = "<%= current_user.name %>";
+	</script>
 	<%= javascript_include_tag 'station' %> 
 <% end %>

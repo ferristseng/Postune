@@ -1,7 +1,10 @@
 class StaticPagesController < ApplicationController
-  def css
-  	@title = "CSS Test Page"
-  end
+	def splash
+		@title = "Welcome"
+		if signed_in?
+			redirect_to home_path
+		end
+	end
 
   def error_404
   	@title = "404"

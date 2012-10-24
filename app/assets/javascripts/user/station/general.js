@@ -1,20 +1,14 @@
 $(function() {
-	resizeAlbumThumb();
-
-	$(window).on("resize", function() {
-		resizeAlbumThumb();
-	});
-
-	$("body").on({
-		mouseenter: function() {
-			$(this).find(".play").show();
-		},
-		mouseleave: function() {
-			$(this).find(".play").hide();
-		}
-	}, "#station-history .artwork");
-
-	function resizeAlbumThumb() {
-		$(".album-thumb").height($(".album-thumb").width());
+	function resizeStationDivs() {
+		$("#station-main .inner").outerHeight($("#inner").outerHeight() - 64);
+		$("#station-main .inner .tabs.vertical").outerHeight($("#station-main .inner").outerHeight());
+		$("#station-main .inner #chat-wrapper #chat-text").outerHeight($("#station-main .inner").outerHeight() - 68);
+		$("#station-main .inner #search-song-form").outerHeight($("#station-main .inner").outerHeight() - 24);
 	}
+
+	resizeStationDivs();
+
+	$(window).resize(function() {
+		resizeStationDivs();
+	});
 });

@@ -1,57 +1,46 @@
-// btn-extend
-// data-toggle
-// trigger dropdown
 $(function() {
-  $("[data-toggle='dropdown']").on("click", function(e) {
-    e.preventDefault();
+	function resizeInner() {
+		$("#inner").height($(window).height() - $("header").outerHeight() - $("footer").outerHeight());
+	}
+	
+	function centerDivs() {
+		$("#inner .centered-div").css("top", ($("#inner").outerHeight() / 2) - ($("#inner .centered-div").outerHeight() / 2));
+	}
 
-    $(this).toggleClass("open");
-    $(this).parent().find(".dropdown-menu").toggle();
+	$(window).resize(function() {
+		resizeInner();
+	});
 
-    $(":not([data-toggle='dropdown'])").on("click", function(e) {
-      $("[data-toggle='dropdown']").removeClass("open");
-      $(this).parent().find(".dropdown-menu").hide();
-    });
-
-    e.stopPropagation();
-  });
+	resizeInner();
+	centerDivs();
 });
 
-// data-toggle
-// trigger modal
 $(function() {
-  // close modal
-  function closeModal() {
-    $('body').removeClass('modal-open');
-    $('.modal').hide();
-    $(".modal-backdrop").removeClass("in");
-    setTimeout(function() { $('.modal-backdrop').remove() }, 150);
-  }
+	$("body").on("click", "[data-toggle='tab']", function(e) {
+		e.preventDefault();
+		/*
+		 * Assume structure
+		 * 	wrapper (div / section / etc.)
+		 *		ulParent (div / section / etc.)
+		 *			liParent (ul)
+		 *				aParent (li)
+		 *		frames
+		 */
+		var aParent = $(this).parent(),
+				liParent = aParent.parent(),
+				ulParent = liParent.parent(),
+				wrapper = ulParent.parent(),
+				toggledFrame = $(this).attr("href");
 
-  $("[data-toggle='modal']").on("click", function(e) {
-    e.preventDefault();
+		wrapper.find(".tab-frame.open").removeClass("open");
 
-    var modalId = $(this).attr('href');
+		// toggle the currently open li class
+		liParent.find(".open").removeClass("open");
 
-    $('body').toggleClass('modal-open');
+		// set the the new li class to open
+		aParent.addClass("open");
 
-    $("<div class='modal-backdrop fade' />")
-      .appendTo('body');
-
-    $(modalId)
-      .show();
-
-    $(".modal-backdrop").toggleClass("in");
-
-    if($(this).attr("data-target") != "") {
-      $(modalId).find('.modal-body').load($(this).attr("data-target"));
-    }
-  });
-
-  $("[data-dismiss='modal']").on("click", function(e) {
-    e.preventDefault();
-    closeModal();
-  });
-
-  
+		// open the tab-frame
+		wrapper.find(toggledFrame).addClass("open");
+	});
 });

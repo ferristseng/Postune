@@ -1,0 +1,23 @@
+<div class="tab-frame open" id="chat-window">
+	<div id="chat-wrapper">
+		<div id="chat-text">
+
+		</div>
+		<div id="chat-form">
+			<% if signed_in? %>
+				<%= form_tag "#" do %>
+					<div class="form-actions">
+						<%= submit_tag "", :class => "glyph white" %>
+					</div>
+					<div class="field">
+						<%= text_field_tag :text, "", :placeholder => "Write a message..." %>
+					</div>
+				<% end %>
+			<% else %>
+				<div class="message warning">
+					Please <%= link_to "sign in", user_login_path %> to chat!
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
