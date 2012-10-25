@@ -18,6 +18,11 @@ body {
 	float: right;
 }
 
+.centered-div {
+	margin: 0px auto;
+	position: relative;
+}
+
 .glyph {
 	width: 14px;
 	height: 14px;
@@ -112,7 +117,7 @@ footer {
 #inner {
 	width: 100%;
 	min-height: 400px;
-	background: #69c93a;
+	background: #DFDAAC;
 }
 
 #inner .container {

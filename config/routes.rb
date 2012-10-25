@@ -29,6 +29,9 @@ Postune::Application.routes.draw do
   end
 
   # Static pages
+  match '/faq', :to => "static_pages#faq"
+  match '/contact', :to => "static_pages#contact"
+  match '/rules', :to => "static_pages#rules"
 
   # Error pages
 

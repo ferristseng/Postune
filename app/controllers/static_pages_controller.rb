@@ -6,6 +6,18 @@ class StaticPagesController < ApplicationController
 		end
 	end
 
+	def rules
+		@title = "Rules"
+	end
+
+	def contact
+		@title = "Contact"
+	end
+
+	def faq
+		@title = "FAQ"
+	end
+
   def error_404
   	@title = "404"
   end

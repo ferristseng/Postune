@@ -61,7 +61,10 @@
 .pagination {
 	text-align: center;
 	.page {
+		width: 18px;
+		height: 18px;
 		padding: 7px;
+		line-height: 18px;
 		display: inline-block;
 	}
 	.page.current {

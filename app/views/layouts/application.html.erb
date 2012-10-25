@@ -26,11 +26,14 @@
 		<div class="container wrap">
 			<div class="left">
 				<%= link_to "Code", "https://github.com/ferristseng/Postune" %>
-				<%= link_to "FAQ", "#" %>
-				<%= link_to "Rules", "#" %>
-				<%= link_to "Disclaimer", "#" %>
+				<%= link_to "FAQ", faq_path %>
+				<%= link_to "Rules", rules_path %>
+				<%= link_to "Contact", contact_path %>
 				<% if signed_in? %>
 					<%= link_to "Logout", user_logout_path %>
+				<% else %>
+					<%= link_to "Login", user_login_path %>
+					<%= link_to "Register", user_register_path %>
 				<% end %>
 			</div>	
 			<div class="right">
