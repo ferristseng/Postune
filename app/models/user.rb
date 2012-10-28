@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
 
 		# Initialize all the User values	
 		def init
-			self.is_active 						||= 0
+			self.is_active 						||= 1
 			self.group_id 						||= 1
 			self.salt 								||= User.make_salt("#{Time.now.utc}**")
 			self.activation_code 			||= generate_activation_code
