@@ -3,15 +3,17 @@
 		<div id="chat-text">
 
 		</div>
-		<div id="chat-form">
+		<div class="row" id="chat-form">
 			<% if signed_in? %>
 				<%= form_tag "#" do %>
-					<div class="form-actions">
-						<%= submit_tag "", :class => "glyph white" %>
-					</div>
+				<div class="span8">
 					<div class="field">
 						<%= text_field_tag :text, "", :placeholder => "Write a message..." %>
 					</div>
+					<div class="form-actions">
+						<%= submit_tag "Send", :class => "btn" %>
+					</div>
+				</div>
 				<% end %>
 			<% else %>
 				<div class="message warning">

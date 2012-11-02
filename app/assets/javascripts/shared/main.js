@@ -1,21 +1,4 @@
 $(function() {
-	function resizeInner() {
-		$("#inner").height($(window).height() - $("header").outerHeight() - $("footer").outerHeight());
-	}
-	
-	function centerDivs() {
-		$("#inner .centered-div").css("top", ($("#inner").outerHeight() / 2) - ($("#inner .centered-div").outerHeight() / 2));
-	}
-
-	$(window).resize(function() {
-		resizeInner();
-	});
-
-	resizeInner();
-	centerDivs();
-});
-
-$(function() {
 	$("body").on("click", "[data-toggle='tab']", function(e) {
 		e.preventDefault();
 		/*

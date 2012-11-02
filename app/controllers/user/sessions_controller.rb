@@ -3,7 +3,7 @@ class User::SessionsController < ApplicationController
   def new
 		@title = "Login"
 		if signed_in?
-			redirect_to home_path
+			redirect_to root_path
 		else
 			@user = User.new
 		end
@@ -19,11 +19,11 @@ class User::SessionsController < ApplicationController
 		if user.nil?
 			@title = "Login"
 			@user = User.new(:name => params[:user][:name])
-			@user.errors.add :name, "or Password are invalid"
+			flash[:error] = "Username or password is incorrect"
 			render "new"
 		else
 			sign_in user
-			redirect_to home_path
+			redirect_to root_path
 		end
 	end
 	

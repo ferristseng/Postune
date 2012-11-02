@@ -1,9 +1,7 @@
 Postune::Application.routes.draw do
 
   # Root
-  root :to => "static_pages#splash"
-  # Home
-  match '/home', :to => "user::stations#new"
+  root :to => "user::stations#new"
 
   # Main front-end routes
   namespace :user, :path => "/" do

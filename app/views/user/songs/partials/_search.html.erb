@@ -1,22 +1,19 @@
-<div class="fix"></div>
-<% @songs.each do |s| %>
-	<div class="song">
+<% every(@songs, 4).each do |a| %>
+<div class="row">
+	<% a.each do |s| %>
+	<div class="span2">
 		<%= form_for @song, :url => user_station_songs_path(@station), :remote => true do |f| %>
-			<table>
-				<tbody>
-					<tr>
-						<td class="artwork"><%= !s['image']['large'].nil? ? image_tag(s['image']['small'], :alt => s['title'], :width => 32) : '' %></td>
-						<td class="field"><%= f.text_field :artist, :value => s['artist'], :placeholder => "Artist" %></td>
-						<td class="field"><%= f.text_field :title, :value => s['title'], :placeholder => "Title" %></td>
-						<td class="field"><%= f.text_field :album, :value => s['album'], :placeholder => "Album" %></td>
-						<td class="submit"><button type="submit"><i class='glyph'></button></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="artwork"><%= !s['image']['large'].nil? ? image_tag(s['image']['large'], :alt => s['title'], :width => 128) : '' %></div>
+		<div class="field"><%= f.text_field :artist, :value => s['artist'], :placeholder => "Artist" %></div>
+		<div class="field"><%= f.text_field :title, :value => s['title'], :placeholder => "Title" %></div>
+		<div class="field"><%= f.text_field :album, :value => s['album'], :placeholder => "Album" %></div>
+		<div class="form-actions"><%= f.submit "Play", :class => "btn" %></div>
 			<%= f.hidden_field :artwork, :value => !s['image']['large'].nil? ? s['image']['large'] : nil %>
 			<%= f.hidden_field :path, :value => s['url'] %>
 		<% end %>
 	</div>
+	<% end%>
+</div>
 <% end %>
 <div class="pagination">
 	<% while @page < @max_page do %>

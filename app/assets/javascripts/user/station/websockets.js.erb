@@ -9,7 +9,7 @@ socket.on("new song", function(data) {
 	$("#song-title").html((data.title != "") ? data.title : "Unknown");
 	$("#song-artist").html((data.artist != "") ? data.artist : "Unknown");
 	$("#song-album").html((data.album != "") ? data.album : "Unknown");
-	$("#song-artwork").html((data.artwork != "") ? "<img src='" + data.artwork + "' alt='artwork' width='48px' />" : "");
+	$("#song-artwork").html((data.artwork != "") ? "<img src='" + data.artwork + "' alt='artwork' />" : "");
 });
 
 socket.on("update user count", function(data) {
@@ -29,12 +29,10 @@ socket.on("chat message", function(data) {
 
 // Event Handlers
 $(function() {
-	
 	$("#chat-form form").submit(function(e) {
 		e.preventDefault();
 		var input = $("#chat-form form input[type='text']");
 		socket.emit("new message", $("<div/>").text(input.val()).html());
 		input.val("");
 	});
-
 });

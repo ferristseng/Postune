@@ -1,50 +1,11 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
 /*
  * Station
  * New
  * new.html.erb
  */
-
-#new-station-form {
-	max-width: 960px;
-	border: 8px solid rgba(255,255,255,0.5);
-	-webkit-background-clip: padding-box;
-  background-clip: padding-box;
-	.wrap {
-		width: 100%;
-	}
-	.field {
-		padding: 0px 50px 0px 0px;
-		background: #26242f;
-		input[type='text'] {
-			color: #FFFFFF;
-			font-weight: bold;
-			width: 100%;
-			border: 0px;
-			padding: 0px 25px;
-			height: 50px;
-			font-size: 14px;
-			background: #26242f;
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-		}
-	}
-	.form-actions {
-		float: right;
-		background: #26242f;
-		width: 16px;
-		height: 16px;
-		padding: 17px;
-		input[type='submit'] {
-			width: 16px;
-			height: 16px;
-			background: url('/assets/glyphicons-halflings-white.png') -24px 0px;
-			border: 0px;
-			margin: 0px;
-			padding: 0px;
-		}
-	}
-}
 
 /*
  * Station
@@ -52,173 +13,91 @@
  * show.html.erb
  */
 
- #station-main {
- 	background: transparent;
- 	padding: 0px 0px 0px 250px;
- 	.inner {
- 		overflow: hidden;
- 		background: #FFFFFF;
- 		margin: 0px 0px 0px 32px;
- 		.tabs.vertical {
- 			float: left;
- 			width: 50px;
- 			background: #EFEFEF;
- 			border-right: groove #FFFFFF 2px;
- 			li {
- 				padding: 17px;
- 				border-bottom: groove #FFFFFF 2px;
- 				a {
-	 				width: 16px;
-	 				height: 16px;
-	 				margin: 0px;
-	 				display: block;
-	 			}
- 			}
- 			#tab-song-form a {
- 				background-position: -47px 1px;
- 			}
- 			#tab-chat-window a {
- 				background-position: -239px 199px;
- 			}
- 			.open {
- 				background: #FFFFFF;
- 			}
- 		}
- 		#station-frame {
- 			padding: 0px 0px 0px 51px;
- 			margin: 12px 12px;
- 		}
- 	}
- }
-
-#song-details {
-	width: 226px;
-	padding: 12px 12px;
-	background: #FFFFFF;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-	float: left;
-	font-size: 13px;
-	line-height: 24px;
-	z-index: 1;
-	#song-artwork {
-		width: 226px;
-		height: 226px;
-		overflow: hidden;
-		background: rgba(0,0,0,0.75);
-		margin: 0px 0px 15px 0px;
-		img {
-			width: 100%;
-			height: 100%;
-		}
-	}
-	#song-title {
-		font-size: 14px;
-		font-weight: bold;
-	}
-}
-
-#chat-wrapper {
-	#chat-text {
-		font-size: 12px;
-		overflow-y: scroll;
-	}
-	#chat-form {
-		margin: 12px 0px 0px 0px;
-		.message.warning {
+#station {
+	.tabs {
+		li {
 			text-align: center;
+			width: 364px;
 		}
-		.field {
-			padding: 0px 32px 0px 0px;
-			background: #26242f;
-	 		input[type='text'] {
-		 		color: #FFFFFF;
-				font-weight: bold;
-				width: 100%;
-				border: 0px;
-				padding: 0px 15px;
-				height: 32px;
-				font-size: 14px;
-				background: #26242f;
-				box-sizing: border-box;
-				-moz-box-sizing: border-box;
-				-webkit-box-sizing: border-box;
-	 		}
- 		}
- 		.form-actions {
-	 		float: right;
-			background: #26242f;
-			width: 14px;
-			height: 14px;
-			padding: 9px;
-			input[type='submit'] {
-				width: 14px;
-				height: 14px;
-				background-position: -336px -97px;
-				border: 0px;
-				margin: 0px;
-				padding: 0px;
-			}
-	 	}
 	}
 }
 
-.chat-message {
-	margin: 7px 0px;
-}
-
-.chat-message.notification {
-	color: #DCDCDC;
-	text-align: center;
-}
-
-.chat-message.user {
-	.user {
-		font-weight: bold;
-	}
+#controls {
+	position: absolute;
+	top: ($header-padding * 2) + $header-height;
+	left: 50%;
+	margin-left: -($body-width / 2);
 }
 
 /*
  * Search form
  * stations/partials/_song_form.html.erb
  */
+
 #search-song-form {
-	overflow-y: scroll;
+	#search-form {
+		margin: $margin-double 0px;
+	}
 }
-#search-song-form #search-form {
-	margin: 0px 0px 6px 0px;
-	.form-actions {
-		float: right;
-		width: 14px;
-		height: 14px;
-		padding: 9px;
-		background: #DCDCDC;
-		input[type='submit'] {
-			width: 14px;
-			height: 14px;
-			background-position: -335px -97px;
-			border: 0px;
-			margin: 0px;
-			padding: 0px;
+
+#search-results {
+	.row {
+		margin: 0px 0px $margin 0px;
+	}
+	.span2 {
+		.artwork {
+			width: 181px;
+			height: 181px;
+			overflow: hidden;
+			background: $artwork-bg;
+			margin: auto;
+			img {
+				vertical-align: middle;
+				width: 181px;
+			}
+		}
+		.form-actions {
+			.btn {
+				@include box-sizing(border-box);
+				width: 100%;
+			}
 		}
 	}
-	.field {
-		padding: 0px 32px 0px 0px;
- 		input[type='text'] {
-	 		color: #4A4A4A;
-	 		background: #EFEFEF;
+}
+
+/*
+ * Chat
+ * stations/partials/_chat_window.html.erb
+ */
+
+#chat-text {
+	height: 400px;
+	overflow-y: scroll;
+	padding: $padding;
+	margin: $margin 0px;
+	.chat-message {
+		.user {
 			font-weight: bold;
-			width: 100%;
-			border: 0px;
-			padding: 0px 15px;
+		}
+	}
+}
+
+#chat-form {
+	.field {
+		input[type='text'] {
+			float: left;
+			border-right: none;
 			height: 32px;
-			font-size: 14px;
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
- 		}
- 	}
- 	#search-results {
- 		overflow-y: scroll;
- 	}
+			width: 700px;
+		}
+	}
+	.form-actions {
+		.btn {
+			@include box-sizing(border-box);
+			@include border-radius(0px, $border-radius, 0px, $border-radius);
+			float: left;
+			height: 32px;
+			width: 60px;
+		}
+	}
 }

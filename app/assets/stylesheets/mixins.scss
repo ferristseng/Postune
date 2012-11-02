@@ -1,0 +1,40 @@
+@mixin box-sizing($type) {
+	box-sizing: $type;
+	-moz-box-sizing: $type;
+	-webkit-box-sizing: $type;
+}
+
+@mixin gradient($from, $to) {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to); 
+	background-image: -moz-linear-gradient(top, $from, $to);
+	background-image: -ms-linear-gradient(top, $from, $to);
+	background-image: -o-linear-gradient(top, $from, $to);
+}
+
+@mixin box-shadow($h, $v, $blur, $color, $spread: 0px, $inset: "") {
+	box-shadow: $h $v $blur $spread $color #{$inset};
+	-moz-box-shadow: $h $v $blur $spread $color #{$inset};
+	-webkit-box-shadow: $h $v $blur $spread $color #{$inset};
+}
+
+@mixin text-shadow($h, $v, $blur, $color) {
+	text-shadow: $h $v $blur $color;
+	-moz-text-shadow: $h $v $blur $color;
+	-webkit-text-shadow: $h $v $blur $color;
+}
+
+@mixin border-radius($top-left, $top-right: $top-left, $bottom-left: $top-left, $bottom-right: $top-left) {
+	border-top-left-radius: $top-left;
+	border-top-right-radius: $top-right;
+	border-bottom-left-radius: $bottom-left;
+	border-bottom-right-radius: $bottom-right;
+	-moz-border-top-left-radius: $top-left;
+	-moz-border-top-right-radius: $top-right;
+	-moz-border-bottom-left-radius: $bottom-left;
+	-moz-border-bottom-right-radius: $bottom-right;
+	-webkit-border-top-left-radius: $top-left;
+	-webkit-border-top-right-radius: $top-right;
+	-webkit-border-bottom-left-radius: $bottom-left;
+	-webkit-border-bottom-right-radius: $bottom-right;
+}

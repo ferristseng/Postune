@@ -1,7 +1,5 @@
 class User::StationsController < ApplicationController
 
-  before_filter :default_access, :only => [ :new, :create ]
-
   def show
     @title = "Station"
     @song = Song.new

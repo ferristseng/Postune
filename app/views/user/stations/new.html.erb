@@ -1,12 +1,22 @@
-<div id="new-station-form" class="centered-div">
-	<div class="wrap">
+<div class="row">
+	<div class="span4">
 		<%= form_tag user_stations_path do %>
-		<div class="form-actions">
-			<%= submit_tag "", :class => "glyph white" %>
-		</div>
-		<div class="field">
-			<%= text_field_tag :name, "", :placeholder => "Enter a station name" %>
+		<div class="row">
+			<div class="span6">
+				<div class="field">
+					<%= text_field_tag :name, "", :placeholder => "Enter a station name" %>
+				</div>
+			</div>
+			<div class="span2">
+				<div class="form-actions center text">
+					<%= submit_tag "Go", :class => "btn" %>
+				</div>
+			</div>
 		</div>
 		<% end %>
+	</div>
+	<div class="span4">
+		<h3>Start Listening!</h3>
+		Join a station by entering the name of an already created station, or type in a random station to create it if it does not exist.
 	</div>
 </div>

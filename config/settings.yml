@@ -4,7 +4,7 @@ defaults: &defaults
       client_key: 33f255a6f2a015cd2bf4c80dc37ebcf7
       client_secret: ef0317165ad0171eb816fbf4546ffaef
   station:
-    max_results: 15
+    max_results: 16
 
 
 development:

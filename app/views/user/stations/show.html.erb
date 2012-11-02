@@ -1,18 +1,12 @@
-<div class="container">
-	<div id="song-details">
-		<div id="song-artwork"></div>
-		<div id="song-title">Nothing Playing</div>
-		<div id="song-artist">Unknown</div>
-		<div id="song-album">Unknown</div>
-	</div>
-	<div id="station-main">
-		<div class="inner">
-			<div class="tabs vertical">
+<div class="container" id="station">
+	<div class="row">
+		<div class="span8">
+			<div class="tabs">
 				<ul>
 					<% if signed_in? %>
-					<li id="tab-song-form"><%= link_to "", "#search-song-form", "data-toggle" => "tab", :class => "glyph" %></li>
+					<li id="tab-song-form"><%= link_to "Find Song", "#search-song-form", "data-toggle" => "tab" %></li>
 					<% end %>
-					<li id="tab-chat-window" class="open"><%= link_to "", "#chat-window", "data-toggle" => "tab", :class => "glyph" %></li>
+					<li id="tab-chat-window" class="open"><%= link_to "Chat", "#chat-window", "data-toggle" => "tab" %></li>
 				</ul>
 			</div>
 			<div id="station-frame">
@@ -21,14 +15,15 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
-
+<div id="controls">
+	<a href="#" class="#play-button"></a>
+</div>
 <% content_for :head do %>
 	<script src='http://<%= "#{Settings['node']['host']}:#{Settings['node']['port']}" %>/socket.io/socket.io.js'></script>
 	<script>
 		var station_id = "<%= @station %>",
-				current_user = "<%= current_user.name %>";
+		current_user = "<%= signed_in? ? current_user.name : '' %>";
 	</script>
 	<%= javascript_include_tag 'station' %> 
 <% end %>
