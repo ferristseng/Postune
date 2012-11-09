@@ -6,6 +6,29 @@
  * New
  * new.html.erb
  */
+#station-text {
+	padding: $padding-double 0px;
+}
+#station-form {
+	margin: $padding-double 0px 0px 0px;
+	.field {
+		input[type='text'] {
+			float: left;
+			border-right: none;
+			height: 32px;
+			width: 342px;
+		}
+	}
+	.form-actions {
+		.btn {
+			@include box-sizing(border-box);
+			@include border-radius(0px, $border-radius, 0px, $border-radius);
+			float: left;
+			height: 32px;
+			width: 32px;
+		}
+	}
+}
 
 /*
  * Station
@@ -36,7 +59,7 @@
 
 #search-song-form {
 	#search-form {
-		margin: $margin-double 0px;
+		margin: $margin 0px $margin-double 0px;
 	}
 }
 
@@ -57,6 +80,7 @@
 			}
 		}
 		.form-actions {
+			margin: $margin 0px 0px 0px;
 			.btn {
 				@include box-sizing(border-box);
 				width: 100%;
@@ -82,7 +106,7 @@
 	}
 }
 
-#chat-form {
+#chat-form, #search-form {
 	.field {
 		input[type='text'] {
 			float: left;

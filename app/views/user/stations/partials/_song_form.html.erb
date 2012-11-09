@@ -1,12 +1,14 @@
 <div class="tab-frame" id="search-song-form">
 	<div class="row" id="search-form">
 		<%= form_tag search_user_station_songs_path(@station), :method => 'get', :remote => true do %>
-			<div class="field span6">
-				<%= text_field_tag :query, "", :placeholder => "Search be artist or song name..." %>
-				<%= hidden_field_tag :start, 1 %>
-			</div>
-			<div class="form-actions span2">
-				<%= submit_tag "Search", :class => "btn" %>
+			<div class="span8">
+				<div class="field">
+					<%= text_field_tag :query, "", :placeholder => Settings['placeholders']['search_form'] %>
+					<%= hidden_field_tag :start, 1 %>
+				</div>
+				<div class="form-actions">
+					<%= submit_tag "Search", :class => "btn" %>
+				</div>
 			</div>
 		<% end %>
 	</div>

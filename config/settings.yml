@@ -5,6 +5,10 @@ defaults: &defaults
       client_secret: ef0317165ad0171eb816fbf4546ffaef
   station:
     max_results: 16
+  placeholders:
+    search_form: "Search be artist or song name..."
+    chat_form: "Write a message..."
+    station_form: "Enter a station name"
 
 
 development:
