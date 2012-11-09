@@ -1,2 +1,27 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class="row">
+	<div class="span8">
+		<table class="alt">
+			<tbody>
+				<tr>
+					<th>Username</th>
+					<td><%= @user.name %></td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td><%= @user.email %></td>
+				</tr>
+				<tr>
+					<th>Last Signed In</th>
+					<td><%= time_ago_in_words @user.last_sign_in %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="span8">
+		<div class="right text">
+			<%= link_to "Edit", edit_user_user_path(@user), :class => "btn small" %>
+		</div>
+	</div>
+</div>

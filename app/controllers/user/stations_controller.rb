@@ -14,7 +14,13 @@ class User::StationsController < ApplicationController
   # Add validation
   def create
     id = params[:name].to_url
-    redirect_to user_station_path(id)
+    if id.empty?
+      @title = "Home"
+      flash[:error] = "Please enter something"
+      render 'new'
+    else
+      redirect_to user_station_path(id)
+    end
   end
 
 end

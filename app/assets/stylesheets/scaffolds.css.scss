@@ -9,11 +9,35 @@ body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: bold; margin: 4px 0px;}
+h1, h2, h3, h4, h5, h6 { font-weight: bold; padding: $padding 0px; display: block;}
 h1 { font-size: 24px; }
 h2 { font-size: 18px; }
 h3 { font-size: 14px; }
 h4 { font-size: 12px; }
+
+.info { h2 { border-left: 5px solid #EFEFEF; padding: $padding $padding; } }
+
+p { display: block; padding: $padding 0px; }
+#main p a { border-bottom: 1px dotted #232323;}
+
+table { 
+	width: 100%; 
+	td, th {
+		padding: 5px;
+	}
+	th {
+		text-align: left;
+		font-weight: bold;
+	}
+}
+
+table.alt {
+	tr:nth-child(odd) {
+		border-top: 1px solid #DCDCDC;
+		border-bottom: 1px solid #DCDCDC;
+		background: #EFEFEF;
+	}
+}
 
 .wrap {
 	overflow: hidden;
@@ -78,6 +102,12 @@ form {
 	line-height: 18px;
 	margin: 0px;
 	padding: 5px 7px;
+	display: inline-block;
+}
+
+.btn.small {
+	line-height: 14px;
+	padding: 3px 5px;
 }
 
 .btn:hover {
@@ -107,9 +137,7 @@ form {
 	background: #FFFFFF;
 }
 
-#main {
-	padding: 0px 0px $padding-double 0px;
-}
+#main { }
 
 header {
 	line-height: $header-height;
@@ -140,6 +168,7 @@ footer {
 	}
 	.row {
 		overflow: hidden;
+		padding: 0px 0px $padding-double 0px;
 		.span2, .span4, .span6 {
 			float: left;
 		}
@@ -170,6 +199,9 @@ footer {
 		.span8 {
 			width: 100%;
 		}
+		.row:last-child {
+			padding: 0px 0px 0px 0px;
+		}
 	}
 }
 
@@ -183,11 +215,14 @@ footer {
 		border-right: 0px;
 	}
 	li {
-		border-right: 2px groove #FFFFFF;
-		padding: 5px 7px;
-		font-size: 12px;
 		display: inline-block;
 		border-bottom: 3px solid #DCDCDC;
+		border-right: 2px groove #FFFFFF;
+		a {
+			display: block;
+			padding: 5px 7px;
+			font-size: 12px;
+		}
 	}
 	.open {
 		border-bottom: $blue 3px solid;

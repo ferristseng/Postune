@@ -1,11 +1,16 @@
 <div class="container" id="station">
 	<div class="row">
 		<div class="span8">
+			<div class="right text">
+				<span id="online-users">0</span> <span class="icon-user"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span8">
 			<div class="tabs">
 				<ul>
-					<% if signed_in? %>
 					<li id="tab-song-form"><%= link_to "Find Song", "#search-song-form", "data-toggle" => "tab" %></li>
-					<% end %>
 					<li id="tab-chat-window" class="open"><%= link_to "Chat", "#chat-window", "data-toggle" => "tab" %></li>
 				</ul>
 			</div>
@@ -17,12 +22,19 @@
 	</div>
 </div>
 <div id="controls">
-	<a href="#" class="#play-button"></a>
+	<ul>
+		<li>
+			<a href="#" class="icon-play play-button"></a>
+		</li>
+		<li>
+			<div id="volume-slider"></div>
+		</li>
+	</ul>
 </div>
 <% content_for :head do %>
 	<script src='http://<%= "#{Settings['node']['host']}:#{Settings['node']['port']}" %>/socket.io/socket.io.js'></script>
 	<script>
-		var station_id = "<%= @station %>",
+		var station = "<%= @station %>",
 		current_user = "<%= signed_in? ? current_user.name : '' %>";
 	</script>
 	<%= javascript_include_tag 'station' %> 

@@ -1,18 +1,32 @@
 <div class="tab-frame" id="search-song-form">
+	<% if signed_in? %>
 	<div class="row" id="search-form">
-		<%= form_tag search_user_station_songs_path(@station), :method => 'get', :remote => true do %>
-			<div class="span8">
-				<div class="field">
-					<%= text_field_tag :query, "", :placeholder => Settings['placeholders']['search_form'] %>
-					<%= hidden_field_tag :start, 1 %>
-				</div>
-				<div class="form-actions">
-					<%= submit_tag "Search", :class => "btn" %>
-				</div>
-			</div>
-		<% end %>
+		<div class="span8">
+			<%= form_tag search_user_station_songs_path(@station), :method => 'get', :remote => true do %>
+					<div class="field">
+						<%= text_field_tag :query, "", :placeholder => Settings['placeholders']['search_form'] %>
+						<%= hidden_field_tag :start, 1 %>
+					</div>
+					<div class="form-actions">
+						<%= submit_tag "Search", :class => "btn" %>
+					</div>
+			<% end %>
+		</div>
 	</div>
 	<div class="row">
-		<div class="span8" id="search-results"></div>
+		<div class="span8" id="search-results">
+			<div class="center text">
+				<h3>No Results</h3>
+			</div>
+		</div>
 	</div>
+	<% else %>
+	<div class="row">
+		<div class="span8">
+			<div class="center text">
+				<h3>Please be logged in to play music!</h3>
+			</div>
+		</div>
+	</div>
+	<% end %>
 </div>

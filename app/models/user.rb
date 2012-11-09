@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 	
 	# Validation Settings
 	validates :name,  											:uniqueness => { :case_sensitive => false },
-																					:format => { :with => /^\w{3,50}$/i }
+																					:format => { :with => /^[a-zA-Z0-9]{3,50}$/i }
 	validates :email,												:format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
 																					:uniqueness => { :case_sensitive => false }
 	validates :unencrypted_password,				:confirmation => true,

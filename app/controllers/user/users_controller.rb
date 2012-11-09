@@ -26,6 +26,8 @@ class User::UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by_name params[:id]
+    @title = @user.name
   end
 
 end

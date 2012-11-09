@@ -1,3 +1,4 @@
+<% if !@songs.empty? %>
 <% every(@songs, 4).each do |a| %>
 <div class="row">
 	<% a.each do |s| %>
@@ -14,6 +15,11 @@
 	</div>
 	<% end%>
 </div>
+<% end %>
+<% else %>
+	<div class="center text">
+		<h3>No Results</h3>
+	</div>
 <% end %>
 <div class="pagination">
 	<% while @page < @max_page do %>

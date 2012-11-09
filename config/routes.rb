@@ -7,7 +7,7 @@ Postune::Application.routes.draw do
   namespace :user, :path => "/" do
     # User resources
     # File : users_controller.rb
-    resources :users, :path => "/u", :except => [ :new ]
+    resources :users, :path => "/u", :except => [ :new ], :constraints => { :id => /[a-zA-Z0-9]+/ }
 
     # Station Resources
     # File : stations_controller.rb

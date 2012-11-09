@@ -6,17 +6,23 @@
  * New
  * new.html.erb
  */
+#station-logo {
+	padding: $padding-double 0px 0px 0px;
+}
 #station-text {
 	padding: $padding-double 0px;
+	.message {
+		margin: $margin 0px;
+	}
 }
 #station-form {
-	margin: $padding-double 0px 0px 0px;
+	margin: $padding 0px 0px 0px;
 	.field {
 		input[type='text'] {
 			float: left;
 			border-right: none;
 			height: 32px;
-			width: 342px;
+			width: 532px;
 		}
 	}
 	.form-actions {
@@ -40,16 +46,37 @@
 	.tabs {
 		li {
 			text-align: center;
-			width: 364px;
+			width: 378px;
 		}
 	}
 }
 
 #controls {
+	background: #EFEFEF;
+	border: 1px solid #DCDCDC;
 	position: absolute;
-	top: ($header-padding * 2) + $header-height;
+	top: ($header-padding * 2) + $header-height + 12 + $padding-double + $padding;
 	left: 50%;
-	margin-left: -($body-width / 2);
+	margin-left: -($body-width / 2) - $padding-double - 15 - $margin-double;
+	li {
+		display: block;
+		padding: $padding;
+		border-bottom: 2px groove #FFFFFF;
+	}
+	li:last-child {
+		border-bottom: none;
+	}
+	#volume-slider {
+		width: 15px;
+		height: 75px;
+		background: $volume-outer;
+		.ui-slider-range {
+			background: $volume-inner;
+		}
+	}
+	#volume-slider:hover {
+		cursor: pointer;
+	}
 }
 
 /*
@@ -58,14 +85,12 @@
  */
 
 #search-song-form {
-	#search-form {
-		margin: $margin 0px $margin-double 0px;
-	}
+	margin: $margin 0px 0px 0px;
 }
 
 #search-results {
 	.row {
-		margin: 0px 0px $margin 0px;
+		margin: 0px 0px $margin-double 0px;
 	}
 	.span2 {
 		.artwork {

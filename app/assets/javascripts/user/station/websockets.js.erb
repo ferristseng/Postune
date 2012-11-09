@@ -1,15 +1,17 @@
 var socket = io.connect('<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/" %>');
 
 socket.on("connect", function() {
-	socket.emit("new user", { station_id: station_id, user: current_user });
+	socket.emit("new user", { station: station, user: current_user });
 });
 
 socket.on("new song", function(data) {
+	console.log(data);
 	Player.load(data.path);
 	$("#song-title").html((data.title != "") ? data.title : "Unknown");
 	$("#song-artist").html((data.artist != "") ? data.artist : "Unknown");
 	$("#song-album").html((data.album != "") ? data.album : "Unknown");
 	$("#song-artwork").html((data.artwork != "") ? "<img src='" + data.artwork + "' alt='artwork' />" : "");
+	Player.play();
 });
 
 socket.on("update user count", function(data) {
@@ -26,6 +28,11 @@ socket.on("chat message", function(data) {
 														"</div>");
 	}
 })
+
+socket.on("song play", function(data) {
+	Player.load(data.song.path);
+	Player.playOffset((new Date()).getTime() - data.time);
+});
 
 // Event Handlers
 $(function() {

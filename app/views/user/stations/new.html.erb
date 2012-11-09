@@ -1,7 +1,8 @@
 <div class="row">
 	<div class="span6" id="station-text">
 		<h3>Start Listening!</h3>
-		Join a station by entering the name of an already created station, or type in a random station name to create it if it does not exist.
+		<p>Join a station by entering the name of an already created station, or type in a random station name to create it if it does not exist.</p>
+		<%= render 'shared/messages' %>
 		<%= form_tag user_stations_path, :id => "station-form" do %>
 		<div class="field">
 			<%= text_field_tag :name, "", :placeholder => Settings['placeholders']['station_form'] %>
@@ -11,7 +12,7 @@
 		</div>
 		<% end %>
 	</div>
-	<div class="span2">
+	<div class="span2" id="station-logo">
 		<div class="center text row">
 			<%= image_tag "postune.png" %>
 		</div>

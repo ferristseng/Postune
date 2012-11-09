@@ -1,5 +1,10 @@
 var Player = new function() {
 
+ 	this.soundManagerInstance;
+ 	this.user = {
+ 		volume: 60
+ 	};
+
 	soundManager.url = '/swf/';
 	soundManager.flashVersion = 9;
 	soundManager.useFlashBlock = false;
@@ -13,45 +18,56 @@ var Player = new function() {
 	soundManager.debugMode = true;
 
 	this.load = function(url) {
-		soundManager.destroySound("track");
-		soundManagerInstance = soundManager.createSound({
-			id: "track",
-			url: url,
-			autoPlay: true,
-			whileplaying: function() {
-			},
-			onplay: function() {
-			},
-			onfinish: function() {
-			},
-			ondataerror: function() {
-			},
-			onerror: function(error) {
-			}
+		soundManager.onready(function() {
+			Player.soundManagerInstance = soundManager.createSound({
+				id: "track",
+				url: url,
+				autoPlay: false,
+				whileplaying: function() {
+				},
+				onfinish: function() {
+					soundManager.destroySound("track");
+				},
+				ondataerror: function() {
+				},
+				onerror: function(error) {
+				}
+			});
+		})
+	}
+
+	this.playOffset = function(time) {
+		var time = time;
+		soundManager.onready(function() {
+			soundManager.play('track', {
+				onload: function() {
+					Player.seek(time);
+				}
+			});
 		});
 	}
 
 	this.play = function() {
-		soundManager.play();
+		this.soundManagerInstance.play();
 	}
 
 	this.stop = function() {
-		soundManager.stopAll();
+		this.soundManagerInstance.stopAll();
 	}
 
 	this.pause = function() {
-		soundManager.pauseAll();
+		this.soundManagerInstance.pauseAll();
 	}
 
 	this.resume = function() {
-		soundManager.resumeAll();
+		this.soundManagerInstance.resumeAll();
 	}
 
 	this.volume = function(volume) {
 		soundManager.setVolume("track", volume);
 	}
 
-	this.seek = function(pecent) {
-		soundManager.setPosition("track", percent * postunePlayer.playing.duration * 1000);
+	this.seek = function(duration) {
+		soundManager.setPosition("track", duration);
 	}
 }
