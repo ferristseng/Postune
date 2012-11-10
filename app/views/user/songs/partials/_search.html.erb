@@ -17,9 +17,7 @@
 </div>
 <% end %>
 <% else %>
-	<div class="center text">
-		<h3>No Results</h3>
-	</div>
+	<%= render 'user/songs/partials/no_results' %>
 <% end %>
 <div class="pagination">
 	<% while @page < @max_page do %>

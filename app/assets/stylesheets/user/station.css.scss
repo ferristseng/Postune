@@ -52,8 +52,8 @@
 }
 
 #controls {
-	background: #EFEFEF;
-	border: 1px solid #DCDCDC;
+	background: $background-gray;
+	border: 1px solid $border-gray;
 	position: absolute;
 	top: ($header-padding * 2) + $header-height + 12 + $padding-double + $padding;
 	left: 50%;
@@ -61,12 +61,13 @@
 	li {
 		display: block;
 		padding: $padding;
-		border-bottom: 2px groove #FFFFFF;
+		border-bottom: 1px solid $border-gray;
 	}
 	li:last-child {
 		border-bottom: none;
 	}
 	#volume-slider {
+		margin: $margin 0px 0px 0px;
 		width: 15px;
 		height: 75px;
 		background: $volume-outer;
@@ -85,7 +86,7 @@
  */
 
 #search-song-form {
-	margin: $margin 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 }
 
 #search-results {
@@ -96,6 +97,7 @@
 		.artwork {
 			width: 181px;
 			height: 181px;
+			line-height: 180px;
 			overflow: hidden;
 			background: $artwork-bg;
 			margin: auto;
@@ -114,6 +116,13 @@
 	}
 }
 
+#search-no-results {
+	height: 250px;
+	line-height: 250px;
+	background: $background-gray;
+	border: 1px solid $border-gray;
+}
+
 /*
  * Chat
  * stations/partials/_chat_window.html.erb
@@ -122,12 +131,17 @@
 #chat-text {
 	height: 400px;
 	overflow-y: scroll;
-	padding: $padding;
-	margin: $margin 0px;
+	margin: $margin-double 0px;
 	.chat-message {
+		padding: $padding;
 		.user {
 			font-weight: bold;
 		}
+	}
+	.chat-message.notification {
+		margin: $margin 0px;
+		background: $background-gray;
+		border: 1px solid $border-gray;
 	}
 }
 

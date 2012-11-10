@@ -1,17 +1,16 @@
-var socket = io.connect('<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/" %>');
+var socket = io.connect('<%= "http://10.0.1.3:3001/" %>');
 
 socket.on("connect", function() {
 	socket.emit("new user", { station: station, user: current_user });
 });
 
-socket.on("new song", function(data) {
-	console.log(data);
-	Player.load(data.path);
+socket.on("play song", function(data) {
+	Player.load(data);
 	$("#song-title").html((data.title != "") ? data.title : "Unknown");
 	$("#song-artist").html((data.artist != "") ? data.artist : "Unknown");
 	$("#song-album").html((data.album != "") ? data.album : "Unknown");
 	$("#song-artwork").html((data.artwork != "") ? "<img src='" + data.artwork + "' alt='artwork' />" : "");
-	Player.play();
+	Player.playOffset((new Date()).getTime() - data.time);
 });
 
 socket.on("update user count", function(data) {
@@ -27,12 +26,8 @@ socket.on("chat message", function(data) {
 															"<span class='text'>" + data.content.text + "</span>" + 
 														"</div>");
 	}
+	$("#chat-text").scrollTop($("#chat-text")[0].scrollHeight);
 })
-
-socket.on("song play", function(data) {
-	Player.load(data.song.path);
-	Player.playOffset((new Date()).getTime() - data.time);
-});
 
 // Event Handlers
 $(function() {

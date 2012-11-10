@@ -25,5 +25,15 @@ $(function() {
 
 		// open the tab-frame
 		wrapper.find(toggledFrame).addClass("open");
+
+		// TEMPORARY REMOVE LATER
+		if($("#chat-text").length > 0) {
+			$("#chat-text").scrollTop($("#chat-text")[0].scrollHeight);
+		}
 	});
 });
+
+function newMessage(content, type) {
+	$(".message.float").remove();
+	$("<div class='message top " + type + "'>" + content + "</div>").prependTo("body");
+}

@@ -5,7 +5,7 @@
 body {
 	font-size: 12px;
 	line-height: 18px;
-	background: #EFEFEF;
+	background: $background-gray;
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
@@ -15,7 +15,7 @@ h2 { font-size: 18px; }
 h3 { font-size: 14px; }
 h4 { font-size: 12px; }
 
-.info { h2 { border-left: 5px solid #EFEFEF; padding: $padding $padding; } }
+.info { h2 { border-left: 5px solid $background-gray; padding: $padding $padding; } }
 
 p { display: block; padding: $padding 0px; }
 #main p a { border-bottom: 1px dotted #232323;}
@@ -33,9 +33,9 @@ table {
 
 table.alt {
 	tr:nth-child(odd) {
-		border-top: 1px solid #DCDCDC;
-		border-bottom: 1px solid #DCDCDC;
-		background: #EFEFEF;
+		border-top: 1px solid $border-gray;
+		border-bottom: 1px solid $border-gray;
+		background: $background-gray;
 	}
 }
 
@@ -111,7 +111,7 @@ form {
 }
 
 .btn:hover {
-	@include box-shadow(0px, 0px, 3px, #DCDCDC, 1px, inset);
+	@include box-shadow(0px, 0px, 3px, $border-gray, 1px, inset);
 	cursor: pointer;
 }
 
@@ -131,6 +131,11 @@ form {
 
 .message.error {
 	background: #FFC6C6;
+}
+
+.message.top {
+	text-align: center;
+	margin: 0px;
 }
 
 #main, header {
@@ -153,7 +158,7 @@ footer {
 	height: 48px;
 	line-height: 48px;
 	font-weight: bold;
-	border-top: 1px solid #DCDCDC;
+	border-top: 1px solid $border-gray;
 	.left a {
 		margin: 0px $margin-double 0px 0px;
 	}
@@ -210,13 +215,13 @@ footer {
 	border-top: 1px solid #DEDEDE;
 	border-left: 1px solid #DEDEDE;
 	border-right: 1px solid #DEDEDE;
-	background: #EFEFEF;
+	background: $background-gray;
 	li:last-child {
 		border-right: 0px;
 	}
 	li {
 		display: inline-block;
-		border-bottom: 3px solid #DCDCDC;
+		border-bottom: 3px solid $border-gray;
 		border-right: 2px groove #FFFFFF;
 		a {
 			display: block;

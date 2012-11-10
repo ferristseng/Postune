@@ -4,6 +4,7 @@ var Player = new function() {
  	this.user = {
  		volume: 60
  	};
+ 	this.playing;
 
 	soundManager.url = '/swf/';
 	soundManager.flashVersion = 9;
@@ -17,20 +18,23 @@ var Player = new function() {
 	soundManager.preferFlash = false;
 	soundManager.debugMode = true;
 
-	this.load = function(url) {
+	this.load = function(data) {
+		this.playing = data;
 		soundManager.onready(function() {
+			soundManager.destroySound("track");
 			Player.soundManagerInstance = soundManager.createSound({
 				id: "track",
-				url: url,
+				url: Player.playing.song.path,
 				autoPlay: false,
 				whileplaying: function() {
 				},
 				onfinish: function() {
-					soundManager.destroySound("track");
 				},
 				ondataerror: function() {
+					newMessage("error", "An error occured loading the song.");
 				},
 				onerror: function(error) {
+					newMessage("error", "An error occured loading the song.");
 				}
 			});
 		})
