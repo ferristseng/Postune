@@ -1,4 +1,4 @@
-var socket = io.connect('<%= "http://10.0.1.3:3001/" %>');
+var socket = io.connect('<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/" %>');
 
 socket.on("connect", function() {
 	socket.emit("new user", { station: station, user: current_user });

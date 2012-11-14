@@ -143,6 +143,9 @@
 		background: $background-gray;
 		border: 1px solid $border-gray;
 	}
+	.chat-message.notification:first-child {
+		margin: 0px 0px $margin 0px;
+	}
 }
 
 #chat-form, #search-form {
