@@ -19,10 +19,10 @@
 		</div>
 	</div>
 	<% else %>
-	<div class="row">
+	<div class="row" id="not-logged-in">
 		<div class="span8">
 			<div class="center text">
-				<h3>Please be logged in to play music!</h3>
+				<%= Settings['errors']['search_form']['logged_in'] %>
 			</div>
 		</div>
 	</div>

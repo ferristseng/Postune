@@ -116,7 +116,10 @@
 	}
 }
 
-#search-no-results {
+#not-logged-in {
+	margin: $margin-double 0px 0px 0px;
+}
+#not-logged-in .center.text, #search-results .center.text {
 	height: 250px;
 	line-height: 250px;
 	background: $background-gray;

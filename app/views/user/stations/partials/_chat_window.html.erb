@@ -15,7 +15,7 @@
 				<% end %>
 			<% else %>
 				<div class="message warning">
-					Please <%= link_to "sign in", user_login_path %> to chat!
+					<%= Settings['errors']['chat_form']['logged_in'] %>
 				</div>
 			<% end %>
 		</div>
