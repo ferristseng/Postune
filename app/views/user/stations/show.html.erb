@@ -22,18 +22,26 @@
 	</div>
 </div>
 <div id="controls">
-	<ul>
-		<li>
-			<a href="#" class="icon-info-sign info-toggle-button"></a>
-		</li>
-		<li>
-			<a href="#" class="icon-play play-button"></a>
-		</li>
-		<li>
-			<span class="icon-volume-up" id="volume-icon"></span>
-			<div id="volume-slider"></div>
-		</li>
-	</ul>
+	<div class="wrapper">
+		<ul class="buttons-panel">
+			<li>
+				<a href="#" class="info-button-toggle"><i class="icon-info-sign"></i></a>
+			</li>
+			<li>
+				<a href="#" class="play-button pressed"><i class="icon-play"></i></a>
+			</li>
+			<li id="volume-slider-wrapper">
+				<span class="icon-volume-up" id="volume-icon"></span>
+				<div id="volume-slider"></div>
+			</li>
+		</ul>
+		<div id="song-info">
+			<div id="song-artwork"></div>
+			<div id="song-title"></div>
+			<div id="song-artist"></div>
+			<div id="song-album"></div>
+		</div>
+	</div>
 </div>
 <% content_for :head do %>
 	<script src='<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/socket.io/socket.io.js" %>'></script>

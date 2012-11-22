@@ -51,17 +51,48 @@
 	}
 }
 
+#controls.open {
+	width: $padding-double + 16 + $song-info-width + $padding-double;
+	margin-left: -($body-width / 2) - $padding-double - 15 - $margin-double - $song-info-width - $padding-double;
+	border-right: 1px solid $border-gray;
+	@include transition((margin-left 1s ease, width 1s ease));
+	ul {
+		border-right: none;
+	}
+	#song-info {
+		border-left: 1px solid $border-gray;
+	}
+	.hide {
+		display: block;
+	}
+}
+
 #controls {
+	width: $padding-double + 16px;
+	overflow: hidden;
 	background: $background-gray;
-	border: 1px solid $border-gray;
+	border-top: 1px solid $border-gray;
+	border-bottom: 1px solid $border-gray;
+	border-left: 1px solid $border-gray;
 	position: absolute;
 	top: ($header-padding * 2) + $header-height + 12 + $padding-double + $padding;
 	left: 50%;
 	margin-left: -($body-width / 2) - $padding-double - 15 - $margin-double;
+	@include transition((width 1s ease, margin-left 1s ease 1s));
+	.wrapper {
+		width: $padding-double + 16 + $song-info-width + $padding-double;
+	}
+	ul {
+		float: left;
+		background: $background-gray;
+		border-right: 1px solid $border-gray;
+	}
 	li {
-		display: block;
-		padding: $padding;
 		border-bottom: 1px solid $border-gray;
+		a {
+			display: block;
+			padding: $padding;
+		}
 	}
 	li:last-child {
 		border-bottom: none;
@@ -69,14 +100,35 @@
 	#volume-slider {
 		margin: $margin 0px 0px 0px;
 		width: 15px;
-		height: 75px;
+		height: 120px;
 		background: $volume-outer;
 		.ui-slider-range {
 			background: $volume-inner;
 		}
 	}
+	#volume-slider-wrapper {
+		padding: $padding;
+	}
 	#volume-slider:hover {
 		cursor: pointer;
+	}
+	#song-info {
+		float: right;
+		padding: $padding;
+		width: $song-info-width;
+		font-size: 11px;
+		#song-title {
+			font-weight: bold;
+		}
+		#song-artwork {
+			text-align: center;
+			img {
+				width: 128px;
+			}
+		}
+	}
+	.pressed {
+		background: $border-gray;
 	}
 }
 
@@ -120,10 +172,8 @@
 	margin: $margin-double 0px 0px 0px;
 }
 #not-logged-in .center.text, #search-results .center.text {
-	height: 250px;
-	line-height: 250px;
-	background: $background-gray;
-	border: 1px solid $border-gray;
+	height: $chat-height;
+	line-height: $chat-height;
 }
 
 /*
@@ -132,7 +182,7 @@
  */
 
 #chat-text {
-	height: 400px;
+	height: $chat-height;
 	overflow-y: scroll;
 	margin: $margin-double 0px;
 	.chat-message {
@@ -152,7 +202,9 @@
 }
 
 #chat-form, #search-form {
+	overflow: hidden;
 	.field {
+		margin: 0px;
 		input[type='text'] {
 			float: left;
 			border-right: none;
@@ -168,5 +220,11 @@
 			height: 32px;
 			width: 60px;
 		}
+	}
+}
+
+#chat-form {
+	.form-actions {
+		margin: 0px;
 	}
 }

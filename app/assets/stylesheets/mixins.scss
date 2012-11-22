@@ -38,3 +38,11 @@
 	-webkit-border-bottom-left-radius: $bottom-left;
 	-webkit-border-bottom-right-radius: $bottom-right;
 }
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	-ms-transition: $transition;
+	transition: $transition;
+}

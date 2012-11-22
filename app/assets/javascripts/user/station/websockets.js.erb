@@ -5,11 +5,12 @@ socket.on("connect", function() {
 });
 
 socket.on("play song", function(data) {
+	console.log(data);
 	Player.load(data);
-	$("#song-title").html((data.title != "") ? data.title : "Unknown");
-	$("#song-artist").html((data.artist != "") ? data.artist : "Unknown");
-	$("#song-album").html((data.album != "") ? data.album : "Unknown");
-	$("#song-artwork").html((data.artwork != "") ? "<img src='" + data.artwork + "' alt='artwork' />" : "");
+	$("#song-title").html((data.song.title != "") ? data.song.title : "Unknown");
+	$("#song-artist").html((data.song.artist != "") ? data.song.artist : "Unknown");
+	$("#song-album").html((data.song.album != "") ? data.song.album : "Unknown");
+	$("#song-artwork").html((data.song.artwork != "") ? "<img src='" + data.song.artwork + "' alt='artwork' />" : "");
 	Player.playOffset((new Date()).getTime() - data.time);
 });
 
