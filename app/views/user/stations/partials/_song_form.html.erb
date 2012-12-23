@@ -1,4 +1,4 @@
-<div class="tab-frame" id="search-song-form">
+<div class="tab-frame" id="search-song-wrapper">
 	<% if signed_in? %>
 	<div class="row" id="search-form">
 		<div class="span8">
@@ -7,7 +7,7 @@
 						<%= text_field_tag :query, "", :placeholder => Settings['placeholders']['search_form'] %>
 						<%= hidden_field_tag :start, 1 %>
 					</div>
-					<div class="form-actions">
+					<div class="form-actions unified">
 						<%= submit_tag "Search", :class => "btn" %>
 					</div>
 			<% end %>

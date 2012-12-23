@@ -3,17 +3,17 @@
 		<h3>Start Listening!</h3>
 		<p>Join a station by entering the name of an already created station, or type in a random station name to create it if it does not exist.</p>
 		<%= render 'shared/messages' %>
-		<%= form_tag user_stations_path, :id => "station-form" do %>
-		<div class="field">
-			<%= text_field_tag :name, "", :placeholder => Settings['placeholders']['station_form'] %>
-		</div>
-		<div class="form-actions center text">
-			<%= submit_tag "Go", :class => "btn" %>
-		</div>
+		<%= form_tag p_create_user_stations_path, :id => "station-form" do %>
+			<div class="field">
+				<%= text_field_tag :name, "", :placeholder => Settings['placeholders']['station_form'] %>
+			</div>
+			<div class="form-actions center text unified">
+				<%= submit_tag "Go", :class => "btn" %>
+			</div>
 		<% end %>
 	</div>
 	<div class="span2" id="station-logo">
-		<div class="center text row">
+		<div class="right text row">
 			<%= image_tag "postune.png" %>
 		</div>
 	</div>

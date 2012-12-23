@@ -37,3 +37,7 @@ function newMessage(content, type) {
 	$(".message.float").remove();
 	$("<div class='message top " + type + "'>" + content + "</div>").prependTo("body");
 }
+
+function loadingGif(parent) {
+	$(parent).html("<div class='center text loading-gif'><img src='/assets/load.gif' /></div>");
+}

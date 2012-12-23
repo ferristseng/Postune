@@ -9,10 +9,10 @@
 <body>
 	<header>
 		<div class="container">
-			<div class="left">
+			<div class="half left">
 				<%= link_to "POSTUNE", root_path %>
 			</div>
-			<div class="right text">
+			<div class="half right text">
 				<% if signed_in? %>
 					<%= link_to current_user.name, user_user_path(current_user.name) %>
 				<% end %>

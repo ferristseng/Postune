@@ -20,15 +20,22 @@ var Player = new function() {
 
 	this.load = function(data) {
 		this.playing = data;
-		soundManager.onready(function() {
+		if(soundManager.getSoundById("track") != undefined) {
 			soundManager.destroySound("track");
+		}
+		soundManager.onready(function() {
 			Player.soundManagerInstance = soundManager.createSound({
 				id: "track",
 				url: Player.playing.song.path,
 				autoPlay: false,
+				autoLoad: false,
 				whileplaying: function() {
 				},
 				onfinish: function() {
+					Player.unload();
+				},
+				onplay: function() {
+					Player.volume(Player.user.volume);
 				},
 				ondataerror: function() {
 					newMessage("error", "An error occured loading the song.");
@@ -40,12 +47,22 @@ var Player = new function() {
 		})
 	}
 
+	this.unload = function() {
+		soundManager.unload("track");
+	}
+
 	this.playOffset = function(time) {
 		var time = time;
 		soundManager.onready(function() {
-			soundManager.play('track', {
+			soundManager.load('track', {
 				onload: function() {
-					Player.seek(time);
+					console.log(time);
+					if(time > Player.soundManagerInstance.durationEstimate) {
+						Player.unload();
+					} else {
+						Player.seek(time);
+						Player.play();
+					}
 				}
 			});
 		});
@@ -72,6 +89,6 @@ var Player = new function() {
 	}
 
 	this.seek = function(duration) {
-		soundManager.setPosition("track", duration);
+		this.soundManagerInstance.setPosition(duration);
 	}
 }

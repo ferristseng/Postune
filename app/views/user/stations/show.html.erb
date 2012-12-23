@@ -10,7 +10,7 @@
 		<div class="span8">
 			<div class="tabs">
 				<ul>
-					<li id="tab-song-form"><%= link_to "Find Song", "#search-song-form", "data-toggle" => "tab" %></li>
+					<li id="tab-song-form"><%= link_to "Find Song", "#search-song-wrapper", "data-toggle" => "tab" %></li>
 					<li id="tab-chat-window" class="open"><%= link_to "Chat", "#chat-window", "data-toggle" => "tab" %></li>
 				</ul>
 			</div>
@@ -21,28 +21,7 @@
 		</div>
 	</div>
 </div>
-<div id="controls">
-	<div class="wrapper">
-		<ul class="buttons-panel">
-			<li>
-				<a href="#" class="info-button-toggle"><i class="icon-info-sign"></i></a>
-			</li>
-			<li>
-				<a href="#" class="play-button pressed"><i class="icon-play"></i></a>
-			</li>
-			<li id="volume-slider-wrapper">
-				<span class="icon-volume-up" id="volume-icon"></span>
-				<div id="volume-slider"></div>
-			</li>
-		</ul>
-		<div id="song-info">
-			<div id="song-artwork"></div>
-			<div id="song-title"></div>
-			<div id="song-artist"></div>
-			<div id="song-album"></div>
-		</div>
-	</div>
-</div>
+<%= render 'user/stations/partials/controls' %>
 <% content_for :head do %>
 	<script src='<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/socket.io/socket.io.js" %>'></script>
 	<script>

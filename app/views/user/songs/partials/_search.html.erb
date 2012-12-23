@@ -1,9 +1,9 @@
 <% if !@songs.empty? %>
-<% every(@songs, 4).each do |a| %>
+<% every(@songs, 4).each_with_index do |a, row| %>
 <div class="row">
-	<% a.each do |s| %>
-	<div class="span2">
-		<%= form_for @song, :url => user_station_songs_path(@station), :remote => true do |f| %>
+	<% a.each_with_index do |s, i| %>
+	<div class="span2" id="<%= "page_#{@current+1}_row_#{row+1}_index_#{i+1}" %>">
+		<%= form_for @song, :url => user_station_songs_path(@station), :remote => true, :html => { :class => "new-song" } do |f| %>
 		<div class="artwork"><%= !s['image']['large'].nil? ? image_tag(s['image']['large'], :alt => s['title'], :width => 128) : '' %></div>
 		<div class="field"><%= f.text_field :artist, :value => s['artist'], :placeholder => "Artist" %></div>
 		<div class="field"><%= f.text_field :title, :value => s['title'], :placeholder => "Title" %></div>
@@ -13,11 +13,8 @@
 			<%= f.hidden_field :path, :value => s['url'] %>
 		<% end %>
 	</div>
-	<% end%>
+	<% end %>
 </div>
-<% end %>
-<% else %>
-	<%= render 'user/songs/partials/no_results' %>
 <% end %>
 <div class="pagination">
 	<% while @page < @max_page do %>
@@ -26,3 +23,6 @@
 		</div>
 	<% end %>
 </div>	
+<% else %>
+	<%= render 'user/songs/partials/no_results' %>
+<% end %>

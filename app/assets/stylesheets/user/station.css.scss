@@ -16,7 +16,7 @@
 	}
 }
 #station-form {
-	margin: $padding 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 	.field {
 		input[type='text'] {
 			float: left;
@@ -89,7 +89,7 @@
 	}
 	li {
 		border-bottom: 1px solid $border-gray;
-		a {
+		.control {
 			display: block;
 			padding: $padding;
 		}
@@ -100,7 +100,7 @@
 	#volume-slider {
 		margin: $margin 0px 0px 0px;
 		width: 15px;
-		height: 120px;
+		height: 102px;
 		background: $volume-outer;
 		.ui-slider-range {
 			background: $volume-inner;
@@ -113,18 +113,32 @@
 		cursor: pointer;
 	}
 	#song-info {
+		overflow: hidden;
 		float: right;
-		padding: $padding;
+		margin: 0px $margin 0px 0px;
+		padding: $padding 0px $padding $padding;
 		width: $song-info-width;
 		font-size: 11px;
 		#song-title {
+			margin: $margin 0px 0px 0px;
 			font-weight: bold;
 		}
 		#song-artwork {
+			width: 128px;
+			height: 128px;
 			text-align: center;
+			line-height: 128px;
+			background: $artwork-bg;
+			margin: auto;
+			overflow: hidden;
 			img {
-				width: 128px;
+				vertical-align: middle;
+				width: 130px;
 			}
+		}
+		span {
+			white-space: nowrap;
+			word-wrap: normal;
 		}
 	}
 	.pressed {
@@ -137,8 +151,8 @@
  * stations/partials/_song_form.html.erb
  */
 
-#search-song-form {
-	margin: 0px 0px 0px 0px;
+#search-song-wrapper {
+	margin: $margin 0px 0px 0px;
 }
 
 #search-results {
@@ -165,6 +179,11 @@
 				width: 100%;
 			}
 		}
+		.callback {
+			position: absolute;
+			background: $background-gray;
+			border: 1px solid $border-gray;
+		}
 	}
 }
 
@@ -174,6 +193,11 @@
 #not-logged-in .center.text, #search-results .center.text {
 	height: $chat-height;
 	line-height: $chat-height;
+	background: $background-gray;
+	border: 1px solid $border-gray;
+	h3 {
+		margin: none;
+	}
 }
 
 /*
@@ -204,7 +228,6 @@
 #chat-form, #search-form {
 	overflow: hidden;
 	.field {
-		margin: 0px;
 		input[type='text'] {
 			float: left;
 			border-right: none;
