@@ -26,8 +26,19 @@ class Song < ActiveRecord::Base
   # relationships
   belongs_to :user
 
-  private
+  def title
+  	read_attribute(:title).blank? ? "Unknown" : read_attribute(:title)
+  end
 
+  def artist
+  	read_attribute(:artist).blank? ? "Unknown" : read_attribute(:artist)
+  end
+
+  def album
+  	read_attribute(:album).blank? ? "Unknown" : read_attribute(:album)
+  end
+
+  private
   	#
   	# Make sure the url resolves to a valid MP3 path
 	  def validate_url

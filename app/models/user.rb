@@ -32,13 +32,18 @@ class User < ActiveRecord::Base
 																					:if => :should_validate?
 
 	belongs_to :group
-	
+	has_many :songs
+
 	# Filters
 	before_save :init
 
 	# Override to param
 	def to_param
 		self.name.downcase
+	end
+
+	def recently_played(limit = 4)
+		self.songs.order("created_at DESC").limit(limit)
 	end
 
 	def self.authenticate(username, submitted_password)

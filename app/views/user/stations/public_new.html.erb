@@ -1,7 +1,28 @@
+<% if signed_in? %>
 <div class="row">
-	<div class="span6" id="station-text">
+	<div class="span8">
+		<h3>Recently Played</h3>
+	</div>
+</div>
+<div class="row">
+	<% 4.times do |i| %>
+		<% if @recent[i].present? %>
+			<div class="span2">
+				<div class="artwork"><%= image_tag @recent[i].artwork %></div>
+				<div class="song-title song-info"><%= @recent[i].title %></div>
+				<div class="song-info"><%= @recent[i].artist %></div>
+				<div class="song-info"><%= @recent[i].album %></div>
+			</div>
+		<% else %>
+			<div class="span2"></div>
+		<% end %>
+	<% end %>
+</div>
+<% end %>
+<div class="row" id="station-text">
+	<div class="span6">
 		<h3>Start Listening!</h3>
-		<p>Join a station by entering the name of an already created station, or type in a random station name to create it if it does not exist.</p>
+		<p>Join a station by entering the name of an already created station, or type in a station name to create one if it does not already exist.</p>
 		<%= render 'shared/messages' %>
 		<%= form_tag p_create_user_stations_path, :id => "station-form" do %>
 			<div class="field">
@@ -12,9 +33,9 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="span2" id="station-logo">
-		<div class="right text row">
-			<%= image_tag "postune.png" %>
-		</div>
+	<div class="span2">
+		<h3>Create</h3>
+		<p>Create a private station to control who gets to play music.</p>
+		<div class="center text padded"><%= link_to "Create Station", new_user_station_path, :class => "btn full" %></div>
 	</div>
 </div>

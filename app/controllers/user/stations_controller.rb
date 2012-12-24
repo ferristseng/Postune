@@ -10,6 +10,7 @@ class User::StationsController < ApplicationController
 
   def public_new
     @title = "Home"
+    @recent = current_user.recently_played if signed_in?
   end
 
   def new

@@ -4,15 +4,22 @@
 /*
  * Station
  * New
- * new.html.erb
+ * public_new.html.erb
  */
 #station-logo {
 	padding: $padding-double 0px 0px 0px;
 }
 #station-text {
-	padding: $padding-double 0px;
+	padding: 0px 0px $padding-double 0px;
+	p {
+		margin: 0px 0px $margin 0px;
+	}
 	.message {
 		margin: $margin 0px;
+	}
+	.btn {
+		@include box-sizing(border-box);
+		height: 32px;
 	}
 }
 #station-form {
@@ -27,12 +34,30 @@
 	}
 	.form-actions {
 		.btn {
-			@include box-sizing(border-box);
 			@include border-radius(0px, $border-radius, 0px, $border-radius);
 			float: left;
-			height: 32px;
 			width: 32px;
 		}
+	}
+}
+.span2 {
+	.artwork {
+		width: $span2-width;
+		height: $span2-width;
+		margin: 0px 0px $margin 0px;
+		background: $artwork-bg;
+		overflow: hidden;
+		img {
+			width: 100%;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+	.song-title {
+		font-weight: bold;
+	}
+	.song-info {
+		margin: 0px 0px $margin 0px;
 	}
 }
 
@@ -160,18 +185,6 @@
 		margin: 0px 0px $margin-double 0px;
 	}
 	.span2 {
-		.artwork {
-			width: 181px;
-			height: 181px;
-			line-height: 180px;
-			overflow: hidden;
-			background: $artwork-bg;
-			margin: auto;
-			img {
-				vertical-align: middle;
-				width: 181px;
-			}
-		}
 		.form-actions {
 			margin: $margin 0px 0px 0px;
 			.btn {
