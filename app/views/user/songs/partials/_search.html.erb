@@ -11,6 +11,7 @@
 		<div class="form-actions"><%= f.submit "Play", :class => "btn" %></div>
 			<%= f.hidden_field :artwork, :value => !s['image']['large'].nil? ? s['image']['large'] : nil %>
 			<%= f.hidden_field :path, :value => s['url'] %>
+			<%= hidden_field_tag :div, "\#page_#{@current+1}_row_#{row+1}_index_#{i+1}" %>
 		<% end %>
 	</div>
 	<% end %>

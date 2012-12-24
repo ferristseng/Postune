@@ -19,7 +19,7 @@ class User::SessionsController < ApplicationController
 		if user.nil?
 			@title = "Login"
 			@user = User.new(:name => params[:user][:name])
-			flash[:error] = "Username or password is incorrect"
+			@user.errors.add(:password, " or username is incorrect")
 			render "new"
 		else
 			sign_in user

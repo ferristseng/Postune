@@ -1,6 +1,6 @@
 class User::StationsController < ApplicationController
 
-  before_filter :default_access, :only => :private_new
+  before_filter :default_access, :only => :new
 
   def show
     @title = "Station"
@@ -10,19 +10,21 @@ class User::StationsController < ApplicationController
 
   def public_new
     @title = "Home"
+    @station = Station.new
     @recent = current_user.recently_played if signed_in?
   end
 
   def new
     @title = "New Station"
+    @station = Station.new
   end
 
   def public_create
-    id = params[:name].to_url
+    id = params[:station][:name].to_url
     if id.empty?
-      @title = "Home"
-      flash[:error] = "Please enter something"
-      render 'new'
+      public_new
+      @station.errors.add(:name, "is invalid")
+      render 'public_new'
     else
       redirect_to user_station_path id
     end

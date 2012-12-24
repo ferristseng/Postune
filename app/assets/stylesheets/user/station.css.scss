@@ -196,6 +196,23 @@
 			position: absolute;
 			background: $background-gray;
 			border: 1px solid $border-gray;
+			.callback-status {
+				text-align: center;
+			}
+			.icon {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-top: -($icon-size / 2);
+				margin-left: -($icon-size / 2);
+			}
+			.icon.success, .icon-error {
+				background: url('/assets/sprite_statuses.png');
+				background-repeat: no-repeat;
+			}
+			.icon.success {
+				background-position: -$icon-size 0px;
+			}
 		}
 	}
 }

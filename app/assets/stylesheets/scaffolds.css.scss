@@ -15,13 +15,12 @@ h2 { font-size: 18px; }
 h3 { font-size: 14px; }
 h4 { font-size: 12px; }
 
-.info { h2 { border-left: 5px solid $background-gray; padding: $padding $padding; } }
-
 p { display: block; padding: $padding 0px; }
 #main p a { border-bottom: 1px dotted #232323;}
 
 table { 
 	width: 100%; 
+	margin: $margin 0px;
 	td, th {
 		padding: 5px;
 	}
@@ -67,115 +66,28 @@ table.alt {
 	display: none;
 }
 
-.container {
-	padding: 0px 32px;
+.no-padding {
+	padding: 0px !important;
 }
 
-form {
-	overflow: hidden;
-	.field {
-		margin: $margin 0px 0px 0px;
-		label {
-			display: block;
-			margin: 0px 0px $margin 0px;
-		}
-		input[type='text'], input[type='password'] {
-			@include box-sizing(border-box);
-			border: 1px solid #ACB3B7;
-			width: 100%;
-			font-size: 14px;
-			padding: 5px 5px;	
-		}
-	}	
-	.form-actions {
-		margin: $margin-double 0px 0px 0px;
-	}
-	.unified {
-		margin: $margin 0px 0px 0px;
-	}
+.no-margin {
+	margin: 0px !important;
 }
 
-.btn {
-	@include gradient(#F5F5F5, #DEDEDE);
-	@include text-shadow(0px, 0px, 1px, #FFFFFF);
-	@include border-radius($border-radius);
-	border: 1px solid #ACB3B7;
-	font-weight: bold;
-	font-size: 12px;
-	color: #4A4A4A;
-	line-height: 18px;
-	margin: 0px;
-	padding: 5px 7px;
+.icon {
+	width: $icon-size;
+	height: $icon-size;
 	display: inline-block;
 }
 
-.btn.small {
-	line-height: 14px;
-	padding: 3px 5px;
-}
-
-.btn.full {
-	width: 100%;
-	display: block;
-}
-
-.btn:hover {
-	@include box-shadow(0px, 0px, 3px, $border-gray, 1px, inset);
-	cursor: pointer;
-}
-
-.btn:active {
-	@include box-shadow(0px, 0px, 3px, #CCCCCC 1px inset);
-	color: $blue;
-}
-
-.message {
-	padding: 3px 4px;
-	margin: 0px 0px $margin 0px;
-}
-
-.message.warning {
-
-}
-
-.message.error {
-	background: #FFC6C6;
-}
-
-.message.top {
-	text-align: center;
-	margin: 0px;
-}
-
-#main, header {
-	background: #FFFFFF;
-}
-
-#main { }
-
-header {
-	line-height: $header-height;
-	height: $header-height;
-	font-weight: bold;
-	padding: $header-padding 0px;
-	.left {
-		font-size: 24px;
-	}
-}
-
-footer {
-	height: 48px;
-	line-height: 48px;
-	font-weight: bold;
-	border-top: 1px solid $border-gray;
-	.left a {
-		margin: 0px $margin-double 0px 0px;
-	}
+.loading {
+	background: url('/assets/load.gif');
 }
 
 .container {
 	width: $body-width;
 	margin: auto;
+	padding: 0px 32px;
 	.container {
 		padding: 0px;
 		width: auto;
@@ -225,6 +137,161 @@ footer {
 		.row:last-child {
 			padding: 0px 0px 0px 0px;
 		}
+	}
+}
+
+.info { 
+	h1, h2, h3, h4, h5, h6 {
+		padding: $padding 0px !important;
+	}
+	h1:first-child, h2:first-child, h3:first-child,
+	h4:first-child, h5:first-child, h6:first-child {
+		padding-top: 0px !important;
+	}
+}
+
+form {
+	overflow: hidden;
+	.field {
+		margin: $margin 0px 0px 0px;
+		label {
+			display: block;
+			margin: 0px 0px $margin 0px;
+		}
+		input[type='text'], input[type='password'] {
+			@include box-sizing(border-box);
+			border: 1px solid #ACB3B7;
+			width: 100%;
+			font-size: 14px;
+			padding: 5px 5px;	
+		}
+		.inline-error {
+			color: #FFFFFF;
+			font-weight: bold;
+			.inline-error-caret {
+				line-height: 0px;
+				font-size: 0px;
+				margin: 0px 0px 0px $margin-double;
+				padding: 0px;
+				height: 0;
+				width: 0;
+				border-bottom: #F2132D 8px solid;
+				border-left: transparent 8px solid;
+				border-right: transparent 8px solid;
+			}
+			.inline-error-body {
+				background: #F2132D;
+				padding: 5px 8px;
+			}
+		}
+	}	
+	.form-actions {
+		margin: $margin-double 0px 0px 0px;
+	}
+	.unified {
+		margin: $margin 0px 0px 0px;
+	}
+	.field_with_errors {
+		input[type='text'], input[type='password'] {
+			border: 1px solid #F2132D;
+		}
+	}
+}
+
+.btn {
+	@include gradient(#F5F5F5, #DEDEDE);
+	@include text-shadow(0px, 0px, 1px, #FFFFFF);
+	@include border-radius($border-radius);
+	border: 1px solid #ACB3B7;
+	font-weight: bold;
+	font-size: 12px;
+	color: #222222;
+	line-height: 18px;
+	margin: 0px;
+	padding: 5px 7px;
+	display: inline-block;
+}
+
+.btn.green {
+	@include gradient(#6AC042, #63B53D);
+	@include text-shadow(0px, -1px, 0px, #4D8135);
+	color: #FFFFFF;
+	border: 1px solid #528839;
+}
+
+.btn.small {
+	line-height: 14px;
+	padding: 3px 5px;
+}
+
+.btn.full {
+	width: 100%;
+	display: block;
+}
+
+.btn:hover {
+	@include box-shadow(0px, 0px, 3px, $border-gray, 1px, inset);
+	cursor: pointer;
+}
+
+.btn.green:hover {
+	@include box-shadow(0px, 0px, 3px, #62A543, 1px, inset);
+}
+
+.btn:active {
+	color: $blue;
+}
+
+.btn.green:hover {
+	color: #FFFFFF;
+}
+
+.messages-wrapper {
+	padding: 0px !important;
+}
+
+.message {
+	padding: 6px 10px;
+	margin: 0px 0px $margin 0px;
+}
+
+.message.notice {
+	border: 1px solid $border-gray;
+	background: #FFFDBA;
+}
+
+.message.error {
+	background: #FFC6C6;
+}
+
+.message.top {
+	text-align: center;
+	margin: 0px;
+}
+
+#main, header {
+	background: #FFFFFF;
+}
+
+#main { }
+
+header {
+	line-height: $header-height;
+	height: $header-height;
+	font-weight: bold;
+	padding: $header-padding 0px;
+	.left {
+		font-size: 24px;
+	}
+}
+
+footer {
+	height: 48px;
+	line-height: 48px;
+	font-weight: bold;
+	border-top: 1px solid $border-gray;
+	.left a {
+		margin: 0px $margin-double 0px 0px;
 	}
 }
 

@@ -39,5 +39,5 @@ function newMessage(content, type) {
 }
 
 function loadingGif(parent) {
-	$(parent).html("<div class='center text loading-gif'><img src='/assets/load.gif' /></div>");
+	$(parent).html("<div class='center text'><div class='icon loading'></div></div>");
 }

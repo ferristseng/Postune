@@ -23,19 +23,21 @@
 	<div class="span6">
 		<h3>Start Listening!</h3>
 		<p>Join a station by entering the name of an already created station, or type in a station name to create one if it does not already exist.</p>
-		<%= render 'shared/messages' %>
-		<%= form_tag p_create_user_stations_path, :id => "station-form" do %>
-			<div class="field">
-				<%= text_field_tag :name, "", :placeholder => Settings['placeholders']['station_form'] %>
+		<%= form_for @station, :url => p_create_user_stations_path, :html => { :id => "station-form" } do |f| %>
+			<div class="wrap">
+				<div class="field">
+					<%= f.text_field :name, :placeholder => Settings['placeholders']['station_form'] %>
+				</div>
+				<div class="form-actions center text unified">
+					<%= f.submit "Go", :class => "btn" %>
+				</div>
 			</div>
-			<div class="form-actions center text unified">
-				<%= submit_tag "Go", :class => "btn" %>
-			</div>
+			<div class="field no-margin"><%= required_field @station, :name %></div>
 		<% end %>
 	</div>
 	<div class="span2">
 		<h3>Create</h3>
 		<p>Create a private station to control who gets to play music.</p>
-		<div class="center text padded"><%= link_to "Create Station", new_user_station_path, :class => "btn full" %></div>
+		<div class="center text padded"><%= link_to "Create Station", new_user_station_path, :class => "btn green full" %></div>
 	</div>
 </div>

@@ -27,7 +27,7 @@ module SessionsHelper
 	end
 
 	def default_access
-		redirect_to root_path unless signed_in?
+		redirect_to user_register_path, :notice => "Please sign in to continue" unless signed_in?
 	end
 	
 	def admin_access

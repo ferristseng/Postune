@@ -32,7 +32,6 @@ var Player = new function() {
 				whileplaying: function() {
 				},
 				onfinish: function() {
-					Player.unload();
 				},
 				onplay: function() {
 					Player.volume(Player.user.volume);
@@ -56,8 +55,9 @@ var Player = new function() {
 		soundManager.onready(function() {
 			soundManager.load('track', {
 				onload: function() {
-					console.log(time);
 					if(time > Player.soundManagerInstance.durationEstimate) {
+						console.log(time + " " + Player.soundManagerInstance.durationEstimate);
+						console.log("Unloading...");
 						Player.unload();
 					} else {
 						Player.seek(time);

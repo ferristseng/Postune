@@ -8,6 +8,7 @@ class User::UsersController < ApplicationController
   	else
 	  	@title = 'Register'
 	  	@user = User.new
+      @user_alt = User.new
 	  end
   end
 
@@ -17,6 +18,7 @@ class User::UsersController < ApplicationController
   		redirect_to root_path
   	else
   		@title = 'Register'
+      @user_alt = User.new
   		render 'new'
   	end
   end
