@@ -22,6 +22,18 @@
 		height: 32px;
 	}
 }
+#recently-played {
+	#no-recent {
+		height: 150px;
+	}
+	.med-icon {
+		position: relative;
+		left: 50%;
+		top: 50%;
+		margin-top: -($med-icon-size / 2);
+		margin-left: -($med-icon-size / 2);
+	}
+}
 #station-form {
 	margin: 0px 0px 0px 0px;
 	.field {
@@ -44,6 +56,7 @@
 	.artwork {
 		width: $span2-width;
 		height: $span2-width;
+		line-height: $span2-width - 1;
 		margin: 0px 0px $margin 0px;
 		background: $artwork-bg;
 		overflow: hidden;

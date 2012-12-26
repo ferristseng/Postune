@@ -19,12 +19,12 @@ require 'digest'
 
 class User < ActiveRecord::Base
 	attr_accessor :unencrypted_password, :updating_password
-	attr_accessible :name, :email, :group_id, :is_active, :unencrypted_password, :unencrypted_password_confirmation, :updating_password
+	attr_accessible :name, :email, :group_id, :is_active, :unencrypted_password, :unencrypted_password_confirmation, :updating_password, :last_sign_in
 	
 	
 	# Validation Settings
 	validates :name,  											:uniqueness => { :case_sensitive => false },
-																					:format => { :with => /^[a-zA-Z0-9]{3,50}$/i }
+																					:format => { :with => /^[a-zA-Z0-9\.]{3,50}$/i }
 	validates :email,												:format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
 																					:uniqueness => { :case_sensitive => false }
 	validates :unencrypted_password,				:confirmation => true,
@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
 
 	belongs_to :group
 	has_many :songs
+	has_many :authorizations
 
 	# Filters
 	before_save :init
@@ -52,9 +53,37 @@ class User < ActiveRecord::Base
 		return user if user.password == User.make_salt("#{user.salt}#{submitted_password}") && user.is_active
 	end
 
+	def from_omniauth(auth)
+		user = User.find_by_email(auth.info.email)
+		user.authorizations.build(:uid => auth.uid, :provider => auth.provider) if !user.authorizations.find_by_provider(auth.provider).nil?
+		user.save!
+		return user if !user.nil?
+		self.name = "#{auth.info.nickname}_#{User.provider_to_abbr(auth.provider)}"
+		self.email = auth.info.email
+		self.password = User.generate_random_password
+		self.authorizations.build(:uid => auth.uid, :provider => auth.provider)
+		return self if self.save
+		return nil
+	end
+
 	# Salt a given string	
 	def self.make_salt(string)
 		Digest::SHA2.hexdigest(string)
+	end
+
+	def self.provider_to_abbr(provider)
+		case
+		when "facebook"
+			"fb"
+		when "twitter"
+			"tw"
+		when "tumblr"
+			"tb"
+		end
+	end
+
+	def self.generate_random_password
+		SecureRandom.hex(20)
 	end
 	
 	private 

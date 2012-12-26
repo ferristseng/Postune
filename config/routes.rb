@@ -37,6 +37,7 @@ Postune::Application.routes.draw do
     resources :sessions, :only => [ :create ]
     match 'login', :to => 'sessions#new'
     match 'logout', :to => 'sessions#destroy'
+    match 'auth/:provider/callback', :to => 'sessions#create'
 
   end
 

@@ -5,6 +5,7 @@
 			<div class="field">
 				<%= f.label :name %>
 				<%= f.text_field :name %>
+				<%= required_field @user, :name %>
 			</div>
 			<div class="field">
 				<%= f.label :password %>
@@ -17,6 +18,14 @@
 		<% end %>
 	</div>
 	<div class="span4">
-		<h3>Use an another account to login</h3>
+		<h3>Use another account to login</h3>
+		<div class="container">
+			<div class="row">
+				<div class="span8">
+					<%= link_to_oauth_sign_in "Facebook", "/auth/facebook", "facebook-sign-in" %>
+					<%#= link_to_oauth_sign_in "Twitter", "/auth/twitter", "twitter-sign-in" %>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

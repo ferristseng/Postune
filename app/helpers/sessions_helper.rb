@@ -1,7 +1,8 @@
 module SessionsHelper
 	def sign_in(user)
 		cookies.permanent.signed[:remember_token] = [user.id]
-		user.update_attribute(:last_sign_in, DateTime.now) 
+		user.update_attributes(:last_sign_in => DateTime.now)
+		user.save! :validate => false
 		self.current_user = user
 	end
 	

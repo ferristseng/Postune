@@ -55,9 +55,7 @@ var Player = new function() {
 		soundManager.onready(function() {
 			soundManager.load('track', {
 				onload: function() {
-					if(time > Player.soundManagerInstance.durationEstimate) {
-						console.log(time + " " + Player.soundManagerInstance.durationEstimate);
-						console.log("Unloading...");
+					if(time > Player.soundManagerInstance.durationEstimate) {						
 						Player.unload();
 					} else {
 						Player.seek(time);

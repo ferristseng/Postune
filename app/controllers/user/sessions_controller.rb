@@ -15,15 +15,30 @@ class User::SessionsController < ApplicationController
 	end
 	
 	def create
-		user = User.authenticate(params[:user][:name], params[:user][:password])
-		if user.nil?
-			@title = "Login"
-			@user = User.new(:name => params[:user][:name])
-			@user.errors.add(:password, " or username is incorrect")
-			render "new"
+		if auth = request.env['omniauth.auth']
+			user = User.new.from_omniauth(request.env['omniauth.auth'])
+			if user.nil?
+				@title = "Login"
+				@user = User.new
+				@user.errors.add(:name, " or email already exists")
+				render "new"
+			else
+				puts "User exists with email #{request.env['omniauth.auth'].info.email}, so signing in"
+				puts user
+				sign_in user
+				redirect_to root_path
+			end
 		else
-			sign_in user
-			redirect_to root_path
+			user = User.authenticate(params[:user][:name], params[:user][:password])
+			if user.nil?
+				@title = "Login"
+				@user = User.new(:name => params[:user][:name])
+				@user.errors.add(:password, " or username is incorrect")
+				render "new"
+			else
+				sign_in user
+				redirect_to root_path
+			end
 		end
 	end
 	

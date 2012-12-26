@@ -4,18 +4,29 @@
 		<h3>Recently Played</h3>
 	</div>
 </div>
-<div class="row">
-	<% 4.times do |i| %>
-		<% if @recent[i].present? %>
-			<div class="span2">
-				<div class="artwork"><%= image_tag @recent[i].artwork %></div>
-				<div class="song-title song-info"><%= @recent[i].title %></div>
-				<div class="song-info"><%= @recent[i].artist %></div>
-				<div class="song-info"><%= @recent[i].album %></div>
-			</div>
-		<% else %>
-			<div class="span2"></div>
+<div class="row" id="recently-played">
+	<% if @recent.present? %>
+		<% 4.times do |i| %>
+			<% if @recent[i].present? %>
+				<div class="span2">
+					<div class="artwork"><%= image_tag @recent[i].artwork %></div>
+					<div class="song-title song-info"><%= @recent[i].title %></div>
+					<div class="song-info"><%= @recent[i].artist %></div>
+					<div class="song-info"><%= @recent[i].album %></div>
+				</div>
+			<% else %>
+				<div class="span2"></div>
+			<% end %>
 		<% end %>
+	<% else %>
+		<div class="span2" id="no-recent">
+			<div class="med-icon alert"></div>
+		</div>
+		<div class="span2">
+			<p class="heavy">You have not played any songs recently!</p>
+			<p>You can join any public station to start playing music, or create a private station where only you and chosen users can play music.</p>			
+		</div>
+		<div class="span4"></div>
 	<% end %>
 </div>
 <% end %>
