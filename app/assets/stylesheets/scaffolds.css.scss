@@ -67,6 +67,19 @@ table.alt {
 	display: none;
 }
 
+.separator {
+	margin: $margin 0px;
+	border-top: solid 1px $border-gray;
+}
+
+.separator.top-double {
+	margin: $margin-double 0px $margin 0px;
+}
+
+.separator.bottom-double {
+	margin: $margin 0px $margin-double 0px;
+}
+
 .no-padding {
 	padding: 0px !important;
 }

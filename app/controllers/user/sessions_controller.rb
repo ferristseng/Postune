@@ -23,8 +23,6 @@ class User::SessionsController < ApplicationController
 				@user.errors.add(:name, " or email already exists")
 				render "new"
 			else
-				puts "User exists with email #{request.env['omniauth.auth'].info.email}, so signing in"
-				puts user
 				sign_in user
 				redirect_to root_path
 			end
