@@ -24,12 +24,12 @@ class User::SongsController < ApplicationController
 
   def search
     @station = params[:station_id]
-    max_results = Settings['station']['max_results'].to_i
+    max_results = Settings['station']['max_results'].to_i + 10
   	base_url = "http://ex.fm/api/v3/song/search/"
   	search_url = "#{base_url}#{URI.encode(params[:query])}?results=#{max_results}&start=#{(params[:start].to_i - 1) * max_results}"
   	raw_content  = open(search_url) {|f| f.read }
   	json = ActiveSupport::JSON.decode raw_content
-  	@songs = json['songs']
+  	@songs = json['songs'][0..15]
     # pagination
   	@pages = json['total'] / max_results
   	@current = json['start'] / max_results
