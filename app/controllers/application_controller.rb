@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include SessionsHelper, SocialHelper
+  include SessionsHelper, SocialHelper, ExFmHelper
 end
