@@ -135,6 +135,7 @@ table.alt {
 	width: $body-width;
 	margin: auto;
 	padding: 0px 32px;
+	overflow: hidden;
 	.container {
 		padding: 0px;
 		width: auto;
@@ -378,7 +379,10 @@ footer {
 	text-align: center;
 	.page {
 		display: inline-block;
-		padding: $padding;
+		padding: 4px 8px;
+		background: $background-gray;
+		border: $border-gray 1px solid;
+		margin: 0px $margin;
 	}
 	.current {
 		font-weight: bold;

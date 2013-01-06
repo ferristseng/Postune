@@ -2,7 +2,7 @@
 <% every(@songs, 4).each_with_index do |a, row| %>
 <div class="row">
 	<% a.each_with_index do |s, i| %>
-	<div class="span2" id="<%= "page_#{@current+1}_row_#{row+1}_index_#{i+1}" %>">
+	<div class="span2" id="<%= "page_#{@c_page}_row_#{row+1}_index_#{i+1}" %>">
 		<%= form_for @song, :url => user_station_songs_path(@station), :remote => true, :html => { :class => "new-song" } do |f| %>
 		<div class="artwork"><%= exfm_image?(s['image']['large']) ? image_tag(s['image']['large'], :alt => s['title'], :width => 128) : '' %></div>
 		<div class="field"><%= f.text_field :artist, :value => s['artist'], :placeholder => "Artist" %></div>
@@ -11,19 +11,22 @@
 		<div class="form-actions"><%= f.submit "Play", :class => "btn" %></div>
 			<%= f.hidden_field :artwork, :value => exfm_image?(s['image']['large']) ? s['image']['large'] : nil %>
 			<%= f.hidden_field :path, :value => s['url'] %>
-			<%= hidden_field_tag :div, "\#page_#{@current+1}_row_#{row+1}_index_#{i+1}" %>
+			<%= hidden_field_tag :div, "\#page_#{@c_page}_row_#{row+1}_index_#{i+1}" %>
 		<% end %>
 	</div>
 	<% end %>
 </div>
 <% end %>
-<div class="pagination">
-	<% while @page < @max_page do %>
-		<div class="page <%= (@page == @current) ? 'current' : '' %>">
-			<%= link_to @page+=1, search_user_station_songs_path(@station, :query => @query, :start => @page), :remote => true %>
-		</div>
-	<% end %>
-</div>	
 <% else %>
 	<%= render 'user/songs/partials/no_results' %>
 <% end %>
+<div class="pagination">
+	<div class="page"><%= link_to "First", search_user_station_songs_path(@station, :query => @query, :start => 1), :remote => true %></div>
+	<% while @s_page <= @e_page do %>
+		<div class="page <%= (@s_page == @c_page) ? 'current' : '' %>">
+			<%= link_to @s_page, search_user_station_songs_path(@station, :query => @query, :start => @s_page), :remote => true %>
+		</div>
+		<% @s_page += 1 %>
+	<% end %>
+	<div class="page"><%= link_to "Last", search_user_station_songs_path(@station, :query => @query, :start => @m_page), :remote => true %></div>
+</div>	
