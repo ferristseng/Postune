@@ -9,10 +9,10 @@
 		<% 4.times do |i| %>
 			<% if @recent[i].present? %>
 				<div class="span2">
-					<div class="artwork"><%= image_tag @recent[i].artwork %></div>
-					<div class="song-title song-info"><%= @recent[i].title %></div>
-					<div class="song-info"><%= @recent[i].artist %></div>
-					<div class="song-info"><%= @recent[i].album %></div>
+					<div class="artwork"><%= exfm_image?(@recent[i].artwork) ? image_tag(@recent[i].artwork, :alt => @recent[i].title) : "" %></div>
+					<div class="song-title song-info"><%= @recent[i].display_title %></div>
+					<div class="song-info"><%= @recent[i].display_artist %></div>
+					<div class="song-info"><%= @recent[i].display_album %></div>
 				</div>
 			<% else %>
 				<div class="span2"></div>

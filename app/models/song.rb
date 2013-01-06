@@ -38,6 +38,18 @@ class Song < ActiveRecord::Base
   	read_attribute(:album).blank? ? "Unknown" : read_attribute(:album)
   end
 
+  def display_title
+  	self.title.truncate(30, :omission => "...")
+  end
+
+  def display_artist
+  	self.artist.truncate(30, :omission => "...")
+  end
+
+  def display_album
+  	self.album.truncate(30, :omission => "...")
+  end
+
   private
   	#
   	# Make sure the url resolves to a valid MP3 path

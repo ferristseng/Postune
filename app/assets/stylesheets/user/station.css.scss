@@ -11,6 +11,9 @@
 }
 #station-text {
 	padding: 0px 0px $padding-double 0px;
+	h3 {
+		padding-top: 0px;
+	}
 	p {
 		margin: 0px 0px $margin 0px;
 	}
@@ -57,7 +60,7 @@
 		width: $span2-width;
 		height: $span2-width;
 		line-height: $span2-width - 1;
-		margin: 0px 0px $margin 0px;
+		margin: 0px 0px 0px 0px;
 		background: $artwork-bg;
 		overflow: hidden;
 		img {
@@ -70,7 +73,7 @@
 		font-weight: bold;
 	}
 	.song-info {
-		margin: 0px 0px $margin 0px;
+		margin: $margin 0px 0px 0px;
 	}
 }
 
@@ -249,7 +252,7 @@
  */
 
 #chat-text {
-	height: $chat-height;
+	height: $chat-height + 2;
 	overflow-y: scroll;
 	margin: $margin-double 0px;
 	.chat-message {
@@ -290,6 +293,9 @@
 }
 
 #chat-form {
+	.field {
+		margin: 0px;
+	}
 	.form-actions {
 		margin: 0px;
 	}
