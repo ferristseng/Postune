@@ -13,6 +13,7 @@ $med-icon-size: 64px;
 $volume-outer: #205E95;
 $volume-inner: #232323;
 
+$background-purp: #212029;
 $background-gray: #EFEFEF;
 $border-gray: #DCDCDC;
 
@@ -28,3 +29,7 @@ $chat-height: 400px;
 $song-info-width: 128px;
 
 $span2-width: 181px;
+
+$banner-height: 240px;
+$banner-float-width: 564px;
+$banner-float-height: $banner-height - (24px + $margin-double * 2);

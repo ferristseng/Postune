@@ -16,10 +16,6 @@
 	</div>
 	<% end %>
 </div>
-<% end %>
-<% else %>
-	<%= render 'user/songs/partials/no_results' %>
-<% end %>
 <div class="pagination">
 	<div class="page"><%= link_to "First", search_user_station_songs_path(@station, :query => @query, :start => 1), :remote => true %></div>
 	<% while @s_page <= @e_page do %>
@@ -29,4 +25,8 @@
 		<% @s_page += 1 %>
 	<% end %>
 	<div class="page"><%= link_to "Last", search_user_station_songs_path(@station, :query => @query, :start => @m_page), :remote => true %></div>
-</div>	
+</div>
+<% end %>
+<% else %>
+	<%= render 'user/songs/partials/no_results' %>
+<% end %>

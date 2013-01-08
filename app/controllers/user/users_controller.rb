@@ -15,7 +15,8 @@ class User::UsersController < ApplicationController
   def create
   	@user = User.new params[:user]
   	if @user.save
-  		redirect_to root_path
+  		sign_in @user
+      redirect_to root_path
   	else
   		@title = 'Register'
       @user_alt = User.new

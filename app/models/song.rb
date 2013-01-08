@@ -56,9 +56,9 @@ class Song < ActiveRecord::Base
 	  def validate_url
 	    case self.path
 	    when /^https*:\/\/(?:www.)?api.soundcloud.com\/tracks\/(?:\d+)\/\S*$/
-	      self.path = find_redirect_url "#{self.path}?consumer_key=#{Settings['api_keys']['soundcloud']['client_key']}"
+	      self.path = find_redirect_url "#{self.path}?consumer_key=#{Settings['soundcloud']['client_key']}"
 	    when /^https*:\/\/(?:www.)?soundcloud.com\/\w+\/\S+$/
-	    	client = Soundcloud.new(:client_id => Settings['api_keys']['soundcloud']['client_key'])
+	    	client = Soundcloud.new(:client_id => Settings['soundcloud']['client_key'])
 	    	# get the stream URL
 	    	self.path = find_redirect_url client.get('/resolve', self.path).stream_url
 	    when /^https*:\/\/\S+.mp3\?*\S*$/

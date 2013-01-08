@@ -6,6 +6,36 @@
  * New
  * public_new.html.erb
  */
+#banner {
+	width: 100%;
+	height: $banner-height;
+	background: $background-purp;
+	padding: 24px 0px 0px 0px;
+	margin: 0px 0px $margin-double 0px;
+	overflow: hidden;
+	.float {
+		width: $banner-float-width;
+		margin: $margin-double 0px;
+		height: $banner-float-height;
+		background: #FFFFFF;
+		@include border-radius($border-radius);
+		#text {
+			height: $banner-float-height - 55 - $padding-double * 2;
+		}
+		.inner {
+			line-height: 28px;
+			font-size: 14px;
+			padding: $padding-double $padding-double + $padding-double;
+		}
+		.buttons {
+			height: 55px;
+			border-top: 1px solid $border-gray;
+		}
+	}
+	.right {
+		padding-right: $padding-double * 2;
+	}
+}
 #station-logo {
 	padding: $padding-double 0px 0px 0px;
 }
@@ -26,8 +56,16 @@
 	}
 }
 #recently-played {
-	#no-recent {
+	#no-recent-icon, #no-recent-text {
 		height: 150px;
+	}
+	#no-recent-text {
+		display: table;
+		div {
+			display: table-cell;
+			padding-right: ($span2-width - $med-icon-size) / 2;
+			vertical-align: middle;
+		}
 	}
 	.med-icon {
 		position: relative;

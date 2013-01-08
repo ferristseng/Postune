@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= yield :head %>
+  <%= javascript_include_tag "google-analytics" %>
 </head>
 <body>
 	<header>
@@ -16,8 +17,7 @@
 				<% if signed_in? %>
 					<%= link_to current_user.name, user_user_path(current_user.name) %>
 				<% else %>
-					<%= link_to "Login", user_login_path, :class => "btn small" %>
-					<%= link_to "Register", user_register_path, :class => "btn green small" %>
+					<%= link_to "Login", user_login_path %>
 				<% end %>
 			</div>
 		</div>
@@ -29,8 +29,8 @@
 					<%= render 'shared/messages' %>
 				</div>
 			</div>
-			<%= yield %>
 		</div>
+		<%= yield %>
 	</div>
 	<footer>
 		<div class="container">

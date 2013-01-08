@@ -1,0 +1,33 @@
+<% if signed_in? %>
+<div class="row">
+	<div class="span8">
+		<h3>Recently Played</h3>
+	</div>
+</div>
+<div class="row" id="recently-played">
+	<% if @recent.present? %>
+		<% 4.times do |i| %>
+			<% if @recent[i].present? %>
+				<div class="span2">
+					<div class="artwork"><%= exfm_image?(@recent[i].artwork) ? image_tag(@recent[i].artwork, :alt => @recent[i].title) : "" %></div>
+					<div class="song-title song-info"><%= @recent[i].display_title %></div>
+					<div class="song-info"><%= @recent[i].display_artist %></div>
+					<div class="song-info"><%= @recent[i].display_album %></div>
+				</div>
+			<% else %>
+				<div class="span2"></div>
+			<% end %>
+		<% end %>
+	<% else %>
+		<div class="span2" id="no-recent-icon">
+			<div class="med-icon alert"></div>
+		</div>
+		<div class="span6" id="no-recent-text">
+			<div>
+				<p class="heavy">You have not played any songs recently!</p>
+				<p>You can join any public station to start playing music, or create a private station where only you and chosen users can play music.</p>		
+			</div>	
+		</div>
+	<% end %>
+</div>
+<% end %>

@@ -1,48 +1,50 @@
-<div class="row">
-	<div class="span4">
-		<h3>Register</h3>
-		<%= form_for @user, :url => user_users_path do |f| %>
-			<div class="field">
-				<%= f.label :name %>
-				<%= f.text_field :name %>
-				<%= required_field @user, :name %>
-			</div>
-			<div class="field">
-				<%= f.label :email %>
-				<%= f.text_field :email %>
-				<%= required_field @user, :email %>
-			</div>
-			<div class="field">
-				<%= f.label :unencrypted_password %>
-				<%= f.password_field :unencrypted_password %>
-				<%= required_field @user, :unencrypted_password %>
-			</div>
-			<div class="field">
-				<%= f.label :unencrypted_password_confirmation %>
-				<%= f.password_field :unencrypted_password_confirmation %>
-			</div>
-			<div class="form-actions">
-				<%= f.submit "Register", :class => "btn green" %>
-			</div>
-		<% end %>
-	</div>
-	<div class="span4">
-		<h3>Already have an account?</h3>
-		<%= form_for @user_alt, :url => user_sessions_path do |f| %>
-			<div class="field">
-				<%= f.label :name %>
-				<%= f.text_field :name %>
-			</div>
-			<div class="field">
-				<%= f.label :password %>
-				<%= f.password_field :password %>
-			</div>
-			<div class="form-actions">
-				<%= f.submit "Login", :class => "btn" %>
-			</div>
-		<% end %>
-		<div class="separator top-double"></div>
-		<h3>Sign in with</h3>
-		<%= render 'shared/alternate_signin' %>
+<div class="container">
+	<div class="row">
+		<div class="span4">
+			<h3>Register</h3>
+			<%= form_for @user, :url => user_users_path do |f| %>
+				<div class="field">
+					<%= f.label :name %>
+					<%= f.text_field :name %>
+					<%= required_field @user, :name %>
+				</div>
+				<div class="field">
+					<%= f.label :email %>
+					<%= f.text_field :email %>
+					<%= required_field @user, :email %>
+				</div>
+				<div class="field">
+					<%= f.label :unencrypted_password %>
+					<%= f.password_field :unencrypted_password %>
+					<%= required_field @user, :unencrypted_password %>
+				</div>
+				<div class="field">
+					<%= f.label :unencrypted_password_confirmation %>
+					<%= f.password_field :unencrypted_password_confirmation %>
+				</div>
+				<div class="form-actions">
+					<%= f.submit "Register", :class => "btn green" %>
+				</div>
+			<% end %>
+		</div>
+		<div class="span4">
+			<h3>Already have an account?</h3>
+			<%= form_for @user_alt, :url => user_sessions_path do |f| %>
+				<div class="field">
+					<%= f.label :name %>
+					<%= f.text_field :name %>
+				</div>
+				<div class="field">
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+				</div>
+				<div class="form-actions">
+					<%= f.submit "Login", :class => "btn" %>
+				</div>
+			<% end %>
+			<div class="separator top-double"></div>
+			<h3>Sign in with</h3>
+			<%= render 'shared/alternate_signin' %>
+		</div>
 	</div>
 </div>

@@ -39,6 +39,10 @@ table.alt {
 	}
 }
 
+.emphasize {
+	font-weight: bold;
+}
+
 .wrap {
 	overflow: hidden;
 }
@@ -61,6 +65,10 @@ table.alt {
 
 .center.text {
 	text-align: center;
+}
+
+.right-text {
+	text-align: right;
 }
 
 .hide {
@@ -189,6 +197,8 @@ table.alt {
 }
 
 .info { 
+	font-size: 14px;
+	line-height: 24px;
 	h1, h2, h3, h4, h5, h6 {
 		padding: $padding 0px !important;
 	}

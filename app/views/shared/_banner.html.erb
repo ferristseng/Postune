@@ -1,0 +1,25 @@
+<div id="banner">
+	<div class="container">
+		<div class="left float">
+			<% if !signed_in? %>
+			<div class="inner" id="text">
+				<p>
+					Share and discover new music with <span class="emphasize">Postune</span><br/>
+					Create your own stations to listen to music with your friends, and chat about your recently discovered music!
+				</p>
+			</div>
+			<div class="inner buttons right-text">
+				<%= link_to "Sign Up", user_register_path, :class => "btn green" %>
+				<%= link_to "Login", user_login_path, :class => "btn" %>
+			</div>
+			<% else %>
+			<div class="inner" id="text">
+				<h2>Welcome to Postune!</h2>
+			</div>
+			<% end %>
+		</div> 
+		<div class="right">
+			<%= image_tag "tower.png" %>
+		</div>
+	</div>
+</div>
