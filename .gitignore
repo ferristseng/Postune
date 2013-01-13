@@ -16,4 +16,5 @@
 
 # Ignore config files
 /config/*.yml
+/config/deploy.rb
 
