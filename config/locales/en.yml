@@ -10,6 +10,8 @@ en:
         unencrypted_password_confirmation: "Password Confirmation"
       song:
         url: "URL"
+      station:
+        permalink: "Name"
   errors:
     messages:
       too_short: "must be more than %{count} characters"

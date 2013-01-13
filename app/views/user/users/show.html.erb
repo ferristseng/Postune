@@ -5,25 +5,55 @@
 				<tbody>
 					<tr>
 						<th>Username</th>
-						<td><%= @user.name %></td>
+						<th><%= @user.name %></th>
 					</tr>
+					<% if current_user == @user %>
 					<tr>
 						<th>Email</th>
 						<td><%= @user.email %></td>
 					</tr>
+					<% end %>
 					<tr>
 						<th>Last Signed In</th>
 						<td><%= time_ago_in_words @user.last_sign_in %></td>
+					</tr>
+					<tr>
+						<th>Signed Up</th>
+						<td><%= @user.created_at.strftime(Settings['date']['nice']) %></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 	<div class="row">
+		<div class="span4">
+			<h3>Stations</h3>
+			<% if @user.stations.present? %>
+			<table class="alt">
+				<tbody>
+				<% @user.stations.each do |station| %>
+					<tr>
+						<td><%= link_to station.name, user_station_path(station.permalink) %></td>
+						<td><%= station.position(current_user) %></td>
+					</tr>
+				<% end %>
+				</tbody>
+			</table>
+			<% else %>
+				No Stations
+			<% end %>
+		</div>
+		<div class="span4">
+			<h3>Favorite Stations</h3>
+		</div>
+	</div>
+	<% if current_user == @user %>
+	<div class="row">
 		<div class="span8">
 			<div class="right text">
-				<%= link_to "Edit", edit_user_user_path(@user), :class => "btn small" %>
+				<%= link_to "Edit", edit_user_user_path(@user), :class => "btn" %>
 			</div>
 		</div>
 	</div>
+	<% end %>
 </div>

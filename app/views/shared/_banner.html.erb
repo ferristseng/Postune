@@ -14,7 +14,9 @@
 			</div>
 			<% else %>
 			<div class="inner" id="text">
-				<h2>Welcome to Postune!</h2>
+				<h2>Welcome <%= current_user.name %>!</h2>
+				<p><span class="emphasize">Postune</span> is currently in public beta. If you come across any bugs or have any suggestions for the website, please contact us at <%= link_to "ferrist@postune.com", "mailto:ferrist@postune.com" %>!</p>
+				<p>Thank you, and we hope you enjoy using our website!</p>
 			</div>
 			<% end %>
 		</div> 

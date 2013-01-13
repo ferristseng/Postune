@@ -19,6 +19,16 @@ p { display: block; padding: $padding 0px; }
 p.heavy { font-weight: bold; }
 #main p a { border-bottom: 1px dotted #232323;}
 
+a {
+	border-bottom: dotted 1px #666666;
+}
+
+header, footer {
+	a {
+		border: none;
+	}
+}
+
 table { 
 	width: 100%; 
 	margin: $margin 0px;
@@ -36,6 +46,15 @@ table.alt {
 		border-top: 1px solid $border-gray;
 		border-bottom: 1px solid $border-gray;
 		background: $background-gray;
+	}
+}
+
+ul {
+	li:first-child {
+		margin: 0px;
+	}
+	li {
+		margin: $margin 0px 0px 0px;
 	}
 }
 
@@ -113,6 +132,7 @@ table.alt {
 	font-weight: bold;
 	display: block;
 	overflow: hidden;
+	border: none;
 	span {
 		height: $icon-social-size;
 		line-height: $icon-social-size;
@@ -154,6 +174,15 @@ table.alt {
 		.span2, .span4, .span6, .span8 {
 			div.padded {
 				padding: 6px 0px;
+			}
+			div.padded.top {
+				padding: 6px 0px 0px 0px;
+			}
+			div.padded.bottom {
+				padding: 0px 0px 6px 0px;
+			}
+			table:first-child {
+				margin: 0px;
 			}
 		}
 		.span2, .span4, .span6 {
@@ -210,10 +239,14 @@ table.alt {
 
 form {
 	overflow: hidden;
+	.field, .inline-fields {
+		label {
+			display: block;
+		}
+	}
 	.field {
 		margin: $margin 0px 0px 0px;
 		label {
-			display: block;
 			margin: 0px 0px $margin 0px;
 		}
 		input[type='text'], input[type='password'] {
@@ -243,6 +276,22 @@ form {
 			}
 		}
 	}	
+	.inline-fields {
+		overflow: hidden;
+		.field {
+			display: block;
+			width: 50%;
+			float: left;
+			padding: 0px $padding 0px 0px;
+			@include box-sizing(border-box);
+		}
+		.field:last-child {
+			padding: 0px;
+		}
+	}
+	.nested-form {
+		margin: $margin 0px 0px 0px;
+	}
 	.form-actions {
 		margin: $margin-double 0px 0px 0px;
 	}
@@ -311,15 +360,22 @@ form {
 .message {
 	padding: 6px 10px;
 	margin: 0px 0px $margin 0px;
+	@include border-radius($border-radius);
 }
 
 .message.notice {
-	border: 1px solid $border-gray;
-	background: #FFFDBA;
+	border: 1px solid $notice-yellow-border;
+	background: $notice-yellow;
 }
 
 .message.error {
-	background: #FFC6C6;
+	border: 1px solid $error-red-border;
+	background: $error-red;
+}
+
+.message.success {
+	border: 1px solid $success-green-border;
+	background: $success-green;
 }
 
 .message.top {
@@ -340,6 +396,19 @@ header {
 	padding: $header-padding 0px;
 	.left {
 		font-size: 24px;
+		.beta {
+			margin: -4px 0px 0px 2px;
+			font-size: 12px;
+			color: #767676;
+		}
+	}
+	.right {
+		a:first-child {
+			margin: 0px $margin 0px 0px;
+		}
+		a:last-child {
+			margin: 0px;
+		}
 	}
 }
 
@@ -366,6 +435,8 @@ footer {
 		display: inline-block;
 		border-bottom: 3px solid $border-gray;
 		border-right: 2px groove #FFFFFF;
+		margin: 0px;
+		padding: 0px;
 		a {
 			display: block;
 			padding: 5px 7px;
@@ -397,4 +468,25 @@ footer {
 	.current {
 		font-weight: bold;
 	}
+	a {
+		border: none;
+	}
+}
+
+.label {
+	display: inline-block;
+	padding: 1px 4px;
+	background: $background-gray;
+	border: 1px solid $border-gray;
+	@include border-radius(2px);
+}
+
+.label.green {
+	border: 1px solid $success-green-border;
+	background: $success-green;
+}
+
+.label.red {
+	border: 1px solid $error-red-border;
+	background: $error-red;
 }

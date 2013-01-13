@@ -32,10 +32,12 @@ class User < ActiveRecord::Base
 																					:if => :should_validate?
 
 	belongs_to :group
+
+	has_many :stations
 	has_many :songs
 	has_many :authorizations
 
-	# Filters
+	# Before Save
 	before_save :init
 
 	# Override to param

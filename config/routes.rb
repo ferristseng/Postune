@@ -15,7 +15,7 @@ Postune::Application.routes.draw do
     # Station Resources
     # File : stations_controller.rb
     # =============================
-    resources :stations, :path => "/s", :constraints => { :id => /[a-zA-Z0-9-]+/ } do
+    resources :stations, :path => "/s", :constraints => { :id => /[\w!@#$\%^&*()\[\]{}:;<>?.,-~]+/ } do
       post 'p/create', :to => 'stations#public_create', :on => :collection
 
       # =============================

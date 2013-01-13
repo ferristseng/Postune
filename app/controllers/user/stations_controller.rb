@@ -5,7 +5,13 @@ class User::StationsController < ApplicationController
   def show
     @title = "Station"
     @song = Song.new
-    @station = params[:id]
+    @station = Station.find_by_permalink(params[:id])
+    if @station.blank?
+      @station = "#{Settings['domain']}#{user_station_path params[:id]}"
+      render 'user/stations/public_show'
+    else
+      render 'user/stations/private_show'
+    end
   end
 
   def public_new
@@ -17,6 +23,7 @@ class User::StationsController < ApplicationController
   def new
     @title = "New Station"
     @station = Station.new
+    @collaborator_num = 3
   end
 
   def public_create
@@ -31,7 +38,15 @@ class User::StationsController < ApplicationController
   end
 
   def create
-
+    @station = Station.new(:name => params[:station][:name], :user_id => params[:station][:user_id])
+    if @station.save
+      flash[:success] = "You have successfully created a station!"
+      redirect_to user_station_path @station.permalink
+    else
+      @title = "New Station"
+      @collaborator_num = params[:station][:collaborators].length
+      render 'new'
+    end
   end
 
   def edit

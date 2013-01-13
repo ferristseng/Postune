@@ -1,0 +1,28 @@
+<div class="container" id="station">
+	<div class="row">
+		<div class="span8">
+			<div class="left">
+				<span class="label green">Public</span>
+				<span class="label"><%= @station %></span>
+			</div>
+			<div class="right text">
+				<span id="online-users">0</span> <span class="icon-user"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span8">
+			<div class="tabs">
+				<ul>
+					<li id="tab-song-form"><%= link_to "Find Song", "#search-song-wrapper", "data-toggle" => "tab" %></li>
+					<li id="tab-chat-window" class="open"><%= link_to "Chat", "#chat-window", "data-toggle" => "tab" %></li>
+				</ul>
+			</div>
+			<div id="station-frame">
+				<%= render 'user/stations/partials/song_form' %>
+				<%= render 'user/stations/partials/chat_window' %>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render 'user/stations/partials/station_js' %>
