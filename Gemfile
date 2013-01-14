@@ -15,7 +15,7 @@ gem 'soundcloud'
 
 # Gems used only for Production
 group :production do
-	gem 'passenger'
+	gem 'thin'
 end
 
 # Gems used only for Development
