@@ -2,7 +2,7 @@
 <% content_for :head do %>
 	<script src='<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/socket.io/socket.io.js" %>'></script>
 	<script>
-		var station = "<%= @station %>",
+		var station = "<%= station %>",
 		current_user = "<%= signed_in? ? current_user.name : '' %>";
 	</script>
 	<%= javascript_include_tag 'station' %> 

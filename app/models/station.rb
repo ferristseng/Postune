@@ -13,6 +13,10 @@ class Station < ActiveRecord::Base
 
   validates :name, 				:presence => true
 
+  def to_param
+    self.permalink
+  end
+
   def position(user)
   	if is_owner?(user)
   		return "Owner"

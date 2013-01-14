@@ -3,7 +3,7 @@
 		<div class="span8">
 			<div class="left">
 				<span class="label green">Public</span>
-				<span class="label"><%= @station %></span>
+				<span class="label"><%= @url %></span>
 			</div>
 			<div class="right text">
 				<span id="online-users">0</span> <span class="icon-user"></span>
@@ -25,4 +25,4 @@
 		</div>
 	</div>
 </div>
-<%= render 'user/stations/partials/station_js' %>
+<%= render 'user/stations/partials/station_js', :station => @station %>

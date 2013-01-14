@@ -7,7 +7,8 @@ class User::StationsController < ApplicationController
     @song = Song.new
     @station = Station.find_by_permalink(params[:id])
     if @station.blank?
-      @station = "#{Settings['domain']}#{user_station_path params[:id]}"
+      @station = params[:id]
+      @url = "#{Settings['domain']}#{user_station_path params[:id]}"
       render 'user/stations/public_show'
     else
       render 'user/stations/private_show'

@@ -13,7 +13,7 @@ function ajaxCallback(div, status) {
 	var callbackDiv, statusDiv;
 	switch(status) {
 		case -1:
-			statusDiv = "<div class='callback-status'><div class='icon error'></div><div class='status-message'>An Error Occured: Please Try Playing Another Song</div></div>";
+			statusDiv = "<div class='callback-status'><div class='icon error'></div></div>";
 			break;
 		case 0:
 			statusDiv = "<div class='callback-status'><div class='icon loading'></div></div>";
