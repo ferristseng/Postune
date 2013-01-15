@@ -7,10 +7,10 @@
 			<p>Join a station by entering the name of an already created station, or type in a station name to create one if it does not already exist.</p>
 			<%= form_for @station, :url => p_create_user_stations_path, :html => { :id => "station-form" } do |f| %>
 				<div class="wrap">
-					<div class="field">
+					<div class="field no-margin">
 						<%= f.text_field :name, :placeholder => Settings['placeholders']['station_form'] %>
 					</div>
-					<div class="form-actions center text unified">
+					<div class="form-actions center text unified no-margin">
 						<%= f.submit "Go", :class => "btn" %>
 					</div>
 				</div>
@@ -20,7 +20,7 @@
 		<div class="span2">
 			<h3>Create</h3>
 			<p>Create a private station to control who gets to play music.</p>
-			<div class="center text padded"><%= link_to "Create Station", new_user_station_path, :class => "btn green full" %></div>
+			<div class="center text"><%= link_to "Create Station", new_user_station_path, :class => "btn green full" %></div>
 		</div>
 	</div>
 </div>

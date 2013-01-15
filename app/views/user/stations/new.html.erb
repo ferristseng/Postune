@@ -10,15 +10,15 @@
 				</div>
 				<div class="nested-form" id="collaborator-list">
 					<%= f.label :collaborators %>
-					<%= f.fields_for :collaborators do |c| %>
-						<% @collaborator_num.times do %>
-							<%= render '/user/stations/partials/collaborator_form', :f => c %>
+					<% @collaborator_num.times do |i| %>
+						<%= f.fields_for :collaborators_attributes do |c| %>
+							<%= render '/user/stations/partials/collaborator_form', :f => c, :i => i %>
 						<% end %>
 					<% end %>
 				</div>
 				<div class="wrap padded top">
 					<div class="right text">
-						<%= link_to "+ Add More", "#" %>
+						<%= link_to "+ Add More", "javascript:moreCollaborators()" %>
 					</div>
 				</div>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
@@ -35,3 +35,8 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function moreCollaborators() {
+		$("#collaborator-list").append($(".inline-fields:first").clone());
+	}
+</script>

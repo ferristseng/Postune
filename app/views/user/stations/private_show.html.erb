@@ -12,15 +12,19 @@
 	</div>
 	<div class="row">
 		<div class="span8">
-			<div class="tabs">
+			<div class="tabs private <%= @can_edit ? "owner" : "user" %>">
 				<ul>
+					<% if @can_edit %>
 					<li id="tab-song-form"><%= link_to "Find Song", "#search-song-wrapper", "data-toggle" => "tab" %></li>
+					<% end %>
 					<li id="tab-chat-window" class="open"><%= link_to "Chat", "#chat-window", "data-toggle" => "tab" %></li>
+					<li id="tab-info-window" class=""><%= link_to "Info", "#info-window", "data-toggle" => "tab" %></li>
 				</ul>
 			</div>
 			<div id="station-frame">
-				<%= render 'user/stations/partials/song_form' %>
+				<%= render 'user/stations/partials/song_form' if @can_edit %>
 				<%= render 'user/stations/partials/chat_window' %>
+				<%= render 'user/stations/partials/info_window' %>
 			</div>
 		</div>
 	</div>

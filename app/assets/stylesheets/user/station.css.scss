@@ -125,10 +125,27 @@
 	.tabs {
 		li {
 			text-align: center;
-			width: 378px;
 			a {
 				border: none;
 			}
+		}
+	}
+	.tabs.public {
+		li {
+			width: 378px;
+		}
+	}
+	.tabs.private.owner {
+		li {
+			width: 252px;
+		}
+		li:first-child, li:last-child {
+			width: 251px;
+		}
+	}
+	.tabs.private.user {
+		li {
+			width: 378px;
 		}
 	}
 }
@@ -157,7 +174,7 @@
 	border-bottom: 1px solid $border-gray;
 	border-left: 1px solid $border-gray;
 	position: absolute;
-	top: ($header-padding * 2) + $header-height + 12 + $padding-double + $padding;
+	top: ($header-padding * 2) + $header-height + 16 + $padding-double + $padding;
 	left: 50%;
 	margin-left: -($body-width / 2) - $padding-double - 15 - $margin-double;
 	@include transition((width 0.5s ease, margin-left 0.5s ease 0.5s));
@@ -344,5 +361,12 @@
 	}
 	.form-actions {
 		margin: 0px;
+	}
+}
+
+#info-window {
+	#info-wrapper {
+		padding: $padding-double 0px $padding-double 0px;
+		min-height: $chat-height + 34px;
 	}
 }

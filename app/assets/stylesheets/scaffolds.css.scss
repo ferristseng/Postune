@@ -433,7 +433,7 @@ footer {
 	}
 	li {
 		display: inline-block;
-		border-bottom: 3px solid $border-gray;
+		border-bottom: 1px solid $border-gray;
 		border-right: 2px groove #FFFFFF;
 		margin: 0px;
 		padding: 0px;
@@ -444,7 +444,7 @@ footer {
 		}
 	}
 	.open {
-		border-bottom: $blue 3px solid;
+		border-bottom: $blue 1px solid;
 		font-weight: bold;
 	}
 }

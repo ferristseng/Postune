@@ -1,7 +1,8 @@
 require 'stringex'
 
 class Station < ActiveRecord::Base
-  attr_accessible :name, :permalink, :user_id, :collaborators
+  attr_accessor :collaborators_attributes
+  attr_accessible :name, :permalink, :user_id, :collaborators_attributes, :collaborators
 
   belongs_to :user
 

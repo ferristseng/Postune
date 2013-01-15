@@ -1,8 +1,8 @@
 <div class="inline-fields">
 	<div class="field">
-		<%= f.text_field :name, :placeholder => "Name" %>
+		<%= f.text_field :name, :placeholder => "Name", :name => "station[collaborators_attributes][#{i}][name]" %>
 	</div>
 	<div class="field">
-		<%= f.text_field :title, :placeholder => "Title" %>
+		<%= f.text_field :title, :placeholder => "Title", :name => "station[collaborators_attributes][#{i}][title]" %>
 	</div>
 </div>
