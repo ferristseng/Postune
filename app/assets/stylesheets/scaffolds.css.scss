@@ -303,6 +303,10 @@ form {
 			border: 1px solid #F2132D;
 		}
 	}
+	.add_nested_fields {
+		margin: $margin 0px 0px 0px;
+		display: block;
+	}
 }
 
 .btn {
@@ -326,6 +330,13 @@ form {
 	border: 1px solid #528839;
 }
 
+.btn.red {
+	@include gradient(#F2132D, #CB313B);
+	@include text-shadow(0px, -1px, 0px, #95242C);
+	color: #FFFFFF;
+	border: 1px solid #AC2932;
+}
+
 .btn.small {
 	line-height: 14px;
 	padding: 3px 5px;
@@ -345,11 +356,15 @@ form {
 	@include box-shadow(0px, 0px, 3px, #62A543, 1px, inset);
 }
 
+.btn.red:hover {
+	@include box-shadow(0px, 0px, 3px, #A62931, 1px, inset);
+};
+
 .btn:active {
 	color: $blue;
 }
 
-.btn.green:hover {
+.btn.green:active, .btn.red:active {
 	color: #FFFFFF;
 }
 
@@ -359,7 +374,7 @@ form {
 
 .message {
 	padding: 6px 10px;
-	margin: 0px 0px $margin 0px;
+	margin: 0px 0px $margin-double 0px;
 	@include border-radius($border-radius);
 }
 

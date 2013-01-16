@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="span6">
+		<h3><%= title %></h3>
+		<%= nested_form_for station, :url => url, :html => { :id => "private-station-form" } do |f| %>
+			<div class="field">
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+				<%= required_field f.object, :name %>
+			</div>
+			<div class="nested-form wrap" id="collaborator-list">
+				<%= f.label :collaborators %>
+				<%= f.fields_for :collaborators do |c| %>
+					<%= render '/user/stations/partials/collaborator_form', :f => c %>
+				<% end %>
+				<%= f.link_to_add "Add More +", :collaborators, :class => "right text wrap" %>
+			</div>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<div class="form-actions">
+				<%= f.submit submit_text, :class => "btn green" %>
+			</div>
+		<% end %>
+	</div>
+	<div class="span2">
+		<h3>Private Stations</h3>
+		<p>A private station only allows the owner of the station and selected collaborators to play music as well as moderate the station.</p>
+		<h3>Collaborators</h3>
+		<p>Collaborators have permission to select music as well as edit station information (but they can not add other collaborators).</p>
+	</div>
+</div>

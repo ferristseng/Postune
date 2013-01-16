@@ -12,6 +12,8 @@ en:
         url: "URL"
       station:
         permalink: "Name"
+      station_collaborator:
+        name: "User"
   errors:
     messages:
       too_short: "must be more than %{count} characters"

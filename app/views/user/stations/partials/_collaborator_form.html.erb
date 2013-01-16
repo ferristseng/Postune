@@ -1,8 +1,10 @@
-<div class="inline-fields">
+<div class="inline-fields collaborator-fields">
 	<div class="field">
-		<%= f.text_field :name, :placeholder => "Name", :name => "station[collaborators_attributes][#{i}][name]" %>
+		<%= f.text_field :name, :placeholder => "Name" %>
+		<%= required_field f.object, :name %>
 	</div>
 	<div class="field">
-		<%= f.text_field :title, :placeholder => "Title", :name => "station[collaborators_attributes][#{i}][title]" %>
+		<%= f.text_field :title, :placeholder => "Title" %>
 	</div>
+	<%= f.link_to_remove "X", :class => "btn red" %>
 </div>

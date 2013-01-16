@@ -40,11 +40,6 @@ class User < ActiveRecord::Base
 	# Before Save
 	before_save :init
 
-	# See if user can edit a station
-	def can_edit?(station)
-		station.user_id == self.id
-	end
-
 	# Override to param
 	def to_param
 		self.name.downcase

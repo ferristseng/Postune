@@ -1,5 +1,52 @@
 <div class="tab-frame" id="info-window">
 	<div id="info-wrapper">
-		Info!
+		<div class="row">
+			<div class="span4">
+				<table>
+					<tbody>
+						<tr>
+							<th>Owner</th><th></th>
+						</tr>
+						<tr>
+							<td><%= @station.user.name %></td><td></td>
+						</tr>
+						<tr>
+							<th>Collaborators</th><th></th>
+						</tr>
+						<% @station.collaborators.each do |c| %>
+						<tr>
+							<td><%= c.user.name %></td>
+							<td><%= c.title %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<div class="span4">
+				<table>
+					<tbody>
+						<tr>
+							<th>Name</th>
+						</tr>
+						<tr>
+							<td><%= @station.name %></td>
+						</tr>
+						<tr>
+							<th>Created</th>
+						</tr>
+						<tr>
+							<td><%= "#{time_ago_in_words(@station.created_at)} ago" %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span8 wrap">
+				<div class="right text">
+					<%= link_to "Edit", edit_user_station_path(@station), :class => "btn" if @station.can_edit?(current_user) %>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

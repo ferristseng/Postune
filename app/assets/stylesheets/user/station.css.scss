@@ -117,6 +117,26 @@
 
 /*
  * Station
+ * New
+ * /user/stations/new.html.erb
+ */
+
+#private-station-form {
+	.collaborator-fields {
+		.field {
+			width: 266px;
+		}
+		.btn {
+			text-align: center;
+			height: 18px;
+			margin: $margin + 1.5 0px 0px 0px;
+			width: 16px;
+		}
+	}
+}
+
+/*
+ * Station
  * Show
  * show.html.erb
  */
@@ -364,9 +384,20 @@
 	}
 }
 
+/*
+ * Info Window
+ * /user/stations/partials/info_window.html.erb
+ */
 #info-window {
 	#info-wrapper {
 		padding: $padding-double 0px $padding-double 0px;
 		min-height: $chat-height + 34px;
+	}
+	table {
+		th {
+			background: $background-gray;
+			border-top: $border-gray 1px solid;
+			border-bottom: $border-gray 1px solid;
+		}
 	}
 }

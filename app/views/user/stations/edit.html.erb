@@ -1,8 +1,8 @@
 <div class="container">
 	<%= render '/user/stations/partials/private_station_form', 
 			:station => @station, 
-			:url => user_stations_path,
-			:title => "Create a Private Station",
-			:submit_text => "Create Station"
+			:url => user_station_path(@station), 
+			:title => "Edit #{@station.name}",
+			:submit_text => "Edit Station"
 	%>
 </div>
