@@ -29,19 +29,7 @@
 		</div>
 		<div class="span4">
 			<h3>Already have an account?</h3>
-			<%= form_for @user_alt, :url => user_sessions_path do |f| %>
-				<div class="field">
-					<%= f.label :name %>
-					<%= f.text_field :name %>
-				</div>
-				<div class="field">
-					<%= f.label :password %>
-					<%= f.password_field :password %>
-				</div>
-				<div class="form-actions">
-					<%= f.submit "Login", :class => "btn" %>
-				</div>
-			<% end %>
+			<%= render 'shared/login_form', :user => @user_alt %>
 			<div class="separator top-double"></div>
 			<h3>Sign in with</h3>
 			<%= render 'shared/alternate_signin' %>

@@ -13,7 +13,7 @@ class Station < ActiveRecord::Base
   # Setup permalink as a url field
   acts_as_url :name, :url_attribute => :permalink
 
-  validates :name, 				:presence => true
+  validates :name, :presence => true
 
   def to_param
     self.permalink
@@ -34,11 +34,11 @@ class Station < ActiveRecord::Base
   end
 
   def is_owner?(user)
-  	user.id == self.user_id
+  	user.nil? ? false : user.id == self.user_id
   end
 
   def is_collaborator?(user)
-    self.collaborators.find_by_user_id(user.id).present?
+    user.nil? ? false : self.collaborators.find_by_user_id(user.id).present?
   end
 
 end

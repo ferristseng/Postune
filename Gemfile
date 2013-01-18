@@ -34,6 +34,9 @@ end
 gem 'jquery-rails'
 gem 'curb'
 gem 'stringex'
+
 gem 'omniauth'
-gem 'nested_form'
 gem 'omniauth-facebook'
+
+gem 'nested_form'
+

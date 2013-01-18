@@ -1,0 +1,20 @@
+<%= form_for user, :url => user_sessions_path do |f| %>
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		<%= required_field user, :name %>
+	</div>
+	<div class="field">
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+		<%= required_field user, :password %>
+	</div>
+	<div class="form-actions wrap" id="login-actions">
+		<div class="left">
+			<%= f.submit "Login", :class => "btn" %>
+		</div>
+		<div class="right text">
+			<%= link_to "Forgot Password?", user_reset_path %>
+		</div>
+	</div>
+<% end %>

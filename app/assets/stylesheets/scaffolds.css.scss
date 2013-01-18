@@ -309,6 +309,20 @@ form {
 	}
 }
 
+.box-form {
+	margin: 64px auto;
+	width: 360px;
+	border: 1px solid $border-gray;
+	@include border-radius($border-radius);
+	h3 {
+		background: $background-gray;
+		padding: $padding-double;
+	}
+	form {
+		padding: $padding $padding-double $padding-double $padding-double;
+	}
+}
+
 .btn {
 	@include gradient(#F5F5F5, #DEDEDE);
 	@include text-shadow(0px, 0px, 1px, #FFFFFF);
@@ -368,13 +382,9 @@ form {
 	color: #FFFFFF;
 }
 
-.messages-wrapper {
-	padding: 0px !important;
-}
-
 .message {
 	padding: 6px 10px;
-	margin: 0px 0px $margin-double 0px;
+	margin: 0px 0px $margin 0px;
 	@include border-radius($border-radius);
 }
 
@@ -396,6 +406,13 @@ form {
 .message.top {
 	text-align: center;
 	margin: 0px;
+}
+
+.messages-wrapper {
+	padding: 0px !important;
+	.message {
+		margin: 0px 0px $margin-double 0px;
+	}
 }
 
 #main, header {

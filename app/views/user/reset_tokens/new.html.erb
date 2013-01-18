@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+		<div class="box-form">
+			<h3>Reset Password</h3>
+			<%= form_for @token, :url => user_reset_tokens_path do |f| %>
+				<div class="field">
+					<%= f.label :email %>
+					<%= f.text_field :email, :placeholder => "Email" %>
+					<%= required_field @token, :email, false %>
+				</div>
+				<div class="form-actions">
+					<%= f.submit "Submit", :class => "btn" %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

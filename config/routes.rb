@@ -39,6 +39,13 @@ Postune::Application.routes.draw do
     match 'logout', :to => 'sessions#destroy'
     match 'auth/:provider/callback', :to => 'sessions#create'
 
+    # =============================
+    # Reset Token resources
+    # File : reset_tokens_controller.rb
+    # =============================
+    resources :reset_tokens, :only => [ :create ]
+    match 'reset', :to => 'reset_tokens#new'
+
   end
 
   # =============================
