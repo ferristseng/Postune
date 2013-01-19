@@ -1,4 +1,24 @@
 <div class="container">
-	<h1>User::Users#edit</h1>
-	<p>Find me in app/views/user/users/edit.html.erb</p>
+	<div class="row">
+		<%= form_for @user, :url => user_user_path(@user) do |f| %>
+			<div class="field">
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+				<%= required_field @user, :name %>
+			</div>
+			<div class="field">
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+				<%= required_field @user, :email %>
+			</div>
+			<div class="field">
+				<%= f.label :password %>
+				<%= f.password_field :password, :value => "" %>
+				<%= required_field @user, :password %>
+			</div>
+			<div class="form-actions">
+				<%= f.submit "Change", :class => "btn" %>
+			</div>
+		<% end %>
+	</div>
 </div>

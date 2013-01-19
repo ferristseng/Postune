@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
-		<div class="span8">
+		<div class="span4">
+			<h3>Profile</h3>
 			<table class="alt">
 				<tbody>
 					<tr>
@@ -23,10 +24,6 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-	</div>
-	<div class="row">
-		<div class="span4">
 			<h3>Stations</h3>
 			<% if @user.stations.present? %>
 			<table class="alt">
@@ -64,6 +61,7 @@
 	<div class="row">
 		<div class="span8">
 			<div class="right text">
+				<%= link_to "Change Password", user_user_edit_password_path(@user), :class => "btn" %>
 				<%= link_to "Edit", edit_user_user_path(@user), :class => "btn" %>
 			</div>
 		</div>

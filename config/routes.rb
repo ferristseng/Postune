@@ -11,6 +11,8 @@ Postune::Application.routes.draw do
     # =============================
     resources :users, :path => "/u", :except => [ :new ], :constraints => { :id => /[a-zA-Z0-9]+/ } do
       put 'reset', :to => 'reset_tokens#reset'
+      get 'edit/password', :to => 'users#edit_password'
+      put 'update/password', :to => 'users#update_password'
     end
 
     # =============================
