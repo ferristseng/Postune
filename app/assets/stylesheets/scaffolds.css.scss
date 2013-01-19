@@ -511,6 +511,9 @@ footer {
 	background: $background-gray;
 	border: 1px solid $border-gray;
 	@include border-radius(2px);
+	a {
+		border-bottom: none;
+	}
 }
 
 .label.green {
@@ -521,4 +524,9 @@ footer {
 .label.red {
 	border: 1px solid $error-red-border;
 	background: $error-red;
+}
+
+.label.yellow {
+	border: 1px solid $notice-yellow-border;
+	background: $notice-yellow;
 }

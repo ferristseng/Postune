@@ -23,8 +23,13 @@ class ResetToken < ActiveRecord::Base
     ResetToken.find(:last, :conditions => ['reset_token = ? AND expires > ?', token, DateTime.now])
   end
 
-  def deactivate
+  def invalidate
     self.update_attributes(:expires => DateTime.now)
+    self.save(:validate => false)
+  end
+
+  def invalidate_all
+    ResetToken.find(:all, :conditions => ['user_id = ? AND expires > ?', self.user_id, DateTime.now]).each { |r| r.invalidate }
   end
 
   private

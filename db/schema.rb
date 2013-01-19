@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130118134038) do
+ActiveRecord::Schema.define(:version => 20130119190103) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20130118134038) do
     t.string   "name"
     t.string   "permalink"
     t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_station_favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "station_id"
+    t.boolean  "favorite"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

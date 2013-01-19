@@ -1,5 +1,7 @@
 class User::ResetTokensController < ApplicationController
 
+  before_filter :unsigned_access
+
   def new
   	@title = "Reset Password"
   	if params[:token].present?
@@ -27,8 +29,10 @@ class User::ResetTokensController < ApplicationController
 
   def reset
     @user = User.find_by_name(params[:user_id])
+    @token = ResetToken.find_unexpired(params[:token])
     params[:user][:updating_password] = true
     if @user.update_attributes(params[:user])
+      @token.invalidate_all
       sign_in @user
       flash[:success] = "You have successfully changed your password!"
       redirect_to root_path

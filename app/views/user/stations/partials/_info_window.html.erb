@@ -13,10 +13,16 @@
 						<tr>
 							<th>Collaborators</th><th></th>
 						</tr>
+						<% if @station.collaborators.present? %>
 						<% @station.collaborators.each do |c| %>
 						<tr>
 							<td><%= c.user.name %></td>
 							<td><%= c.title %></td>
+						</tr>
+						<% end %>
+						<% else %>
+						<tr>
+							<td>No Collaborators</td><td></td>
 						</tr>
 						<% end %>
 					</tbody>

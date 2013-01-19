@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
 	has_many :stations
 	has_many :songs
 	has_many :authorizations
+	
+	has_many :user_station_favorites
+  has_many :favorites, :through => :user_station_favorites, :source => :station, :conditions => 'favorite = true'
 
 	# Before Save
 	before_save :init
@@ -55,6 +58,7 @@ class User < ActiveRecord::Base
 		return user if user.password == User.make_salt("#{user.salt}#{submitted_password}") && user.is_active
 	end
 
+	# For Omniauth
 	def from_omniauth(auth)
 		user = User.find_by_email(auth.info.email)
 		user.authorizations.build(:uid => auth.uid, :provider => auth.provider) if !user.authorizations.find_by_provider(auth.provider).nil?
@@ -68,11 +72,6 @@ class User < ActiveRecord::Base
 		return nil
 	end
 
-	# Salt a given string	
-	def self.make_salt(string)
-		Digest::SHA2.hexdigest(string)
-	end
-
 	def self.provider_to_abbr(provider)
 		case
 		when "facebook"
@@ -82,6 +81,28 @@ class User < ActiveRecord::Base
 		when "tumblr"
 			"tb"
 		end
+	end
+
+	# For Favoriting / Favorites
+	def favorite(station)
+		if (favorite = UserStationFavorite.find(:first, :conditions => ['user_id = ? AND station_id = ?', self.id, station.id])).nil?
+			self.user_station_favorites << UserStationFavorite.create(:user_id => self.id, :station_id => station.id)
+		else
+			favorite.update_attributes!(:favorite => true)
+		end
+	end
+
+	def unfavorite(station)
+		self.user_station_favorites.find_by_station_id(station.id).update_attributes!(:favorite => false)
+	end
+
+	def favorited?(station)
+		!self.user_station_favorites.find(:first, :conditions => ['station_id = ? AND user_id = ? AND favorite = ?', station.id, self.id, true]).nil?
+	end
+
+	# Salt a given string	
+	def self.make_salt(string)
+		Digest::SHA2.hexdigest(string)
 	end
 
 	def self.generate_random_password

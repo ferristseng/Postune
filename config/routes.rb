@@ -28,6 +28,8 @@ Postune::Application.routes.draw do
         match '/search', :to => 'songs#search', :on => :collection
       end
 
+      post '/favorite', :to => "favorites#create"
+
     end
 
     match 'register', :to => 'users#new'

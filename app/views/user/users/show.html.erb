@@ -45,6 +45,19 @@
 		</div>
 		<div class="span4">
 			<h3>Favorite Stations</h3>
+			<% if @user.favorites.present? %>
+			<table class="alt">
+				<tbody>
+				<% @user.favorites.each do |station| %>
+					<tr>
+						<td><%= link_to station.name, user_station_path(station.permalink) %></td>
+					</tr>
+				<% end %>
+				</tbody>
+			</table>
+			<% else %>
+				No Favorites
+			<% end %>
 		</div>
 	</div>
 	<% if current_user == @user %>

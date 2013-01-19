@@ -19,6 +19,10 @@ module SessionsHelper
 		@current_user ||= User.find_by_id(remember_token)
 	end
 	
+	def unsigned_access
+		redirect_to root_path unless !signed_in?
+	end
+
 	def signed_in?
 		!current_user.nil?
 	end

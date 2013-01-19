@@ -6,7 +6,6 @@ class Station < ActiveRecord::Base
   belongs_to :user
 
   has_many :collaborators, :class_name => StationCollaborator, :foreign_key => :station_id
-  has_many :users, :through => :station_collaborators
 
   accepts_nested_attributes_for :collaborators, :allow_destroy => true
 
