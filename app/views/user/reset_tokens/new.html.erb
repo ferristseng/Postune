@@ -5,7 +5,7 @@
 			<%= form_for @token, :url => user_reset_tokens_path do |f| %>
 				<div class="field">
 					<%= f.label :email %>
-					<%= f.text_field :email, :placeholder => "Email" %>
+					<%= f.text_field :email %>
 					<%= required_field @token, :email, false %>
 				</div>
 				<div class="form-actions">

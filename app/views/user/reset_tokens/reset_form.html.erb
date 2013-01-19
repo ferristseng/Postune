@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="box-form">
+			<h3>Reset Password</h3>
+			<%= form_for @user, :url => user_user_reset_path(@user) do |f| %>
+				<div class="field">
+					<%= f.label :unencrypted_password %>
+					<%= f.password_field :unencrypted_password %>
+					<%= required_field @user, :unencrypted_password %>
+				</div>
+				<div class="field">
+					<%= f.label :unencrypted_password_confirmation %>
+					<%= f.password_field :unencrypted_password_confirmation %>
+					<%= required_field @user, :unencrypted_password_confirmation %>
+				</div>
+				<div class="form-actions">
+					<%= f.submit "Reset", :class => "btn" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -9,7 +9,9 @@ Postune::Application.routes.draw do
     # User resources
     # File : users_controller.rb
     # =============================
-    resources :users, :path => "/u", :except => [ :new ], :constraints => { :id => /[a-zA-Z0-9]+/ }
+    resources :users, :path => "/u", :except => [ :new ], :constraints => { :id => /[a-zA-Z0-9]+/ } do
+      put 'reset', :to => 'reset_tokens#reset'
+    end
 
     # =============================
     # Station Resources
