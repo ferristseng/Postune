@@ -82,7 +82,7 @@ ul {
 	text-align: right;
 }
 
-.center.text {
+.center.text, .center-text {
 	text-align: center;
 }
 
@@ -172,13 +172,13 @@ ul {
 		overflow: hidden;
 		padding: 0px 0px $padding-double 0px;
 		.span2, .span4, .span6, .span8 {
-			div.padded {
+			.padded {
 				padding: 6px 0px;
 			}
-			div.padded.top {
+			.padded.top {
 				padding: 6px 0px 0px 0px;
 			}
-			div.padded.bottom {
+			.padded.bottom {
 				padding: 0px 0px 6px 0px;
 			}
 			table:first-child {

@@ -168,6 +168,10 @@
 			width: 378px;
 		}
 	}
+	.counter {
+		display: inline-block;
+		margin: $margin-half 0px 0px $margin;
+	}
 }
 
 #controls.open {

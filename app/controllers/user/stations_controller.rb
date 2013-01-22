@@ -36,7 +36,7 @@ class User::StationsController < ApplicationController
       @station.errors.add(:name, "is invalid")
       render 'public_new'
     else
-      @station = Station.where('name LIKE ?', "%#{params[:station][:name]}").first_or_create(:name => params[:station][:name])
+      @station = Station.where('lower(name) = ?', params[:station][:name].downcase).first_or_create(:name => params[:station][:name])
       redirect_to user_station_path @station
     end
   end
@@ -49,7 +49,7 @@ class User::StationsController < ApplicationController
   def create
     # Strip empty collaborator entries (no need to verify them)
     params[:station][:collaborators_attributes] = strip_empty_collaborators(params[:station][:collaborators_attributes])
-    @station = Station.where('name LIKE ? AND user_id is NULL', "%#{params[:station][:name].downcase}%").first_or_initialize(params[:station])
+    @station = Station.where('lower(name) = ? AND user_id is NULL', params[:station][:name].downcase).first_or_initialize(params[:station])
     if @station.user_id == nil
       @station.update_attributes(params[:station])
     end
@@ -86,12 +86,13 @@ class User::StationsController < ApplicationController
 
   end
 
-  def online
+  def index
     @title = "Online Stations"
     @online = Array.new
-    $redis.smembers("online stations").each do |station|
+    $redis.smembers("online stations").shuffle.take(Settings['station']['online_num']).each do |station|
       @online << Station.find_by_permalink(station)
     end
+    @popular = Station.order("favorites_count DESC").limit(10)
   end
 
   private

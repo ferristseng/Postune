@@ -13,11 +13,12 @@
 require 'stringex'
 
 class Station < ActiveRecord::Base
-  attr_accessible :name, :permalink, :user_id, :collaborators_attributes, :collaborators
+  attr_accessible :name, :permalink, :user_id, :collaborators_attributes, :collaborators, :favorites_count
 
   belongs_to :user
 
   has_many :collaborators, :class_name => StationCollaborator, :foreign_key => :station_id
+  has_many :favorites, :class_name => UserStationFavorite, :foreign_key => :station_id, :conditions => ['favorite = ?', true]
 
   accepts_nested_attributes_for :collaborators, :allow_destroy => true
 

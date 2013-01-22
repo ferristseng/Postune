@@ -33,8 +33,6 @@ Postune::Application.routes.draw do
       end
     end
 
-    match '/online', :to => 'stations#online'
-
     # =============================
     # Session resources
     # File : sessions_controller.rb

@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="span4">
+			<h3 class="no-padding">Online Stations</h3>
+		</div>
+		<div class="span4">
+			<h3 class="no-padding">Top Favorited</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<table class="alt">
+			<% if @online.present? %>
+			<% @online.each do |station| %>
+				<tr>
+					<td width="52px" class="center-text"><%= station_label station %></td>
+					<td><%= link_to station.name, user_station_path(station) %></td>
+				</tr>
+			<% end %>
+			<% else %>
+				<tr>
+					<td>No Online Stations</td>
+					<td></td>
+				</tr>
+			<% end %>
+			</table>
+		</div>
+		<div class="span4">
+			<table class="alt">
+			<% @popular.each_with_index do |station, i| %>
+				<tr>
+					<td width="18px" class="center-text"><%= i+1 %>.</td>
+					<td width="52px" class="center-text"><%= station_label station %></td>
+					<td><%= link_to station.name, user_station_path(station) %></td>
+					<td class="right-text"><span><%= station.favorites_count %></span> <span class="icon-heart"></span></td>
+				</tr>
+			<% end %>
+			</table>
+		</div>
+	</div>
+</div>

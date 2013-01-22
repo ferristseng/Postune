@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
 	# For Favoriting / Favorites
 	def favorite(station)
 		if (favorite = UserStationFavorite.find(:first, :conditions => ['user_id = ? AND station_id = ?', self.id, station.id])).nil?
-			self.user_station_favorites << UserStationFavorite.create(:user_id => self.id, :station_id => station.id)
+			UserStationFavorite.create(:user_id => self.id, :station_id => station.id)
 		else
 			favorite.update_attributes!(:favorite => true)
 		end

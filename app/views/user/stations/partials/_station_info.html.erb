@@ -6,7 +6,8 @@
 			<span class="label"><%= @station.name %></span>
 		</div>
 		<div class="right text">
-			<span id="online-users">0</span> <span class="icon-user"></span>
+			<div class="counter"><span id="online-users">0</span> <span class="icon-user"></span></div>
+			<div class="counter"><span id="favorite-count"><%= @station.favorites_count %></span> <span class="icon-heart"></span></div>
 		</div>
 	</div>
 </div>
