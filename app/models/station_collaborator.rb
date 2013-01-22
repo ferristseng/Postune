@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: station_collaborators
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  station_id :integer
+#  title      :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class StationCollaborator < ActiveRecord::Base
 	attr_accessor :name, :current_user_id
   attr_accessible :station_id, :title, :user_id, :name, :current_user_id

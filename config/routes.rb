@@ -22,7 +22,8 @@ Postune::Application.routes.draw do
     # =============================
     resources :stations, :path => "/s", :constraints => { :id => /[\w!@#$\%^&*()\[\]{}:;<>?.,-~]+/ } do
       post 'p/create', :to => 'stations#public_create', :on => :collection
-
+      post '/favorite', :to => "favorites#create"
+      
       # =============================
       # Songs Resources
       # File : songs_controller.rb
@@ -30,9 +31,6 @@ Postune::Application.routes.draw do
       resources :songs, :only => [ :create ] do
         match '/search', :to => 'songs#search', :on => :collection
       end
-
-      post '/favorite', :to => "favorites#create"
-
     end
 
     match '/online', :to => 'stations#online'

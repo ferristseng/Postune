@@ -5,17 +5,16 @@ class User::StationsController < ApplicationController
   before_filter :default_access, :only => :new
 
   before_filter :find_station, :only => [ :show, :edit, :update, :destroy]
+  before_filter :private_or_redirect, :only => [ :edit ]
 
   def show
     @title = "Station"
     @song = Song.new
-    if @station.blank?
-      @station = params[:id]
-      @url = "#{Settings['domain']}#{user_station_path params[:id]}"
-      render 'user/stations/public_show'
-    else
+    if @station.private?
       @can_edit = @station.can_edit?(current_user)
       render 'user/stations/private_show'
+    else
+      render 'user/stations/public_show'
     end
   end
 
@@ -32,22 +31,30 @@ class User::StationsController < ApplicationController
   end
 
   def public_create
-    id = params[:station][:name].to_url
-    if id.empty?
+    if params[:station][:name].empty?
       public_new
       @station.errors.add(:name, "is invalid")
       render 'public_new'
     else
-      redirect_to user_station_path id
+      @station = Station.where('name LIKE ?', "%#{params[:station][:name]}").first_or_create(:name => params[:station][:name])
+      redirect_to user_station_path @station
     end
   end
 
+  # 
+  # Create [POST]
+  # Objective is to create a PRIVATE station
+  # If a public exists with the same NAME, then just transfer ownership to the user trying to make the new station
+  # Otherwise, just create the private station
   def create
     # Strip empty collaborator entries (no need to verify them)
     params[:station][:collaborators_attributes] = strip_empty_collaborators(params[:station][:collaborators_attributes])
-    @station = Station.new(params[:station])
+    @station = Station.where('name LIKE ? AND user_id is NULL', "%#{params[:station][:name].downcase}%").first_or_initialize(params[:station])
+    if @station.user_id == nil
+      @station.update_attributes(params[:station])
+    end
     if @station.save
-      flash[:success] = "You have successfully created a station!"
+      flash[:success] = "You have successfully created a station!" 
       redirect_to user_station_path @station.permalink
     else
       @title = "New Station"
@@ -57,6 +64,7 @@ class User::StationsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path && flash[:notice] = "You can not access that page!" unless @station.can_edit?(current_user)
     @title = "Edit Station"
     build_collaborators(@station.collaborators.length)
   end
@@ -104,4 +112,7 @@ class User::StationsController < ApplicationController
       (times - len).times { @station.collaborators.build } if len < times
     end
 
+    def private_or_redirect
+      redirect_to root_path and flash[:notice] = "You can not access that page!" unless @station.private?
+    end
 end

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: stations
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  permalink  :string(255)
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'stringex'
 
 class Station < ActiveRecord::Base
@@ -10,9 +22,10 @@ class Station < ActiveRecord::Base
   accepts_nested_attributes_for :collaborators, :allow_destroy => true
 
   # Setup permalink as a url field
-  acts_as_url :name, :url_attribute => :permalink
+  acts_as_url :name, :url_attribute => :permalink, :sync_url => true
 
-  validates :name, :presence => true
+  validates :name,  :presence => true,
+                    :uniqueness => { :case_sensitive => false }
 
   def to_param
     self.permalink
@@ -38,6 +51,10 @@ class Station < ActiveRecord::Base
 
   def is_collaborator?(user)
     user.nil? ? false : self.collaborators.find_by_user_id(user.id).present?
+  end
+
+  def private?
+    self.user_id.present?
   end
 
 end

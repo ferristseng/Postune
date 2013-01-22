@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: reset_tokens
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  reset_token :string(255)
+#  expires     :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class ResetToken < ActiveRecord::Base
 	attr_accessor :email
   attr_accessible :expires, :reset_token, :user_id, :email
