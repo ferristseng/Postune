@@ -14,6 +14,7 @@ Postune::Application.routes.draw do
       get 'edit/password', :to => 'users#edit_password'
       put 'update/password', :to => 'users#update_password'
     end
+    match 'register', :to => 'users#new'
 
     # =============================
     # Station Resources
@@ -34,7 +35,7 @@ Postune::Application.routes.draw do
 
     end
 
-    match 'register', :to => 'users#new'
+    match '/online', :to => 'stations#online'
 
     # =============================
     # Session resources

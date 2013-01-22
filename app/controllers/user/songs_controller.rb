@@ -4,18 +4,13 @@ class User::SongsController < ApplicationController
 
   include RedisHelper
 
-  # 
   # This will create a new song on the station and publish it to redis
-  # ==
-  # Token will be a special token to identify the user and only allow him to play music
-  # ==
   def create
-    # set other params
     params[:song][:user_id] = current_user.id
     @song = Song.new(params[:song])
     if @song.save
       redis_auth
-      $redis.publish "new song", ActiveSupport::JSON.encode({ :token => "", :station => params[:station_id], :user => current_user.name, :song => @song })
+      $redis.publish "new song", ActiveSupport::JSON.encode({ :station => params[:station_id], :user => current_user.name, :song => @song })
       render :js => "ajaxCallback('#{params[:div]}', 1)"
     else
       render :js => "ajaxCallback('#{params[:div]}', -1)"

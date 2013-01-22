@@ -1,5 +1,7 @@
 class User::StationsController < ApplicationController
 
+  include RedisHelper
+
   before_filter :default_access, :only => :new
 
   before_filter :find_station, :only => [ :show, :edit, :update, :destroy]
@@ -20,7 +22,7 @@ class User::StationsController < ApplicationController
   def public_new
     @title = "Home"
     @station = Station.new
-    @recent = current_user.recently_played if signed_in?
+    @recent = current_user.recently_played(3) if signed_in?
   end
 
   def new
@@ -74,6 +76,14 @@ class User::StationsController < ApplicationController
 
   def destroy
 
+  end
+
+  def online
+    @title = "Online Stations"
+    @online = Array.new
+    $redis.smembers("online stations").each do |station|
+      @online << Station.find_by_permalink(station)
+    end
   end
 
   private

@@ -10,7 +10,12 @@
 	<header>
 		<div class="container">
 			<div class="half left">
-				<%= link_to "POSTUNE", root_path, :class => "left" %><div class="beta left">BETA</div>
+				<div id="logo">
+					<%= link_to "POSTUNE", root_path, :class => "left" %><div class="beta left">BETA</div>
+				</div>
+				<nav>
+					<%= link_to "Online", user_online_path %>
+				</nav>
 			</div>
 			<div class="half right text">
 				<% if signed_in? %>

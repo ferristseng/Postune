@@ -426,12 +426,17 @@ header {
 	height: $header-height;
 	font-weight: bold;
 	padding: $header-padding 0px;
-	.left {
+	#logo {
 		font-size: 24px;
 		.beta {
 			margin: -4px 0px 0px 2px;
 			font-size: 12px;
 			color: #767676;
+		}
+	}
+	nav {
+		a {
+			padding: 0px 0px 0px $padding-double;
 		}
 	}
 	.right {
@@ -488,7 +493,7 @@ footer {
 }
 
 .pagination {
-	margin: $margin 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 	text-align: center;
 	.page {
 		display: inline-block;
