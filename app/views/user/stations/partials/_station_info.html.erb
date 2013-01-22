@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="span8">
 		<div class="left">
-			<span class="label <%= visibility == 'Public' ? 'green' : 'red' %>"><%= visibility %></span>
+			<%= station_label @station %>
 			<%= link_to_favorite @station %>
 			<span class="label"><%= @station.name %></span>
 		</div>

@@ -5,12 +5,15 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="span8">
-			<ul>
+		<div class="span4">
+			<table>
 			<% @online.each do |station| %>
-				<li><%= link_to station.name, user_station_path(station) %></li>
+				<tr>
+					<td width="75px" class="text center"><%= station_label station %></td>
+					<td><%= link_to station.name, user_station_path(station) %></td>
+				</tr>
 			<% end %>
-			</ul>
+			</table>
 		</div>
 	</div>
 </div>
