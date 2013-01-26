@@ -1,0 +1,25 @@
+/*
+ * SCAFFOLDING
+ * Pagination
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.pagination {
+	margin: 0px 0px 0px 0px;
+	text-align: center;
+	.page {
+		display: inline-block;
+		padding: 4px 8px;
+		background: $background-gray;
+		border: $border-gray 1px solid;
+		margin: 0px $margin;
+	}
+	.current {
+		font-weight: bold;
+	}
+	a {
+		border: none;
+	}
+}

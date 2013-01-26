@@ -33,9 +33,9 @@ class User < ActiveRecord::Base
 
 	belongs_to :group
 
-	has_many :stations
+	has_many :stations,											:dependent => :destroy
 	has_many :songs
-	has_many :authorizations
+	has_many :authorizations,								:dependent => :destroy
 	
 	has_many :user_station_favorites
   has_many :favorites, :through => :user_station_favorites, :source => :station, :conditions => 'favorite = true'

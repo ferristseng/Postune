@@ -1,0 +1,19 @@
+/*
+ * SCAFFOLDING
+ * Info
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.info { 
+	font-size: 14px;
+	line-height: 24px;
+	h1, h2, h3, h4, h5, h6 {
+		padding: $padding 0px !important;
+	}
+	h1:first-child, h2:first-child, h3:first-child,
+	h4:first-child, h5:first-child, h6:first-child {
+		padding-top: 0px !important;
+	}
+}

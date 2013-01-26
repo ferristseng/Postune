@@ -1,0 +1,33 @@
+/*
+ * SCAFFOLDING
+ * Labels
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.label {
+	display: inline-block;
+	padding: 1px 4px;
+	background: $background-gray;
+	border: 1px solid $border-gray;
+	@include border-radius(2px);
+	a {
+		border-bottom: none;
+	}
+}
+
+.label.green {
+	border: 1px solid $success-green-border;
+	background: $success-green;
+}
+
+.label.red {
+	border: 1px solid $error-red-border;
+	background: $error-red;
+}
+
+.label.yellow {
+	border: 1px solid $notice-yellow-border;
+	background: $notice-yellow;
+}

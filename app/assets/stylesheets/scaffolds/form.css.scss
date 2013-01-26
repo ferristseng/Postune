@@ -1,0 +1,93 @@
+/*
+ * SCAFFOLDING
+ * Form
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+form {
+	overflow: hidden;
+	.field, .inline-fields {
+		label {
+			display: block;
+		}
+	}
+	.field {
+		margin: $margin 0px 0px 0px;
+		label {
+			margin: 0px 0px $margin 0px;
+		}
+		input[type='text'], input[type='password'] {
+			@include box-sizing(border-box);
+			border: 1px solid #ACB3B7;
+			width: 100%;
+			font-size: 14px;
+			padding: 5px 5px;	
+		}
+		.inline-error {
+			color: #FFFFFF;
+			font-weight: bold;
+			.inline-error-caret {
+				line-height: 0px;
+				font-size: 0px;
+				margin: 0px 0px 0px $margin-double;
+				padding: 0px;
+				height: 0;
+				width: 0;
+				border-bottom: #F2132D 8px solid;
+				border-left: transparent 8px solid;
+				border-right: transparent 8px solid;
+			}
+			.inline-error-body {
+				background: #F2132D;
+				padding: 5px 8px;
+			}
+		}
+	}	
+	.inline-fields {
+		overflow: hidden;
+		.field {
+			display: block;
+			width: 50%;
+			float: left;
+			padding: 0px $padding 0px 0px;
+			@include box-sizing(border-box);
+		}
+		.field:last-child {
+			padding: 0px;
+		}
+	}
+	.nested-form {
+		margin: $margin 0px 0px 0px;
+	}
+	.form-actions {
+		margin: $margin-double 0px 0px 0px;
+	}
+	.unified {
+		margin: $margin 0px 0px 0px;
+	}
+	.field_with_errors {
+		input[type='text'], input[type='password'] {
+			border: 1px solid #F2132D;
+		}
+	}
+	.add_nested_fields {
+		margin: $margin 0px 0px 0px;
+		display: block;
+	}
+}
+
+.box-form {
+	margin: 64px auto;
+	width: 360px;
+	border: 1px solid $border-gray;
+	@include border-radius($border-radius);
+	h3 {
+		background: $background-gray;
+		padding: $padding-double;
+	}
+	form {
+		padding: $padding $padding-double $padding-double $padding-double;
+	}
+}

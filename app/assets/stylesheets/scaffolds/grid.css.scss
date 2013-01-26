@@ -1,0 +1,73 @@
+/*
+ * SCAFFOLDING
+ * Grid
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.container {
+	width: $body-width;
+	margin: auto;
+	padding: 0px 32px;
+	overflow: hidden;
+	.container {
+		padding: 0px;
+		width: auto;
+	}
+	.row {
+		overflow: hidden;
+		padding: 0px 0px $padding-double 0px;
+		.span2, .span4, .span6, .span8 {
+			.padded {
+				padding: 6px 0px;
+			}
+			.padded.top {
+				padding: 6px 0px 0px 0px;
+			}
+			.padded.bottom {
+				padding: 0px 0px 6px 0px;
+			}
+			table:first-child {
+				margin: 0px;
+			}
+		}
+		.span2, .span4, .span6 {
+			float: left;
+		}
+		.span2 {
+			width: 23.815789472%;
+			margin: 0px 0.789473684% 0px 0.789473684%;
+		}
+		.span2:first-child {
+			margin: 0px 0.789473684% 0px 0px;
+		}
+		.span2:last-child {
+			margin: 0px 0px 0px 0.789473684%;
+		}
+		.span4 {
+			width: 49.210526315%;
+			margin: 0px 0px 0px 0.789473684%;
+		}
+		.span4:first-child {
+			margin: 0px 0.789473684% 0px 0px;
+		}
+		.span6 {
+			margin: 0px 0px 0px 0.789473684%;
+			width: 74.210526315%;
+		}
+		.span6:first-child {
+			margin: 0px 0.789473684% 0px 0px;
+		}		
+		.span8 {
+			width: 100%;
+			h1, h2, h3, h4, h5, h6 {
+				margin: 0px;
+				padding: 0px;
+			}
+		}
+		.row:last-child {
+			padding: 0px 0px 0px 0px;
+		}
+	}
+}

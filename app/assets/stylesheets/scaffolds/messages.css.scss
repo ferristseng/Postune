@@ -1,0 +1,40 @@
+/*
+ * SCAFFOLDING
+ * Messages
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.message {
+	padding: 6px 10px;
+	margin: 0px 0px $margin 0px;
+	@include border-radius($border-radius);
+}
+
+.message.notice {
+	border: 1px solid $notice-yellow-border;
+	background: $notice-yellow;
+}
+
+.message.error {
+	border: 1px solid $error-red-border;
+	background: $error-red;
+}
+
+.message.success {
+	border: 1px solid $success-green-border;
+	background: $success-green;
+}
+
+.message.top {
+	text-align: center;
+	margin: 0px;
+}
+
+.messages-wrapper {
+	padding: 0px !important;
+	.message {
+		margin: 0px 0px $margin-double 0px;
+	}
+}

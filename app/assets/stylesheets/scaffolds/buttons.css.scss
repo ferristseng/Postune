@@ -1,0 +1,66 @@
+/*
+ * SCAFFOLDING
+ * Buttons
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.btn {
+	@include gradient(#F5F5F5, #DEDEDE);
+	@include text-shadow(0px, 0px, 1px, #FFFFFF);
+	@include border-radius($border-radius);
+	border: 1px solid #ACB3B7;
+	font-weight: bold;
+	font-size: 12px;
+	color: #222222;
+	line-height: 18px;
+	margin: 0px;
+	padding: 5px 7px;
+	display: inline-block;
+}
+
+.btn.green {
+	@include gradient(#6AC042, #63B53D);
+	@include text-shadow(0px, -1px, 0px, #4D8135);
+	color: #FFFFFF;
+	border: 1px solid #528839;
+}
+
+.btn.red {
+	@include gradient(#F2132D, #CB313B);
+	@include text-shadow(0px, -1px, 0px, #95242C);
+	color: #FFFFFF;
+	border: 1px solid #AC2932;
+}
+
+.btn.small {
+	line-height: 14px;
+	padding: 3px 5px;
+}
+
+.btn.full {
+	width: 100%;
+	display: block;
+}
+
+.btn:hover {
+	@include box-shadow(0px, 0px, 3px, $border-gray, 1px, inset);
+	cursor: pointer;
+}
+
+.btn.green:hover {
+	@include box-shadow(0px, 0px, 3px, #62A543, 1px, inset);
+}
+
+.btn.red:hover {
+	@include box-shadow(0px, 0px, 3px, #A62931, 1px, inset);
+};
+
+.btn:active {
+	color: $blue;
+}
+
+.btn.green:active, .btn.red:active {
+	color: #FFFFFF;
+}

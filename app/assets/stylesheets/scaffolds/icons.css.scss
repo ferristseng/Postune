@@ -1,0 +1,51 @@
+/*
+ * SCAFFOLDING
+ * Icon
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.loading {
+	background: url('/assets/load.gif');
+}
+
+.icon {
+	width: $icon-size;
+	height: $icon-size;
+	display: inline-block;
+}
+
+.social-icon {
+	width: $icon-social-size;
+	height: $icon-social-size;
+	display: inline-block;
+	background: url('/assets/sprite_social.png');
+}
+
+.social-link {
+	font-weight: bold;
+	display: block;
+	overflow: hidden;
+	border: none;
+	span {
+		height: $icon-social-size;
+		line-height: $icon-social-size;
+		padding-left: 5px;
+		display: block;
+		float: left;
+	}
+	span:first-child {
+		padding-left: 0px;
+	}
+}
+
+.med-icon {
+	width: $med-icon-size;
+	height: $med-icon-size;
+	display: inline-block;
+}
+
+.med-icon.alert {
+	background: url('/assets/tip.png');
+}
