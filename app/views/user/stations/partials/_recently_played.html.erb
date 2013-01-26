@@ -1,15 +1,12 @@
 <% if signed_in? %>
 <div class="row">
-	<div class="span6">
+	<div class="span8">
 		<h3 class="no-padding">Recently Played</h3>
-	</div>
-	<div class="span2">
-		<h3 class="no-padding">Favorites</h3>
 	</div>
 </div>
 <div class="row" id="recently-played">
 	<% if @recent.present? %>
-		<% 3.times do |i| %>
+		<% 4.times do |i| %>
 			<% if @recent[i].present? %>
 				<div class="span2">
 					<div class="artwork"><%= exfm_image?(@recent[i].artwork) ? image_tag(@recent[i].artwork, :alt => @recent[i].title) : "" %></div>
@@ -32,16 +29,5 @@
 			</div>	
 		</div>
 	<% end %>
-	<div class="span2" id="no-recent-icon">
-		<ul>
-		<% if current_user.favorites.present? %>
-				<% current_user.favorites.each do |favorite| %>
-					<li><%= link_to favorite.name, user_station_path(favorite) %></li>
-				<% end %>
-		<% else %>
-			<li>No Favorites</li>
-		<% end %>
-		</ul>
-	</div>
 </div>
 <% end %>

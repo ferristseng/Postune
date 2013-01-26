@@ -1,0 +1,62 @@
+/*
+ * SCAFFOLDING
+ * Dropdown
+ */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+// Make sure this is divisible by 4 for best results
+$dropdown-size: 160px;
+$caret-size: 8px;
+
+.dropdown {
+	display: inline-block;
+	text-align: left;
+	line-height: 2em;
+	position: relative;
+	.caret {
+		width: 0px;
+		height: 0px;
+		vertical-align: top;
+	}
+	.dropdown-toggle {
+		display: block;
+		margin: 0px 0px 0px 0px;
+		position: relative;
+		z-index: 9000;
+		.caret {
+			display: inline-block;
+			margin: .75em 0px 0px $margin;
+			border-top: 4px solid $background-purp;
+			border-right: 4px solid transparent;
+			border-left: 4px solid transparent;
+		}
+	}
+	.dropdown-inner {
+		right: 0;
+		position: absolute;
+		z-index: 9250;
+		display: none;
+		.caret {
+			border-bottom: $caret-size solid $background-purp;
+			border-right: $caret-size solid transparent;
+			border-left: $caret-size solid transparent;
+	    position: relative;
+	   	margin-left: ($dropdown-size * 19/20) - ($caret-size / 2);
+		}
+		.dropdown-list {
+			padding: $padding-double $padding-double;
+			background: $background-purp;
+			width: $dropdown-size;
+			@include box-shadow(0px, 0px, 7px, rgba(0,0,0,0.5));
+			@include border-radius($border-radius);
+			a {
+				color: #FFFFFF;
+			}
+		}
+	}
+	.dropdown-inner.open {
+		display: block;
+	}
+}

@@ -21,7 +21,7 @@ class User::StationsController < ApplicationController
   def public_new
     @title = "Home"
     @station = Station.new
-    @recent = current_user.recently_played(3) if signed_in?
+    @recent = current_user.recently_played if signed_in?
   end
 
   def new

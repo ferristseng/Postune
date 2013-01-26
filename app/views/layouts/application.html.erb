@@ -19,8 +19,10 @@
 			</div>
 			<div class="half right text">
 				<% if signed_in? %>
-					<%= link_to current_user.name, user_user_path(current_user.name) %>
-					<%= link_to "Logout", user_logout_path %>
+					<%= dropdown "Favorites", current_user.favorites.collect { |f| link_to(f.name, user_station_path(f))} %>
+					<%= dropdown current_user.name, [
+								link_to("Account", user_user_path(current_user.name)), 
+								link_to("Logout", user_logout_path)] %>
 				<% else %>
 					<%= link_to "Login", user_login_path %>
 				<% end %>
