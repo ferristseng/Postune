@@ -32,6 +32,10 @@ class Station < ActiveRecord::Base
     self.permalink
   end
 
+  def short_name
+    self.name.truncate(20, :omission => "...")
+  end
+
   def position(user)
   	if is_owner?(user)
   		return "Owner"

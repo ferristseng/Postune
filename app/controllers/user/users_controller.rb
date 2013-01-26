@@ -1,7 +1,8 @@
 class User::UsersController < ApplicationController
   
 	before_filter :default_access, :only => [ :edit, :show ]
-  before_filter :find_user, :only => [ :show, :edit, :update, :edit_password, :update_password ]
+  before_filter :find_user, :only => [ :show, :edit, :edit_password, :update_password ]
+  before_filter :find_user_by_id, :only => [ :update ]
 
   def new
   	if signed_in?
@@ -35,9 +36,14 @@ class User::UsersController < ApplicationController
     # Delete the password key, can't update it directly!
     pass = params[:user].delete(:password)
     # Strip key / val pairs that match the user's account already
-    params[:user].each { |k, v| params[:user].delete(k) if (v == @user[k] || v.blank?) }
-    @user.update_attributes(params[:user])
-    if User.authenticate(@init_user.name, pass)
+    params[:user].each do |k, v| 
+      if (v == @user[k] || v.blank?) 
+        params[:user].delete(k) 
+      else
+        @user[k] = v
+      end
+    end
+    if !User.authenticate(@init_user.name, pass).nil?
       if @user.save
         flash[:success] = "Your account information has been edited!"
         redirect_to user_user_path(@user)
@@ -60,7 +66,7 @@ class User::UsersController < ApplicationController
     pass = params[:user].delete(:password)
     # Make sure you validate!
     params[:user][:updating_password] = true
-    if User.authenticate(@user.name, pass)
+    if !User.authenticate(@user.name, pass).nil?
       @user.update_attributes(params[:user])
       if @user.save
         flash[:success] = "Your password has been changed!"
@@ -83,6 +89,10 @@ class User::UsersController < ApplicationController
 
     def find_user
       @user = User.find_by_name(params[:id] || params[:user_id])
+    end
+
+    def find_user_by_id
+      @user = User.find(params[:id] || params[:user_id])
     end
 
 end

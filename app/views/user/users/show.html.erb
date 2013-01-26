@@ -61,6 +61,7 @@
 	<div class="row">
 		<div class="span8">
 			<div class="right text">
+				<%= link_to "Reset Password", user_reset_path, :class => "btn" %>
 				<%= link_to "Change Password", user_user_edit_password_path(@user), :class => "btn" %>
 				<%= link_to "Edit", edit_user_user_path(@user), :class => "btn" %>
 			</div>

@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 	
 	# Validation Settings
 	validates :name,  											:uniqueness => { :case_sensitive => false },
-																					:format => { :with => /^[a-zA-Z0-9\.]{3,50}$/i }
+																					:format => { :with => /^[a-zA-Z0-9\.\-\_]{3,50}$/i }
 	validates :email,												:format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
 																					:uniqueness => { :case_sensitive => false }
 	validates :unencrypted_password,				:confirmation => true,
@@ -58,17 +58,25 @@ class User < ActiveRecord::Base
 		return user if user.password == User.make_salt("#{user.salt}#{submitted_password}") && user.is_active
 	end
 
-	# For Omniauth
+	# from_omniauth(auth)
+	# Try to find a user with the email info returned from auth
+	# -- [Case 1]
+	# If a user exists, try to build an authorization if it doesn't exist and return the user
+	# -- [Case 2]
+	# If a user doesn't exist, build a new user and authorization and return the saved user
+	# -> Returns a user or nil
 	def from_omniauth(auth)
 		user = User.find_by_email(auth.info.email)
-		user.authorizations.build(:uid => auth.uid, :provider => auth.provider) if !user.authorizations.find_by_provider(auth.provider).nil?
-		user.save!
-		return user if !user.nil?
+		if user.present?
+			user.authorizations.build(:uid => auth.uid, :provider => auth.provider) if !user.authorizations.find_by_provider(auth.provider).nil?
+			user.save!
+			return user if !user.nil?
+		end
 		self.name = "#{auth.info.nickname}_#{User.provider_to_abbr(auth.provider)}"
 		self.email = auth.info.email
-		self.password = User.generate_random_password
+		self.unencrypted_password = User.generate_random_password
 		self.authorizations.build(:uid => auth.uid, :provider => auth.provider)
-		return self if self.save
+		return self if self.save!
 		return nil
 	end
 

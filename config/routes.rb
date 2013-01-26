@@ -9,7 +9,7 @@ Postune::Application.routes.draw do
     # User resources
     # File : users_controller.rb
     # =============================
-    resources :users, :path => "/u", :except => [ :new ], :constraints => { :id => /[a-zA-Z0-9]+/ } do
+    resources :users, :path => "/u", :except => [ :new ], :constraints => { :id => /[a-zA-Z0-9\.\-\_]+/ } do
       put 'reset', :to => 'reset_tokens#reset'
       get 'edit/password', :to => 'users#edit_password'
       put 'update/password', :to => 'users#update_password'

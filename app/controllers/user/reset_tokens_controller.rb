@@ -1,7 +1,5 @@
 class User::ResetTokensController < ApplicationController
 
-  before_filter :unsigned_access
-
   def new
   	@title = "Reset Password"
   	if params[:token].present?

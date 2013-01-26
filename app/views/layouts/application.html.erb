@@ -19,7 +19,7 @@
 			</div>
 			<div class="half right text">
 				<% if signed_in? %>
-					<%= dropdown "Favorites", current_user.favorites.collect { |f| link_to(f.name, user_station_path(f))} %>
+					<%= dropdown "Favorites", current_user.favorites.present? ? current_user.favorites.collect { |f| link_to(f.short_name, user_station_path(f))} : ["No Favorites"] %>
 					<%= dropdown current_user.name, [
 								link_to("Account", user_user_path(current_user.name)), 
 								link_to("Logout", user_logout_path)] %>

@@ -38,6 +38,8 @@ $caret-size: 8px;
 		position: absolute;
 		z-index: 9250;
 		display: none;
+		font-weight: bold;
+		color: #FFFFFF;
 		.caret {
 			border-bottom: $caret-size solid $background-purp;
 			border-right: $caret-size solid transparent;
