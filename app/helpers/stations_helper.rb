@@ -13,6 +13,10 @@ module StationsHelper
 		end
 	end
 
+	def dropdown_station(station)
+
+	end
+
 	def station_label(station)
 		priv = station.private?
 		raw content_tag(:span, priv ? "Private" : "Public", { :class => "label #{priv ? 'red' : 'green'}"})

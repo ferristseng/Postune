@@ -5,6 +5,8 @@ class User::StationsController < ApplicationController
   before_filter :default_access, :only => :new
 
   before_filter :find_station, :only => [ :show, :edit, :update, :destroy]
+
+  before_filter :can_edit_or_redirect, :only => [ :edit, :update ]
   before_filter :private_or_redirect, :only => [ :edit ]
 
   def show
@@ -64,7 +66,6 @@ class User::StationsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path && flash[:notice] = "You can not access that page!" unless @station.can_edit?(current_user)
     @title = "Edit Station"
     build_collaborators(@station.collaborators.length)
   end
@@ -83,22 +84,39 @@ class User::StationsController < ApplicationController
   end
 
   def destroy
-
+    if @station.is_owner?
+      @station.destroy
+      flash[:success] = "You have successfully deleted #{@station.name}!"
+    else
+      flash[:error] = "You can not delete this station!"
+    end
+    redirect_to root_path
   end
 
   def index
     @title = "Online Stations"
-    @online = Array.new
-    $redis.smembers("online stations").shuffle.take(Settings['station']['online_num']).each do |station|
-      @online << Station.find_by_permalink(station)
-    end
+    @online = Station.online
     @popular = Station.order("favorites_count DESC").limit(10)
+  end
+
+  def shuffle
+    @online = Station.online
+    if @online.empty?
+      redirect_to root_path
+      flash[:notice] = "Sorry, there are no stations online at this time!"
+    else
+      redirect_to user_station_path(@online.sample)
+    end
   end
 
   private
 
     def find_station
       @station = Station.find_by_permalink(params[:id])
+    end
+
+    def find_online_stations
+
     end
 
     def strip_empty_collaborators(collaborators)
@@ -114,6 +132,10 @@ class User::StationsController < ApplicationController
     end
 
     def private_or_redirect
-      redirect_to root_path and flash[:notice] = "You can not access that page!" unless @station.private?
+      redirect_to root_path and flash[:error] = "You can not access that page!" unless @station.private?
+    end
+
+    def can_edit_or_redirect
+      redirect_to root_path and flash[:error] = "You can not access that page!" unless @station.can_edit?(current_user)
     end
 end

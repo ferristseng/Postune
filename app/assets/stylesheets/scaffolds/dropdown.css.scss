@@ -56,6 +56,11 @@ $caret-size: 8px;
 			a {
 				color: #FFFFFF;
 			}
+			.dropdown-separator {
+				height: 0px;
+				border-top: 2px solid #FFFFFF;
+				margin: $margin 0px;
+			}
 		}
 	}
 	.dropdown-inner.open {

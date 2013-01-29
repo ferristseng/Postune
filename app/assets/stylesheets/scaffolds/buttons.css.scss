@@ -28,7 +28,7 @@
 }
 
 .btn.red {
-	@include gradient(#F2132D, #CB313B);
+	@include gradient(#F2132D, #E7132B);
 	@include text-shadow(0px, -1px, 0px, #95242C);
 	color: #FFFFFF;
 	border: 1px solid #AC2932;

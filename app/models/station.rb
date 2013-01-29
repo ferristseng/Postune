@@ -13,6 +13,9 @@
 require 'stringex'
 
 class Station < ActiveRecord::Base
+
+  include RedisHelper
+
   attr_accessible :name, :permalink, :user_id, :collaborators_attributes, :collaborators, :favorites_count
 
   belongs_to :user
@@ -28,6 +31,11 @@ class Station < ActiveRecord::Base
   validates :name,  :presence => true,
                     :uniqueness => { :case_sensitive => false }
 
+  def self.online(num = Settings['station']['online_num'])
+    $redis.smembers("online stations").shuffle.take(num).collect { |station| Station.find_by_permalink(station) }
+  end
+
+  # Naming
   def to_param
     self.permalink
   end
@@ -40,12 +48,13 @@ class Station < ActiveRecord::Base
   	if is_owner?(user)
   		return "Owner"
   	elsif is_collaborator?(user)
-  		return StationCollaborator.find(:first, :conditions => ['user_id = ? AND station_id = ?', self.user_id, self.station_id]).title
+  		return StationCollaborator.find(:first, :conditions => ['user_id = ? AND station_id = ?', user.id, self.id]).title
   	else
-  		return ""
+  		return "Collaborator"
   	end
   end
 
+  # Permissions
   def can_edit?(user)
     is_owner?(user) || is_collaborator?(user)
   end

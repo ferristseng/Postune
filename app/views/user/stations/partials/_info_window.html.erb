@@ -51,6 +51,7 @@
 			<div class="span8 wrap">
 				<div class="right text">
 					<%= link_to "Edit", edit_user_station_path(@station), :class => "btn" if @station.can_edit?(current_user) %>
+					<%= link_to "Delete", user_station_path(@station), :class => "btn red", :method => :delete, :confirm => "Are you sure you would like to delete this station?" if @station.is_owner?(current_user) %>
 				</div>
 			</div>
 		</div>

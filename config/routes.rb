@@ -33,6 +33,8 @@ Postune::Application.routes.draw do
       end
     end
 
+    match '/shuffle', :to => 'stations#shuffle'
+
     # =============================
     # Session resources
     # File : sessions_controller.rb

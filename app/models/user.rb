@@ -40,16 +40,25 @@ class User < ActiveRecord::Base
 	has_many :user_station_favorites
   has_many :favorites, :through => :user_station_favorites, :source => :station, :conditions => 'favorite = true'
 
+  has_many :station_collaborators
+  has_many :collaborations, :through => :station_collaborators, :source => :station
+
 	# Before Save
 	before_save :init
 
-	# Override to param
-	def to_param
-		self.name.downcase
+	# Getters
+
+	def stations
+		Station.find_all_by_user_id(self.id).concat(self.collaborations)
 	end
 
 	def recently_played(limit = 4)
 		self.songs.order("created_at DESC").limit(limit)
+	end
+
+	# Override to param
+	def to_param
+		self.name.downcase
 	end
 
 	def self.authenticate(username, submitted_password)
