@@ -344,6 +344,9 @@
 		.user {
 			font-weight: bold;
 		}
+		a.user {
+			border: none;
+		}
 	}
 	.chat-message.notification {
 		margin: $margin 0px;

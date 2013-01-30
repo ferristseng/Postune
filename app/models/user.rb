@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
 	end
 
 	def color
-		"#000000"
+		"##{"%06x" % Digest::SHA2.hexdigest(self.name).unpack("U" * self.name.length).join("").to_s[0..5]}"
 	end
 
 	# Override to param

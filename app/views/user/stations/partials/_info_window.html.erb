@@ -16,7 +16,7 @@
 						<% if @station.collaborators.present? %>
 						<% @station.collaborators.each do |c| %>
 						<tr>
-							<td><%= c.user.name %></td>
+							<td><%= link_to c.user.name, user_user_path(c.user) %></td>
 							<td><%= c.title %></td>
 						</tr>
 						<% end %>
