@@ -3,7 +3,10 @@
 	<script src='<%= "http://#{Settings['node']['host']}:#{Settings['node']['port']}/socket.io/socket.io.js" %>'></script>
 	<script>
 		var station = "<%= station %>",
-		current_user = "<%= signed_in? ? current_user.name : '' %>";
+		current_user = { 	'name': "<%= signed_in? ? current_user.name : '' %>", 
+											'permalink': "<%= signed_in? ? user_user_path(current_user): '' %>", 
+											'color': "<%= signed_in? ? current_user.color : '' %>" 
+										};
 	</script>
 	<%= javascript_include_tag 'station' %> 
 <% end %>

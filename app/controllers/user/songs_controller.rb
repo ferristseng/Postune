@@ -10,7 +10,8 @@ class User::SongsController < ApplicationController
     @song = Song.new(params[:song])
     if @song.save
       redis_auth
-      $redis.publish "new song", ActiveSupport::JSON.encode({ :station => params[:station_id], :user => current_user.name, :song => @song })
+      user = { :name => current_user.name, :permalink => user_user_path(current_user), :color => current_user.color }
+      $redis.publish "new song", ActiveSupport::JSON.encode({ :station => params[:station_id], :user => user, :song => @song })
       render :js => "ajaxCallback('#{params[:div]}', 1)"
     else
       render :js => "ajaxCallback('#{params[:div]}', -1)"

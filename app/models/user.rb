@@ -47,13 +47,16 @@ class User < ActiveRecord::Base
 	before_save :init
 
 	# Getters
-
 	def stations
 		Station.find_all_by_user_id(self.id).concat(self.collaborations)
 	end
 
 	def recently_played(limit = 4)
 		self.songs.order("created_at DESC").limit(limit)
+	end
+
+	def color
+		"#000000"
 	end
 
 	# Override to param

@@ -8,7 +8,7 @@
 							<th>Owner</th><th></th>
 						</tr>
 						<tr>
-							<td><%= @station.user.name %></td><td></td>
+							<td><%= link_to @station.user.name, user_user_path(@station.user) %></td><td></td>
 						</tr>
 						<tr>
 							<th>Collaborators</th><th></th>
