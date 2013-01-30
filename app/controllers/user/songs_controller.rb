@@ -19,16 +19,19 @@ class User::SongsController < ApplicationController
   end
 
   def search
-    @station = params[:station_id]
-    max_results = Settings['station']['max_results'].to_i
-  	base_url = "http://ex.fm/api/v3/song/search/"
-  	search_url = "#{base_url}#{URI.encode(params[:query])}?results=#{max_results + 10}&start=#{(params[:start].to_i - 1) * max_results}"
-  	raw_content  = open(search_url) {|f| f.read }
-  	json = ActiveSupport::JSON.decode raw_content
-  	@songs = json['songs'][0..15]
-    paginate_results(json['total'], json['start'], max_results)
-    # query and song params
-    @query = params[:query]
+    @songs = [];
+    if !params[:query].blank?
+      @station = params[:station_id]
+      max_results = Settings['station']['max_results'].to_i
+    	base_url = "http://ex.fm/api/v3/song/search/"
+    	search_url = "#{base_url}#{URI.encode(params[:query])}?results=#{max_results + 10}&start=#{(params[:start].to_i - 1) * max_results}"
+    	raw_content  = open(search_url) {|f| f.read }
+    	json = ActiveSupport::JSON.decode raw_content
+    	@songs = json['songs'][0..15]
+      paginate_results(json['total'], json['start'], max_results)
+      # query and song params
+      @query = params[:query]
+    end
     @song = Song.new
   end
 
@@ -60,6 +63,9 @@ class User::SongsController < ApplicationController
         @s_page = @c_page - (@c_page - 1)
         @e_page = @c_page + (x - @c_page)
       end
+
+      @s_page = 1 if @s_page < 1
+      @e_page = @m_page if @e_page > @m_page
     end
 
 end
