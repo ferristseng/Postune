@@ -1,6 +1,4 @@
 ## Postune
 
-![Postune](http://postune.com/assets/postune.png)
-
-[Postune](http://postune.com)
+![Postune](https://github.com/ferristseng/Postune/blob/master/app/assets/images/postune.png?raw=true)
 
