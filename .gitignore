@@ -18,6 +18,6 @@
 /config/*.yml
 /config/deploy.rb
 
-.DS_STORE
+.DS_Store
 *.lock
 *.rdb
