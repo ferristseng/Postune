@@ -1,0 +1,62 @@
+defaults: &defaults
+  domain: "postune.com"
+  soundcloud:
+      client_key: 33f255a6f2a015cd2bf4c80dc37ebcf7
+      client_secret: ef0317165ad0171eb816fbf4546ffaef
+  station:
+    max_results: 16
+    online_num: 10
+  placeholders:
+    search_form: "Search by artist or song name..."
+    chat_form: "Write a message..."
+    station_form: "Create or join a station..."
+  errors:
+    search_form:
+      logged_in: "Please login to play a song!"
+    chat_form:
+      logged_in: "Please login to chat!"
+  date:
+    nice: "%B %d, %Y"
+  time:
+    nice12: "%I:%M %p" 
+    nice24: "%H:%M"
+
+email_defaults: &email_defaults
+  from: "info@postune.com"
+  address: "smtp.gmail.com"
+  port: 587
+  username: "ferrist@postune.com"
+  password: "#YI2san4"
+
+development:
+  <<: *defaults
+  facebook:
+    client_key: 524014454283106
+    client_secret: 8bf989deb8f75f36a5ffe9c50436b76f    
+  redis:
+    host: "localhost"
+    port: "6379"
+    auth: ""
+  node:
+    host: "localhost"
+    port: "3001"
+  email:
+    <<: *email_defaults
+    base_url: "http://localhost:8080"
+
+production:
+  <<: *defaults
+  facebook:
+    client_key: 622681467750081 
+    client_secret: 214e83753921cec29ea309464dc67725   
+  redis:
+    host: "localhost"
+    port: "6379"
+    auth: ""
+  node:
+    host: "websockets.postune.com"
+    port: "80"
+  email:
+    <<: *email_defaults
+    base_url: "http://postune.com"
+

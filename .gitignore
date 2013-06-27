@@ -15,8 +15,8 @@
 /tmp
 
 # Ignore config files
-/config/*.yml
-/config/deploy.rb
+# /config/*.yml
+# /config/deploy.rb
 
 .DS_Store
 
