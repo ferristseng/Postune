@@ -164,9 +164,9 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   pg
-  rails (>= 3.2)
+  rails (~> 3.2)
   redis
-  sass-rails (>= 3.2.3)
+  sass-rails (~> 3.2.3)
   soundcloud
   stringex
   thin
