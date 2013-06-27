@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+
+Group.create(:name => 'Admin', :permission => 9)
+Group.create(:name => 'Default', :permission => 0)
