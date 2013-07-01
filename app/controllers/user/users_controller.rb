@@ -32,18 +32,15 @@ class User::UsersController < ApplicationController
 
   def update
     @title = 'Edit Account Info'
-    @init_user = @user
-    # Delete the password key, can't update it directly!
-    pass = params[:user].delete(:password)
-    # Strip key / val pairs that match the user's account already
-    params[:user].each do |k, v| 
-      if (v == @user[k] || v.blank?) 
+    pass = params[:user].delete(:password)    # Delete the password key, can't update it directly!
+    params[:user].each do |k, v|              # Strip key / val pairs that match the user's account already
+      if (v == @user[k] || v.blank?)          # in preparation for updating 
         params[:user].delete(k) 
       else
         @user[k] = v
       end
     end
-    if !User.authenticate(@init_user.name, pass).nil?
+    if !User.authenticate(current_user.name, pass).nil?
       if @user.save
         flash[:success] = "Your account information has been edited!"
         redirect_to user_user_path(@user)
@@ -61,16 +58,14 @@ class User::UsersController < ApplicationController
   end
 
   def update_password
-    @title = 'Edit Password'
-    # Delete the password key, can't update it directly!
-    pass = params[:user].delete(:password)
-    # Make sure you validate!
-    params[:user][:updating_password] = true
+    @title = 'Edit Password' 
+    pass = params[:user].delete(:password)    # Delete the password key, can't update it directly!
+    params[:user][:updating_password] = true  # Make sure you validate!
     if !User.authenticate(@user.name, pass).nil?
       @user.update_attributes(params[:user])
       if @user.save
         flash[:success] = "Your password has been changed!"
-        # Send an email notification?
+        # TODO: Send an email notification?
         redirect_to user_user_path(@user)
       else
         render 'edit_password'
