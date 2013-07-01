@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
 	belongs_to :group
 
-	has_many :stations,											:dependent => :destroy
+	has_many :stations,											:dependent => :destroy, :as => :owned_stations
 	has_many :songs
 	has_many :authorizations,								:dependent => :destroy
 	
